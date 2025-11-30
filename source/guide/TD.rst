@@ -1627,7 +1627,7 @@ The second time the triplet state was calculated by SF-TDDFT, and wave functions
 
   * Calculations must be performed in the order of isf=0, isf=1. When the SOC treatment does not consider the ground state (i.e., ''ifgs=0''), the more excited states ''iroot''' are calculated, the more accurate the result is; When considering the ground state (i.e., ''ifgs=1'''), too much ''iroot'' will reduce the accuracy, which is manifested in the underestimation of the ground state energy.
 
-The keyword ''imatsoc'' controls which SOC matrix elements <A|hso|) to be printed B>，
+The keyword ``imatsoc`` controls which SOC matrix elements :math:`<A|hso|B>` to be printed,
 
   * ''8'' means that you want to print SOC between 8 sets of spinor states, and 8 lines of integer arrays are entered in the following order;
   * The input format for each line is fileA symA stateA fileB symB stateB, which represents the matrix elements <fileA,symA,stateA|hsoc|fileB,symB,stateB>, where
@@ -1876,7 +1876,7 @@ The calculated output of SOECP/TDFT-SOC is similar to that of the sf-X2C/TDDFT-S
     :class: longtable
 
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
-    |  L-S态 |    TDDFT    | Ω态 |   TDDFT-SOC |      分裂   |二分量EOM-CCSD|      分裂   |
+|  L-S state |    TDDFT    | Ω state |   TDDFT-SOC | Splitting Energy | Two-Component EOM-CCSD | Splitting Energy |
     +=====================+=============+=====+=============+=============+==============+=============+
     | :math:'X^1\Sigma^+' |        0 | 0+ |         0 |             |         0 |             |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
@@ -1941,7 +1941,7 @@ SOECP integrals are still calculated for the In atom. The results are as follows
     :class: longtable
 
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
-    |  L-S态 |    TDDFT    | Ω态 |   Br:SOECP  |      分裂   |     Br:ECP  |      分裂   |
+|  L-S state |    TDDFT    | Ω state |   Br:SOECP  |     Splitting |     Br:ECP  |     Splitting |
     +=====================+=============+=====+=============+=============+=============+=============+
     | :math:'X^1\Sigma^+' |        0 | 0+ |         0 |             |         0 |             |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+

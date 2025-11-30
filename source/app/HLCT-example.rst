@@ -344,7 +344,7 @@ Convert the chk file to the fchk file. Render NTO tracks with Multiwfn VMD.
     :align: right
 
 
-.. centered::  :math:`\rm S_{0}` → :math:`\rm T_{3}` 跃迁贡献最大的NTO对贡献值为62.93%。
+.. centered::  :math:`\rm S_{0}` → :math:`\rm T_{3}` transition contributes most to NTO pairs with a contribution value of 62.93%.
 
 As can be seen from the diagram, the :math:'rm T_{1}' and :math:'rm T_{3}' states are typical local excitation (LE), while the :math:'rm S_{1}' and :math:'rm T_{2}' states have both charge transfer and local excitation components, which belong to the HLCT state.
 
@@ -450,7 +450,7 @@ After the job is completed, find the last excited state in the log file 1 is :ma
      Total Energy, E(TD-HF/TD-DFT) =  -1727.22867894    
      Copying the excited state density for this state as the 1-particle RhoCI density.
 
-Excitted state :math:`\rm T_{2}` 、 :math:`\rm T_{3}` optimize
+Excited state :math:`\rm T_{2}`, :math:`\rm T_{3}` optimization
 -------------------------------------------——————————————————————————————————————————————————————————————
 
 Since MOMAP will be used to calculate the inter-system crossing rate of :math:'rm T_{2}' → :math:'rm S_{1}' states and :math:'rm T_{3}' → :math:'rm S_{1}' states in the early stage, it is also necessary to optimize the structure and frequency calculation of excited states :math:'rm T_{2}' and :math:'rm T_{3}' to obtain 'log'' files and '' FCHK'' file. The functional and base groups are M062x and Def2SVP, respectively, and the T2.gjf file is as follows:
@@ -886,7 +886,7 @@ After the job is completed, the generated evc.cart.dat file is placed in the sam
        FoFile    = "isc.tvcf.fo.dat"
     /
 
-Ead is :math:'Delta E_{ST}' , :math:'rm H_{SO}' is the :math:'rm S_1' state and :math:'rm T_2' state spin-orbit coupling matrix element, and the calculated isc.tvcf.log file ends with the intersystem channeling rate and the anti-system channeling rate, in this case :math:'rm k_{ISC} = 4.53 times 10^4 s^{-1}' , :math :`k_{RISC} = 1.48 times 10^2 s^{-1}`` 。
+Ead is :math:`\Delta E_{ST}` , :math:`rm H_{SO}` is the :math:`rm S_1` state and :math:`rm T_2` state spin-orbit coupling matrix element, and the calculated isc.tvcf.log file ends with the intersystem channeling rate and the anti-system channeling rate, in this case :math:`rm k_{ISC} = 4.53 times 10^4 s^{-1}` , :math:`k_{RISC} = 1.48 times 10^2 s^{-1}`, where Ead is the energy difference between the singlet and triplet states, H_SO is the spin-orbit coupling matrix element between the S_1 and T_2 states.
 
 .. code-block:: bdf
 

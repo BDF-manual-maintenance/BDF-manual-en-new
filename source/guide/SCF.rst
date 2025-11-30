@@ -140,7 +140,7 @@ Restricted open-shell Hartree-Fock (ROHF) can also be used to calculate the mole
     #!bdf.sh
     rohf/cc-pvdz spinmulti=3
     
-    geometry   # 输入坐标单位 Angstrom
+    geometry   # Input coordinate unit: Angstrom
      C     0.000000        0.00000        0.31399
      H     0.000000 -1.65723 -0.94197
      H     0.000000 1.65723 -0.94197

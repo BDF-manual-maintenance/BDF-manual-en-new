@@ -588,7 +588,7 @@ In the above calculations, the theoretical level of the initial Hessian is consi
 
 (2) Run the input file with BDF to get the Hessian file ''HCN-inithess.hess'';
 
-（3）将 ``HCN-inithess.hess`` 复制或重命名为 ``HCN-optTS.hess`` ；
+(3) Copy or rename ``HCN-inithess.hess`` to ``HCN-optTS.hess``;
 
 (4) Prepare the following input file, named "HCN-optTS.inp":
 
@@ -737,11 +737,11 @@ The high-level input for the IRC task is:
 .. code-block:: bdf
 
     $irc
-    ircpts #反应路径的最大步数
+    ircpts # Maximum number of steps for the reaction path
       50
-    ircdir #选择反应路径的方向
+    ircdir # Direction of the reaction path
       0
-    ircalpha #反应路径的步长参数
+    ircalpha # Step size parameter for the reaction path
       0.05
     $end
     # The following parameters are the same as when calculating the TS structure
@@ -1101,7 +1101,7 @@ The input files are as follows. Among them, the ground state is completed with R
        As for which state is specified as No. 1 or No. 2, it is entirely up to the user to decide and does not affect the final result.
     5. In the process of BDF structure optimization, the SCF orbital saved in the previous step is used as the initial guess of the current SCF step by default to obtain the fastest SCF convergence. Since the two SCF calculations use different SCF pre-guess orbitals,
        They need to be backed up as $BDFTASK.scforb.1 and $BDFTASK.scforb.2, respectively. However, when overwriting $BDFTASK.scforb with them for the first time, since the SCF calculation has not yet been performed,
-       If these two files do not exist, the replication error will occur, and the BDF will stop the calculation when it finds out. In order to block out the error copying message, you need to add ''2>/dev/null |||to the end of the copy command :`` 。
+        If these two files do not exist, the replication error will occur, and the BDF will stop the calculation when it finds out. In order to block out the error copying message, you need to add ``2>/dev/null`` to the end of the copy command.
     6. The lowest triple excited state can also be calculated by spin flipping using TDDFT, which requires adding some additional keywords to the $tddft' and $resp' (see the TDDFT section <TDDFTopt>').
        However, TDDFT does not describe the charge transfer state well (this is the case with ZnS) and is not used here.
 
@@ -1677,13 +1677,13 @@ The following is an example input for CI optimization, which calculates the coni
     $END
 
     $bdfopt
-    imulti #优化CI
+    imulti # Optimize CI
      2
-    maxcycle           #最大优化步数
+    maxcycle           # Maximum number of optimization steps
      50
-    Tolgrad #均方根梯度的收敛标准
+    Tolgrad # Convergence criterion for root mean square gradient
      1.d-4
-    Tolstep #均方根步长的收敛标准
+    Tolstep # Convergence criterion for root mean square step size
      5.d-3
     $end
 

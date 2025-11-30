@@ -1058,7 +1058,13 @@ Link to download the study :download:`test085.zip <files/test085.zip>`
      $end
      
      $TDDFT
-     imethod      #2为U-TDDFT
+     imethod      #2 for U-TDDFT
+
+
+becomes:
+
+
+     imethod      #2 for U-TDDFT
       2
      itest        # must specified in SA-TDDFT
       1
