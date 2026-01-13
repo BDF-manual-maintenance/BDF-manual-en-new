@@ -55,11 +55,17 @@ BDF's basis set library provides extensive :ref:`all-electron relativistic basis
   - Using relativistic contracted basis sets accounting for nuclear size effects (e.g., ANO-R)  
   - Calculating electron properties near the nucleus  
 
-  **Comparison of sf-X2C Variants:**  
-  - **sf-X2C**: Solves the one-electron spin-free Dirac equation rigorously for the **X** matrix (standard method). Diagonalization becomes a bottleneck for systems with >1000 basis functions.  
-  - **sf-X2C-AXR**/**sf-X2C-AU**: Leverage atomic locality of the **X** matrix. Solve small Dirac equations for atomic L-shells, then assemble the molecular **X** matrix, dramatically reducing computational cost.  
-    - For systems without heavy-element (≥5d) bonds, **sf-X2C-AU** offers optimal efficiency without accuracy loss (recommended).  
-    - Otherwise, use **sf-X2C** (small molecules) or **sf-X2C-AXR** (any system size). :cite:`doi:10.1021/acs.jctc.9b01120`  
+  **Comparison of sf-X2C Variants:**
+
+  * **sf-X2C**: Solves the one-electron spin-free Dirac equation rigorously for molecular **X** matrix (standard method).
+    Diagonalization becomes a bottleneck for systems with >1000 basis functions.  
+  * **sf-X2C-AXR**/**sf-X2C-AU**: Uses atomic locality of the **X** matrix. Solves small Dirac equations for atomic L-shells,
+    then assemble the molecular **X** matrix, dramatically reducing computational cost.
+  * For systems without heavy-element (≥5d) bonds, **sf-X2C-AU** offers optimal efficiency without accuracy loss (recommended).
+    Otherwise, use **sf-X2C** (small molecules) or **sf-X2C-AXR** (any system size). :cite:`doi:10.1021/acs.jctc.9b01120`  
+  * Certain all-electron basis sets have quasi-redundant Gaussian exponents (for example, the x2c-QZVPPall-2c basis set for the Tb atom),
+    which may lead to numerical instability and program termination. **sf-X2C-AU** automatically invokes a quadruple precision algorithm
+    for such basis sets to solve the problem.
 
   .. warning:  
       When using ``heff=21/22/23``, BDF prioritizes reading derivative data from :ref:`BDF_TMPDIR<run-bdfpro>` temporary files. If these files come from other calculations, results may be erroneous!  
