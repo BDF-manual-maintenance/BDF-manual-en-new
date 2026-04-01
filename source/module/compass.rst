@@ -280,11 +280,12 @@ Specifies the precision threshold for determining molecular symmetry. A key feat
       Medium
     $END
 
-:guilabel:`ExpBas` Parameter Type: Integer
+:guilabel:`ExpBas` Parameter Type: Integer or String
 -----------------------------------------------------
  * Options: 0, 1, 2, 3, 4, 5
 
 Prints the basis set and pseudopotentials in the output file using formats compatible with other quantum chemistry programs.
+Either indices or case-insensitive program names can be specified.
 
  * 0: Default BDF format
  * 1: Molpro format
