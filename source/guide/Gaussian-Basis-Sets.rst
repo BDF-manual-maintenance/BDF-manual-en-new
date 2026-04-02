@@ -898,6 +898,14 @@ If it's an advanced input, look like this:
   End geometry
   $end
 
+.. attention::
+
+    The ANO-RCC series basis sets (including ANO-RCC-VDZ, ANO-RCC-VDZP, etc.) cannot be specified directly in ``basis-block``
+    due to different r/w mechanisms, and otherwise the program will use the highest level ANO-RCC basis set.
+    You can copy the properly contracted ANO-RCC basis data to a  :ref:`custom basis set file<SelfdefinedBasis>`
+    or the  ``inline`` section (see below).
+
+
 **Provide basis set data in the input file explicitly** 
 
 If you are using a custom non-standard basis set, in addition to editing a basis set file (see the previous section),
