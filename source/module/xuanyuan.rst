@@ -106,6 +106,19 @@ Specifies the type of spin-orbit (SO) integrals:
        1
      $end
 
+:guilabel:`Clight` Parameter Type: Integer
+---------------------------------------------------
+ * Default: 0
+ * Options: 0, 1, 2, 100
+
+Specifies the speed of light in atomic units, used for the calculation of the full-electron relativistic Hamiltonian.
+
+ * 0: the default value for BDF.
+ * 1: the default value for Gaussian 16.
+ * 2: the default value for OpenMolcas.
+ * 100: infinite speed of light, used for program debugging and reproducing non-relativistic results.
+
+
 :guilabel:`Nuclear` Parameter Type: Integer
 ---------------------------------------------------
  * Default: 0

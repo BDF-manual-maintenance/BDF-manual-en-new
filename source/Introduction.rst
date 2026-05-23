@@ -75,4 +75,4 @@ Feature Updates
 Free Trial of BDF
 ================================================   
 
-Interested users can register for a Hongzhiwei Cloud account at https://iresearch.net.cn/web/personal-space/activity-page to apply for a free trial. Alternatively, send a trial request email to sales@hzwtech.com or call 021-50550302.
+Interested users can register for a Hongzhiwei Cloud account at https://cloud.hzwtech.com/web/trial to apply for a free trial (the page is currently only available in Chinese, but can be filled with the help of a machine translator). Alternatively, send a trial request email to sales@hzwtech.com or call +86-021-50550302.

@@ -1,4 +1,4 @@
-# Document: QM/MM Hybrid Methods  
+Document: QM/MM Hybrid Methods  
 ================================================  
 
 QM/MM hybrid methods typically divide a system into two regions: the QM region and the MM region. The total energy of the system is expressed as:  
@@ -28,7 +28,7 @@ The BDF program primarily handles the quantum chemical computation part, while o
 
 ---
 
-## Input File Preparation  
+Input File Preparation  
 -------------------------------------------------  
 Typically, molecular dynamics (MD) simulations of the target system are performed before QM/MM calculations to obtain suitable initial conformations. Different MD software packages produce varying output formats.  
 pDynamo-2 currently supports force fields like **Amber**, **CHARMM**, and **Gromacs**, and can read molecular coordinates from **PDB**, **MOL2**, or **xyz** formats.  
@@ -49,7 +49,7 @@ Molecular information is stored in the `molecule` structure. For QM/MM calculati
 
 ---
 
-## Total Energy Calculation  
+Total Energy Calculation  
 -------------------------------------------------  
 
 Consider a 10 Å water box as an example. After MD simulations, files `wat.prmtop` and `wat.crd` are extracted. Full quantum chemical calculations can be performed as follows:  
@@ -114,7 +114,7 @@ The complete QM/MM energy calculation script:
 
 ---
 
-## Geometry Optimization  
+Geometry Optimization  
 -------------------------------------------------  
 .. _QMMMopt:  
 QM/MM geometry optimization often faces convergence challenges. Common strategies include:  
@@ -202,7 +202,7 @@ Example optimization script:
 
 ---
 
-## QM/MM-TDDFT Example  
+QM/MM-TDDFT Example  
 -------------------------------------------------  
 After geometry optimization, TDDFT calculations can be performed on the QM/MM-optimized ground state. BDF’s **template** feature allows users to update coordinates in a predefined `.inp` file. The QM region can be adjusted for excited-state calculations (e.g., including the first solvation shell). Building on the previous example:  
 

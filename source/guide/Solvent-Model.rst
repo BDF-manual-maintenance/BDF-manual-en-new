@@ -1,4 +1,4 @@
-# Solvation Models
+Solvation Models
 ================================================
 
 Solvation models are used to calculate interactions between solute and solvent, generally categorized into **implicit solvent models** (continuous medium models) and **explicit solvent models**. In BDF, for continuous solvent models, options include IEFPCM, SS(V)PE, CPCM, COSMO, ddCOSMO (domain-decomposition COSMO solvation model), and SMD. For explicit solvent models, the QM/MM method is employed, computed using the pDynamo2.0 program package.
@@ -23,7 +23,7 @@ Functionalities supported by BDF solvation models:
   | **SMD**     | √            | √        | √       | √             | √        |
   +-------------+--------------+----------+---------+---------------+----------+
 
-## Solvent Type Setting
+Solvent Type Setting
 ------------------------------------------------
 Add the ``solvent`` keyword in the ``SCF`` module to enable solvation effect calculations. The solvent type (e.g., ``water``) should be specified on the next line.  
 Example input for formaldehyde in aqueous solution:
@@ -68,7 +68,7 @@ Solvent types can be specified using names or aliases from :ref:`BDF Supported S
   dielectric
     78.3553   #Input dielectric constant
 
-### Solvent Model Setting
+Solvent Model Setting
 -------------------------
 Continuous medium models treat the solvent as a polarizable continuous medium with a specific dielectric constant.  
 BDF currently supports **ddCOSMO**, **COSMO**, **CPCM**, **IEFPCM**, **SS(V)PE**, and **SMD** models. Keywords: ``ddcosmo``, ``cosmo``, ``cpcm``, ``iefpcm``, ``ssvpe``, ``smd``.  
@@ -109,7 +109,7 @@ For **SMD**, manually specify parameters:
 
    Using the SMD model disables calculation of :ref:`non-electrostatic component of solvation free energy<SolventNonelec>`, replacing it with SMx series :math:`\Delta G_{CDS}`.
 
-### Cavity Customization
+Cavity Customization
 ------------------------
 Cavity shape significantly impacts solvation energy. Common cavity types: vdW (van der Waals surface), SES (solvent-excluded surface), SAS (solvent-accessible surface).  
 
@@ -153,7 +153,7 @@ Control grid density with ``cavityNGrid`` or ``cavityPrecision``:
   cavityPrecision
     medium # ultraCoarse | coarse | medium | fine | ultraFine (default: medium)
 
-## Ground State Solvation Energy Calculation
+Ground State Solvation Energy Calculation
 ----------------------------------------------------------
 Typically requires only ``solvent`` and ``solmodel`` in ``SCF`` module.  
 Example for formaldehyde with SMD model:
@@ -190,7 +190,7 @@ Example for formaldehyde with SMD model:
 
    Use ``cosmosave`` to export cavity volume/surface area, tesserae coordinates/charges/areas to .cosmo files. Convert to Gaussian format using ``$BDFHOME/sbin/conv2gaucosmo.py``.
 
-## Non-Electrostatic Solvation Energy Calculation
+Non-Electrostatic Solvation Energy Calculation
 ----------------------------------------------------------
 .. _SolventNonelec:
 
@@ -231,7 +231,7 @@ Customize radii for dispersion-repulsion/cavitation:
   acidHRadiusForCavEnergy # Acidic H radius for cavitation (Å)
     1.2
 
-## Introduction to Nonequilibrium Solvation Theory
+Introduction to Nonequilibrium Solvation Theory
 ----------------------------------------------------------
 Excited-state solvation requires **nonequilibrium** treatment due to rapid vertical absorption/emission processes. Solvent polarization has:  
 - **Fast** (electronic) component  
@@ -239,7 +239,7 @@ Excited-state solvation requires **nonequilibrium** treatment due to rapid verti
 
 Traditional theories overestimate solvent reorganization energy. BDF implements **new theory** by Prof. Xiangyuan Li (Int. J. Quantum Chem. 2015, 115(11): 700-721) for state-specific calculations.
 
-## Excited State Solvation Effect Calculation
+Excited State Solvation Effect Calculation
 ----------------------------------------------------------
 Implicit models handle excited states via:  
 - **Linear Response (LR)**  
