@@ -1,5 +1,5 @@
 DFT/TDDFT Gradients and Response Properties - RESP Module
-================================================
+=========================================================
 The resp module is used to calculate DFT/TDDFT gradients, nonadiabatic coupling matrix elements at the TDDFT level (including ground-excited and excited-excited couplings), and response properties such as excited-state dipole moments.
 
 **Basic Keywords**
@@ -105,7 +105,7 @@ Performs data consistency checks for TDDFT gradient calculations, primarily for 
 * 1: Ignores Wmo matrix symmetry check. Use only if convergence thresholds are tight, results are acceptable, and input is correct, but the program still fails the symmetry check.
 
 :guilabel:`IRep` & :guilabel:`IRoot` Parameter Type: Integer
------------------------------------------------------
+------------------------------------------------------------
 These keywords specify which state(s) to calculate TD-DFT gradients or excited-state dipole moments for. Four cases:
 
 a. Both `IRep` and `IRoot` specified:
@@ -184,7 +184,7 @@ Specifies ignoring transition density matrix response terms in `Double` and `FNA
 Specifies DFT numerical integration grid type.
 
 :guilabel:`Gridtol` Parameter Type: Floating-point
-------------------------------------------------
+--------------------------------------------------
  * Default: 1.0E-6 (1.0E-8 for meta-GGA)
  
 Sets the cutoff threshold for generating DFT adaptive grids. Lower values increase grid points, precision, and computational cost.

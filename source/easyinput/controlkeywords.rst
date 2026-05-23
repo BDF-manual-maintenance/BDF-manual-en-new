@@ -2,7 +2,7 @@ Easy Input Keywords
 ===============================
 
 ### Required Parameters: :guilabel:`Method/Functional/Basis`, :guilabel:`Functional/Basis`, :guilabel:`Method/Basis`
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
 Required parameters in easy input mode are used to set computational methods, functionals for DFT/TDDFT calculations, basis sets, etc. Currently supported computational methods include:
 
 +-------------------+------------------------------------------------------------------+
@@ -54,7 +54,7 @@ Required parameters in easy input mode are used to set computational methods, fu
 **Hamiltonian and Spin-Orbit Coupling**
 
 ### :guilabel:`hamilton` Parameter Type: String, Optional
-----------------------------------------------------
+---------------------------------------------------------
 Set the relativistic Hamiltonian for calculation
 
 Default: `nonrel` (uses `sf-X2C` when relativistic basis sets are employed)
@@ -62,7 +62,7 @@ Default: `nonrel` (uses `sf-X2C` when relativistic basis sets are employed)
 Options: `sf-X2C`, `sf-X2C-AXR`, `sf-X2C-AU`
 
 ### :guilabel:`SOC` Parameter Type: Bool, Optional
-------------------------------------------------
+--------------------------------------------------
 Request spin-orbit coupling (SOC) calculation and set corresponding SOC operator. If method is TDDFT, performs SOC calculation based on TDDFT; if method is TDA, performs SOC calculation based on TDA.
 
 Default: `DKH1e+mf1c`
@@ -76,7 +76,7 @@ Options: `DKH1e+mf1c`, `DKH1e`, `BP`; `DKH1e+mf1c` for all-electron calculations
 **Coordinate Units, Charge, and Spin Multiplicity**
 
 ### :guilabel:`unit` Parameter Type: String, Optional
-------------------------------------------------
+-----------------------------------------------------
 Atomic coordinate units
 
 Default: `angstrom`
@@ -84,13 +84,13 @@ Default: `angstrom`
 Options: `angstrom`, `Bohr`
 
 ### :guilabel:`spinmulti` Parameter Type: Integer, Optional
-------------------------------------------------
+-----------------------------------------------------------
 Spin multiplicity, `2S+1`
 
 Default: `1` for even-electron systems, `2` for odd-electron systems
 
 ### :guilabel:`charge` Parameter Type: Integer, Optional
-------------------------------------------------
+--------------------------------------------------------
 Charge number
 
 Default: `0`
@@ -104,7 +104,7 @@ Set spin-adapted TDDFT or TDA. `TDDFT/functional/basis SpinAdapt` is equivalent 
 **Non-Adiabatic Coupling**
 
 ### :guilabel:`NAC` Parameter Type: Bool, Optional
-------------------------------------------------
+--------------------------------------------------
 Non-adiabatic coupling (NAC) calculation based on time-dependent density functional theory (TDDFT)
 
 Default: `False`
@@ -112,37 +112,37 @@ Default: `False`
 **Potential Energy Surfaces and Structural Optimization**
 
 ### :guilabel:`opt` Parameter Type: Bool, Optional
-------------------------------------------------
+--------------------------------------------------
 Molecular geometry optimization for stable points.
 
 Default: `False`
 
 ### :guilabel:`opt+freq` Parameter Type: Bool, Optional
-------------------------------------------------
+-------------------------------------------------------
 Molecular geometry optimization for stable points, followed by frequency calculation.
 
 Default: `False`
 
 ### :guilabel:`ts+freq` Parameter Type: Bool, Optional
-------------------------------------------------
+------------------------------------------------------
 Transition state optimization, followed by frequency calculation.
 
 Default: `False`
 
 ### :guilabel:`freq` Parameter Type: Bool, Optional
-------------------------------------------------
+---------------------------------------------------
 Frequency calculation.
 
 Default: `False`
 
 ### :guilabel:`scan` Parameter Type: Bool, Optional
-------------------------------------------------
+---------------------------------------------------
 Molecular potential energy surface scan, requires internal coordinate input.
 
 Default: `False`
 
 ### :guilabel:`scan+opt` Parameter Type: Bool, Optional
-------------------------------------------------
+-------------------------------------------------------
 Flexible molecular potential energy surface scan (optimizes other coordinate parameters while fixing certain internal coordinate parameters), requires internal coordinate input.
 
 Default: `False`
@@ -150,13 +150,13 @@ Default: `False`
 **Acceleration Algorithms**
 
 ### :guilabel:`MPEC+COSX` Parameter Type: Bool, Optional 
-------------------------------------------------
+--------------------------------------------------------
 Accelerate `SCF`, `TDDFT` energy and gradient calculations using `Multipole Expansion of Coulomb Potential` (MPEC) and `Chain-Of-Spheres Exchange` (COSX).
 
 Default: `False`
 
 ### :guilabel:`RI` Parameter Type: Bool, Optional 
-------------------------------------------------
+-------------------------------------------------
 Accelerate `SCF`, `TDDFT` or `MP2` calculations using Resolution of Identity (RI), requires auxiliary basis sets.
 
 Default: `False`

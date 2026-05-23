@@ -2,7 +2,7 @@ Description of the study
 ************************************
 
 Example 1: Calculation of SCF energy gradient and structural optimization
-------------------------------------------------
+-------------------------------------------------------------------------
 Link to download the study :download:`test003.zip <files/test003.zip>`
 
 .. code-block:: bdf
@@ -37,7 +37,7 @@ Link to download the study :download:`test003.zip <files/test003.zip>`
      $END
 
 Example 2: Automatic symmetry recognition & identification of symmetry
-------------------------------------------------
+----------------------------------------------------------------------
 Link to download the study :download:`test006.zip <files/test006.zip>`
 
 .. code-block:: bdf
@@ -313,7 +313,7 @@ Link to download the study :download:`test012.zip <files/test012.zip>`
      $END
 
 Example 4: Examining non-abelian groups and skeletal matrix methods
-------------------------------------------------
+-------------------------------------------------------------------
 Link to download the study :download:`test029.zip <files/test029.zip>`  
 
 .. code-block:: bdf
@@ -424,7 +424,7 @@ Link to download the study :download:`test032.zip <files/test032.zip>`
      end geometry
 
 Example 7: SCF calculation based on two-electron integral Cholesky decomposition
-------------------------------------------------
+--------------------------------------------------------------------------------
 Link to download the study :download:`test033.zip <files/test033.zip>`
 
 .. code-block:: bdf
@@ -634,7 +634,7 @@ Link to download the study :download:`test041.zip <files/test041.zip>`
      $END
 
 Example 9: Calculating Charge Transfer, Coulombs and Exchange Integrals
-------------------------------------------------
+-----------------------------------------------------------------------
 Link to download the study :download:`test062.zip <files/test062.zip>`
 
 .. code-block:: bdf
@@ -780,7 +780,7 @@ Link to download the study :download:`test062.zip <files/test062.zip>`
      &end  
      
 Example 10: TD-DFT gradient calculation for an abelian group symmetric structure
-------------------------------------------------
+--------------------------------------------------------------------------------
 Link to download the study :download:`test063.zip <files/test063.zip>`
 
 .. code-block:: bdf
@@ -831,7 +831,7 @@ Link to download the study :download:`test063.zip <files/test063.zip>`
      $end
 
 Example 11: DFT ground state gradient calculation
-------------------------------------------------
+-------------------------------------------------
 Link to download the study :download:`test065.zip <files/test065.zip>`
 
 .. code-block:: bdf
@@ -868,7 +868,7 @@ Link to download the study :download:`test065.zip <files/test065.zip>`
      $end
 
 Example 12: Calculation of TD-DFT gradient under non-abelian group symmetry
-------------------------------------------------
+---------------------------------------------------------------------------
 Link to download the study :download:`test068.zip <files/test068.zip>`
 
 .. code-block:: bdf
@@ -938,7 +938,7 @@ Link to download the study :download:`test068.zip <files/test068.zip>`
      $end
 
 Example 13: Non-adiabatic coupling calculation based on TDDFT
-------------------------------------------------
+-------------------------------------------------------------
 Link to download the study :download:`test081.zip <files/test081.zip>`
 
 .. code-block:: bdf
@@ -1016,7 +1016,7 @@ Link to download the study :download:`test081.zip <files/test081.zip>`
      $end
 
 Example 14: Restriction structure optimization and SA-TDDFT calculation for shell systems
-----------------------------------------------------
+-----------------------------------------------------------------------------------------
 Link to download the study :download:`test085.zip <files/test085.zip>`
 
 .. code-block:: bdf
@@ -1235,7 +1235,7 @@ Link to download the study :download:`test098.zip <files/test098.zip>`
      $END
 
 Example 16: iOI Calculation (Large System SCF Calculation Based on Sharding Method)
-------------------------------------------------
+-----------------------------------------------------------------------------------
 Link to download the study :download:`test106.zip <files/test106.zip>`
 
 .. code-block:: bdf
@@ -1331,7 +1331,7 @@ Link to download the study :download:`test106.zip <files/test106.zip>`
      $end
 
 Example 17: Single-point energy calculation of the ground state of a double hybrid functional
-------------------------------------------------
+---------------------------------------------------------------------------------------------
 Link to download the study :download:`test116.zip <files/test116.zip>`
 
 .. code-block:: bdf

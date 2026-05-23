@@ -2,7 +2,7 @@ Frequently Asked Questions
 ************************************
 
 **How to restart an interrupted calculation?**
-=================================
+==============================================
 
 BDF supports restarting several common types of calculations from a checkpoint, including:
   
@@ -166,7 +166,7 @@ The Intel 2018 Fortran compiler has known bugs. Avoid using it to compile BDF.
 See section :ref:`Handling SCF Convergence Problems<SCFConvProblems>` in the :doc:`SCFTech` chapter.
 
 **SCF Energy Significantly Lower Than Expected (>1 Hartree) or Displayed as Asterisks**
-=============================================================================
+=======================================================================================
 
 Usually caused by linear dependence in the basis set. See the discussion on basis set linear dependence under :ref:`Handling SCF Convergence Problems<SCFConvProblems>` in the :doc:`SCFTech` chapter. Note: While the chapter focuses on SCF non-convergence, the solutions also apply to cases where linear dependence causes incorrect SCF energies *without* preventing convergence.
 

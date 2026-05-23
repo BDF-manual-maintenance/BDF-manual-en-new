@@ -41,21 +41,21 @@ Specifies a hybrid approach combining Jacobi rotations and the Trust Region meth
 - 100: Both occupied and virtual orbitals undergo initial Jacobi rotation localization for 100 cycles or until convergence threshold `Hybridthre` is reached, then switch to Trust Region method.
 
 :guilabel:`Hybridthre` Parameter Type: Floating-point
-------------------------------------------------
+-----------------------------------------------------
 Specifies the transition threshold for the hybrid localization method.
 
 :guilabel:`Thresh` Parameter Type: Floating-point
-------------------------------------------------
+-------------------------------------------------
 Specifies the convergence threshold for the localization method. Requires input of two floating-point numbers.
 
 :guilabel:`Tailcut` Parameter Type: Floating-point
-------------------------------------------------
+--------------------------------------------------
  * Default: 1.D-2
 
 Specifies the threshold for ignoring FLMO (Fragment Localized Molecular Orbital) tails.
 
 :guilabel:`Threshpop` Parameter Type: Floating-point
-------------------------------------------------
+----------------------------------------------------
  * Default: 1.D-1
 
 Specifies the Löwdin population threshold.
@@ -100,7 +100,7 @@ Specifies the number of virtual orbitals that should *not* be localized.
 Specifies analysis of user-provided localized orbitals. Calculates the number of occupied-virtual orbital pairs and MOS (Molecular Orbital Spread). Analysis requires reading a file named `bdftask.testorb` from **BDF_TMPDIR**, which must be in the same text format as SCF's `bdftask.scforb` orbital file.
 
 :guilabel:`Iapair` Parameter Type: Floating-point
-------------------------------------------------
+-------------------------------------------------
 Specifies the threshold for counting overlapping occupied-virtual orbital pairs. By default, only pairs with absolute overlap > 1.0×10⁻⁴ are counted.
 
 :guilabel:`Directgrid` Parameter Type: Boolean

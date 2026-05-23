@@ -1,8 +1,8 @@
 Other techniques for self-consistent field calculations
-=====================================
+=======================================================
 
 Initial guess of the self-consistent field calculation
-------------------------------------------------
+------------------------------------------------------
 The initial guess orbital of the self-consistent field calculation has a great influence on the convergence of the calculation. BDF supports a variety of initial guesses, as follows:
 
   * Atom : The molecular density matrix guessing from supper postion of atomic density matrices of each atom, default option.
@@ -135,7 +135,7 @@ Here, BDF_WORKDIR is the directory where the computing task is executed, and BDF
 
 
 Transfer molecular orbitals with other quantum chemistry procedures
-------------------------------------------------
+-------------------------------------------------------------------
 Molecular orbital files calculated by different quantum chemical programs can be converted to each other in principle. BDF's SCF module supports reading and storing molecular orbital data in the scforb file format, which can be accessed
 The MOKIT(https://gitlab.com/jxzou/mokit) program converts molecular orbital files to transfer molecular orbital data to and from other quantum chemistry programs.
 
@@ -164,6 +164,7 @@ The calculated molecular orbital data may also be different, so it is important 
 .. attention::
 
  * Is the order of the contraction function consistent in both programs? ** If the three columns of contraction factors of the s-function are interchanged, the order of the molecular orbital factors is different.
+
  Is the contraction form of each contraction function consistent in both programs? ** The first column of shrinkage factors contains only the first three s primitive functions, i.e., (3s)/[1s], while in many programs it is (4s)/[1s], so there will be some differences in the corresponding orbital factors.
  Is the shrinkage factor phase consistent in both programs? ** This is usually found in factor 1.0 of the non-contraction function (see columns 2 and 3), and the built-in base set of individual programs may write the contraction factor of 1.0 as -1.0, resulting in a negative negative sign for the orbital factor.
  When using pseudo-potential base groups, is the data of the pseudo-potential consistent in both programs? The most typical of these is 'def2-problem> 'The problem of the Def2 family of base sets <def2-problem'.
@@ -175,7 +176,7 @@ In order to avoid such problems in BDF calculations, it is generally necessary t
 
 
 Extend the small base group convergence orbit to a large base group initial guess
-------------------------------------------------
+---------------------------------------------------------------------------------
 The initial guess orbital can be generated from different basis sets, which can also accelerate computational convergence. This requires an extension of the initial guess track file.
 The orbit expansion should adopt the base group of the same group, such as cc-pVXZ series, ANO-RCC series and other base groups.
 Orbit Extensions currently only supports advanced input modes. For the :math:'\ce{CH3CHO}' molecule, first compute with cc-pVDZ, and then expand the orbital to the initial guessed orbital computed by the cc-pVQZ basis set,
@@ -336,7 +337,7 @@ The output of the second SCF calculation is,
 .. _momMethod:
 
 The maximal occupancy of molecular orbitals (MOM) method calculates the excited states
-------------------------------------------------
+--------------------------------------------------------------------------------------
 MOM (maximum occupation method) is a ΔSCF method that can be used to calculate excited states. Note that this method is abbreviated as full lowercase letters, which distinguishes it from the MOM (maximum overlap method) method, another ΔSCF method.
                                     
 .. code-block:: bdf
@@ -628,7 +629,7 @@ The third SCF calculation gives the energy of the T1 state as -169.6248370697 a.
 .. _SCFConvProblems:
 
 Deal with the non-convergence problem of self-consistent field calculations
-------------------------------------------------
+---------------------------------------------------------------------------
 When the SCF calculation is completed, the user must check whether the SCF is converging, and only under the premise of convergence can the results of the SCF calculation (energy, population analysis, orbital energy, etc.) be used and subsequent calculations can be performed. Note that whether the SCF converges cannot be judged only by whether there is an error at the end of the output file, because even if the SCF does not converge, the program will not exit immediately, but only after the output of the SCF iteration and before the output of the SCF energy, prompting:
 
 .. code-block::
@@ -706,7 +707,7 @@ Note that if one of the above methods does not make the SCF converge, but the SC
 Read the track of the last SCF iteration of the previous method as a preliminary guess. However, if the former method causes the SCF convergence to deteriorate, you should start with the atom guess again when trying the next method, or pick the orbit of the last iteration of the other method you have tried before (of course, this requires you to back up the orbits obtained by each SCF convergence method in advance).
 
 Acceleration algorithm for self-consistent field computing
-------------------------------------------------
+----------------------------------------------------------
 .. _MPECCOSX:
 
 An important feature of BDF is the use of the MPEC+COSX method to accelerate the energy and gradient calculations of SCF and TDDFT. To set up the MPEC+COSX calculation, enter the following inputs:

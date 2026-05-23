@@ -1,5 +1,5 @@
 Molecular Automatic Fragmentation, FLMO and iOI Calculation - AUTOFRAG Module
-================================================
+=============================================================================
 
 The primary function of the `autofrag` module is to automatically fragment large molecules and generate inputs for FLMO calculations. It also serves as the computational engine for iOI-SCF, coordinating other SCF modules to perform iOI calculations. The main workflow of the `autofrag` module is:
 
@@ -55,7 +55,7 @@ Sets convergence threshold for iOI-SCF fragment calculations. Decreasing iOIThre
 Disables **PHO** (Projected Hybrid Orbitals) and uses link **H** atoms instead to saturate cleaved bonds. This slightly reduces subsystem calculation cost compared to default PHO, but yields lower-quality subsystem orbitals, potentially increasing SCF iterations and total computation time.
 
 :guilabel:`charge` Parameter Type: Integer Array
------------------------------------------------
+------------------------------------------------
 * Default: None
 
 Sets atomic charges to assist in assigning fragment charges. When automatic electron count determination fails, users can specify charges to set fragment electron counts. Format:
@@ -68,7 +68,7 @@ Sets atomic charges to assist in assigning fragment charges. When automatic elec
 This sets atom 10 charge to +2, atom 25 to -1, and atom 78 to -1. Fragment charges will be determined based on these atomic charges.
 
 :guilabel:`spinocc` Parameter Type: Integer Array
------------------------------------------------
+-------------------------------------------------
 * Default: None
 
 Sets formal atomic spins to guide calculation toward appropriate spin states. Input format matches ``charge``:

@@ -1,11 +1,11 @@
 Hartree-Fock and Kohn-Sham Self-Consistent Field Calculations - SCF Module
-================================================
+==========================================================================
 The SCF module is one of BDF's core computational modules, performing Hartree-Fock and DFT calculations.
 
 **Method Keywords**
 
 :guilabel:`RHF` / :guilabel:`UHF` / :guilabel:`ROHF` Parameter Type: Boolean
-------------------------------------------------------------------------
+----------------------------------------------------------------------------
 For Hartree-Fock calculations, one of these three parameters must be selected to control the calculation type.
 
  * ``RHF``: Restricted Hartree-Fock
@@ -13,7 +13,7 @@ For Hartree-Fock calculations, one of these three parameters must be selected to
  * ``ROHF``: Restricted Open-shell Hartree-Fock
 
 :guilabel:`RKS` / :guilabel:`UKS` / :guilabel:`ROKS` Parameter Type: Boolean
-------------------------------------------------------------------------
+----------------------------------------------------------------------------
 For DFT calculations, one of these three parameters must be selected to control the calculation type.
 
  * ``RKS``: Restricted Kohn-Sham
@@ -97,11 +97,11 @@ Specifies using atomic calculations with valence shells averaged for the SAD ini
 Specifies using partially filled shell averaging for specific atomic numbers in SAD initial guess. Use multiple times for multiple elements.
 
 :guilabel:`SadGuessAverageOutValenceShellFor`/:guilabel:`SadAvgValFor` Parameter Type: Integer
--------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 Specifies using valence shell averaging for specific atomic numbers in SAD initial guess. Use multiple times for multiple elements.
 
 :guilabel:`Mixorb` Parameter Type: Integer/Floating-point Array
----------------------------------------------------
+----------------------------------------------------------------
 Mixes initial guess orbitals in specified proportions. The first line after `Mixorb` is an integer `N` (number of orbital pairs to mix). Lines 2 to `N+1` contain 5 numbers per line: mixing details. First number: alpha(1)/beta(2) orbital (must be 1 for RHF/RKS/ROHF/ROKS). Second number: irrep index (must be 1 for no symmetry). Third and fourth numbers: orbital indices within the irrep. Fifth number: mixing angle θ (degrees). Mixing formula:
 
  * New orbital 1 = cosθ × original orbital 1 + sinθ × original orbital 2
@@ -205,7 +205,7 @@ Specifies angular grid points for numerical integration. Primarily for debugging
 Specifies DFT numerical integration grid type.
 
 :guilabel:`Gridtol` Parameter Type: Floating-point
-------------------------------------------------
+---------------------------------------------------
  * Default: 1.0E-6 (1.0E-8 for meta-GGA)
  
 Specifies the cutoff threshold for generating DFT adaptive grids. Lower values increase grid points, precision, and computational cost.
@@ -235,7 +235,7 @@ Specifies numerical integration calculation method. Primarily for debugging.
 Specifies not using molecular symmetry for numerical integration. For debugging.
 
 :guilabel:`DirectGrid` / :guilabel:`NoDirectGrid` Parameter Type: Boolean
---------------------------------------------------------------------
+--------------------------------------------------------------------------
 Specifies direct integration mode (no storage of basis function values). Required for DirectSCF. `NoDirectGrid` only relevant for non-DirectSCF. Primarily for debugging.
 
 :guilabel:`NoGridSwitch` Parameter Type: Boolean
@@ -243,7 +243,7 @@ Specifies direct integration mode (no storage of basis function values). Require
 Disables grid switching during SCF iterations. By default, BDF starts with an `ultra coarse` grid and switches to the user-specified grid after a threshold. This forces the user-specified grid throughout.
 
 :guilabel:`ThreshRho` & :guilabel:`ThreshBSS` Parameter Type: Floating-point
----------------------------------------------------------------------
+------------------------------------------------------------------------------
 Controls grid pre-screening thresholds. For debugging.
 
 **SCF Acceleration Algorithms**
@@ -291,7 +291,7 @@ Specifies using COSX for K matrix calculation.
 Maximum SCF iterations.
 
 :guilabel:`Vshift` Parameter Type: Floating-point
-------------------------------------------------
+---------------------------------------------------
  * Default: 0
  * Options: Non-negative real
  * Recommended range (if non-zero): 0.2~1.0
@@ -307,19 +307,19 @@ Shifts virtual orbital energies by the specified value to increase the HOMO-LUMO
 Mixes the current and previous density matrices: P(i) := (1-C) × P(i) + C × P(i-1). Larger damping factors reduce oscillations but slow convergence. Useful for non-monotonic energy convergence.
 
 :guilabel:`ThrEne` Parameter Type: Floating-point
-------------------------------------------------
+---------------------------------------------------
  * Default: 1.d-8
 
 SCF energy convergence threshold (Hartree).
 
 :guilabel:`ThrDen` Parameter Type: Floating-point
-------------------------------------------------
+---------------------------------------------------
  * Default: 5.d-6
 
 SCF root-mean-square (RMS) density matrix element convergence threshold.
 
 :guilabel:`ThreshConv` Parameter Type: Floating-point
----------------------------------------------------
+------------------------------------------------------
 Simultaneously sets SCF energy and density matrix thresholds. Example:
 
 .. code-block:: bdf
@@ -350,7 +350,7 @@ Equivalent to:
  (3) Maximum density matrix element change < ThrDen
 
 :guilabel:`NoXiis`/:guilabel:`NoDiis` Parameter Type: Boolean
-----------------------------------------------------------
+---------------------------------------------------------------
 Disables DIIS family convergence acceleration. Use only if SCF oscillates significantly (> 1.0E-5) and `Damp`/`VShift` are ineffective.
 
 :guilabel:`Diis` Parameter Type: Boolean
@@ -378,13 +378,13 @@ Specifies using the EDIIS + DIIS algorithm.
 Specifies using the ADIIS + DIIS algorithm.
 
 :guilabel:`MaxXiis`/:guilabel:`MaxDiis` Parameter Type: Integer
------------------------------------------------------------
+---------------------------------------------------------------
  * Default: 8
 
 Maximum subspace dimension for DIIS family methods.
 
 :guilabel:`MinXiis`/:guilabel:`MinDiis` Parameter Type: Integer
------------------------------------------------------------
+---------------------------------------------------------------
  * Default: 2
 
 Minimum subspace dimension for DIIS family methods.
@@ -400,7 +400,7 @@ Controls subspace storage strategy when maximum dimension is reached:
     * Options 3 and 4 often converge better than 0 but may cause oscillations (try level shifting)
 
 :guilabel:`DoNotOrthogonalizeDiisErrorMatrix` Parameter Type: Boolean
---------------------------------------------------------------------
+---------------------------------------------------------------------
 Specifies using non-orthogonalized error vectors in traditional DIIS. Default.
 
 :guilabel:`OrthogonalizeDiisErrorMatrix` Parameter Type: Boolean
@@ -416,7 +416,7 @@ Specifies using Semiempirical Model Hamiltonian (SMH) to accelerate SCF converge
 Disables SMH convergence acceleration.
 
 :guilabel:`Smeartemp` Parameter Type: Floating-point
----------------------------------------------------
+----------------------------------------------------
  * Default: 0
  * Options: Non-negative real (Kelvin)
 
@@ -529,7 +529,7 @@ Controls orbital occupancy assignment:
 * 3: Debugging (avoid for production)
 
 :guilabel:`IfPair` & :guilabel:`hpalpha` & :guilabel:`hpbeta` Parameter Type: Integer
------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 Specifies electronic excitations for MOM initial state. Defines excitations from occupied to virtual orbitals relative to the ground state.
 
 .. code-block:: bdf
@@ -554,11 +554,11 @@ Specifies electronic excitations for MOM initial state. Defines excitations from
       $end
 
 :guilabel:`Pinalpha` & :guilabel:`Pinbeta` Parameter Type: Integer
------------------------------------------------------------
+-------------------------------------------------------------------
 Specifies orbitals with fixed occupation numbers.
 
 :guilabel:`EnableSecondOrderScf` & :guilabel:`EnableApproxSecondOrderScf` Parameter Type: Boolean
-----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 Enables strict second-order or approximate second-order SCF with default settings. Strict second-order convergence is expensive; use only when other algorithms fail.
 
 .. hint::
@@ -567,7 +567,7 @@ Enables strict second-order or approximate second-order SCF with default setting
     * Not available for relativistic calculations.
 
 :guilabel:`DisableSecondOrderScf` & :guilabel:`DisableApproxSecondOrderScf` Parameter Type: Boolean
-------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 Disables second-order or approximate second-order SCF.
 
 :guilabel:`SecondOrderConfig` & :guilabel:`ApproxSecondOrderConfig` Input Block
@@ -618,6 +618,7 @@ Specifies advanced settings for second-order or approximate second-order SCF. Mo
     - ``AfterDeltaRmsDensityLessThan`` + float: Enables after the density matrix error falls below a specified value during standard SCF iterations.
     - Custom logical expression. Note: Custom expressions are provided for developer debugging and advanced users needing flexible options. If uncomfortable with this, consider using the default or preset options mentioned above. Valid keywords: ``Iteration``, ``DeltaEnergy``, and ``DeltaRmsDensity``. Valid operators: ``&`` (AND), ``|`` (OR), ``!`` (NOT), ``>`` (greater than), ``<`` (less than), ``=`` (equal), and ``[]`` (logical evaluation brackets). Operators cannot be chained. Variables must be enclosed in logical evaluation brackets ``[]``. Expressions are case-insensitive and ignore all whitespace (e.g., "DeltaRmsDensity" is equivalent to "Delta RMS Density"). Example:
      ``[ [ Iteration > 10 ] & [ [ DeltaEnergy < 1e-3 ] | [![ DeltaRmsDensity > 2.5e-3 ]] ] ]``
+
 * ``LevelShiftGradientThreshold``, float: Specifies the energy-orbital gradient threshold below which the trust radius is lifted, switching to the Newton-Raphson method for rotation vector calculation.
 * ``ConvergeGradientThreshold``, float: Specifies the threshold for the norm of the energy-orbital gradient below which second-order SCF micro-iterations stop.
 * ``ConvergeRotationThreshold``, float: Specifies the threshold for the norm of the rotation vector below which second-order SCF micro-iterations stop.

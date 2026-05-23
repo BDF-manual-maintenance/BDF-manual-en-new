@@ -1,5 +1,5 @@
 Nuclear Magnetic Shielding Constant Calculation - NMR Module
-==============================================
+============================================================
 
 The NMR module is used to calculate nuclear magnetic shielding constants for molecules.
 
@@ -35,7 +35,7 @@ Input format:
     3      # Set gauge origin at the center of the 3rd atom
 
 :guilabel:`cgcoord` Parameter Type: Three real numbers
-------------------------------------------------
+------------------------------------------------------
 Specifies the gauge origin position for COMMON GAUGE calculations at a specific spatial coordinate point. Default unit is atomic units (bohr/AU). Unit can be controlled by the ``cgunit`` parameter.
 
 .. code-block:: bdf

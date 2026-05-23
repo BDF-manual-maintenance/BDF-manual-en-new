@@ -1,0 +1,515 @@
+Multi-Configuration Self Consistent Field - MCSCF Module
+================================================
+Multi-Configuration Self Consistent Field (MCSCF) calculation module. If the active space is not defined, a second-order convergent RHF calculation is performed. If molecular orbitals are not optimized, only CASCI calculation is performed.
+
+**Basic Control Parameters**
+
+:guilabel:`AutoMC` Parameter Type: Boolean
+------------------------------------------------
+When the user explicitly sets the $expandmo module to enable automatic active space selection,
+using this keyword, BDF will automatically generate the values of keywords ``close``, ``active``, and ``actel``.
+
+.. attention::
+ User input priority: If the user manually sets keywords such as ``close``, ``active``, ``actel`` in the subsequent input file, user-defined values will override the system auto-generated values.
+
+:guilabel:`Core` Parameter Type: Integer Array
+------------------------------------------------
+Specifies the number of frozen doubly occupied orbitals for each irreducible representation.
+
+:guilabel:`Delete` Parameter Type: Integer Array
+---------------------------------------------------
+Specifies the frozen virtual orbitals for each irreducible representation. Frozen orbitals do not participate in orbital optimization.
+
+:guilabel:`Close` Parameter Type: Integer Array
+------------------------------------------------
+Specifies the non-active doubly occupied orbitals for each irreducible representation.
+
+:guilabel:`Active` Parameter Type: Integer Array
+------------------------------------------------
+Specifies the number of active orbitals for each irreducible representation.
+
+:guilabel:`Actel` Parameter Type: Integer
+---------------------------------------------------
+Specifies the number of electrons in the active space.
+
+:guilabel:`RootPrt` Parameter Type: Integer Array
+------------------------------------------------
+Specifies which root of MCSCF to use for calculating the numerical gradient.
+
+:guilabel:`Symmetry` Parameter Type: Integer
+------------------------------------------------
+Specifies the symmetry of the electronic state for MCSCF calculation.
+
+:guilabel:`Spin` Parameter Type: Integer
+---------------------------------------------------
+Specifies the spin of the electronic state for MCSCF calculation, 2S+1.
+
+:guilabel:`Roots` Parameter Type: Integer Array
+------------------------------------------------
+roots is a multi-line parameter, specifying how many roots to calculate in MCSCF and how to perform state-averaged calculation. Depending on the number of roots to be calculated, 1 or 3 lines of input are required:
+First line: 2 to 3 integers "n m i", the first integer "n" specifies how many roots to perform state-averaging on; the second integer "m" specifies how many roots to calculate in CI, n<=m; the third integer is a control parameter. If the third integer is 1, no additional two lines of input are needed, and state-averaging is performed directly on the "n" lowest states; if the third integer is not input or is 0, two additional lines are needed to specify how to perform state-averaging.
+Second line: specifies which roots to perform state-averaging on.
+Third line: specifies the weights of the roots for state-averaging; the program automatically normalizes the weights.
+
+.. code-block:: bdf 
+
+     $MCSCF
+     ...
+     Roots
+     3 4        # State-average over 3 roots, calculate 4 roots in CI
+     1 2 4      # State-average over the 1st, 2nd, and 4th states
+     1 1 1      # Equal weights for each state
+     $End
+
+.. code-block:: bdf
+
+     $MCSCF
+     ...
+     Roots
+     3 4 1   # State-average over 3 roots, calculate 4 roots in CI
+     $End
+
+:guilabel:`MixCI` Parameter Type: Integer Array
+---------------------------------------------------
+MixCI is a multi-line parameter, controlling state-averaging over electronic states with different spin multiplicities and symmetries. Four lines of input are required.
+First line, integer "n" specifies how many different spin multiplicity and symmetry states to average.
+Second line, the spin multiplicities of each state.
+Third line, the number of states of each type.
+Fourth line, the spatial symmetry of each state.
+
+.. code-block:: bdf 
+
+     $MCSCF
+     ....
+     MixCI  
+      3       # 3 states with different symmetries
+     1 3 5     # Spin multiplicities are singlet, triplet, and quintet respectively
+     3 1 2     # Average 3, 1, and 2 roots for each state respectively
+     1 4 3     # Spatial irreducible representations 1, 4, and 3 for each state respectively
+     $End
+
+:guilabel:`Guess` Parameter Type: String
+---------------------------------------------------
+Optional values: hcore, huckel, hforb, mcorb, Inporb
+
+Specifies the initial guess orbitals for MCSCF.
+hcore: solution of the one-electron Hamiltonian as initial guess.
+huckel: extended Huckel method guess.
+hforb: read bdftask.hforb as initial guess, generated by SCF calculation.
+mcorb: read bdftask.mcorb as initial guess, generated by MCSCF calculation.
+Inporb: read inporb as initial guess, inporb is in text format, generally from text-formatted orbital output of SCF or MCSCF calculation.
+
+:guilabel:`Guga` Parameter Type: Boolean
+------------------------------------------------
+Specifies using the GUGA algorithm for CASCI calculation. The TUGA algorithm is used by default.
+
+:guilabel:`iCI` Parameter Type: Boolean
+------------------------------------------------
+Specifies using the iCI method as the CASCI solver. However, the ENPT2 correction term for the deviation between iCI and CASCI is not provided. This is the iCISCF method.
+
+:guilabel:`iCIPT2` Parameter Type: Boolean
+------------------------------------------------
+Specifies using the iCI method as the CASCI solver. At the same time, provides the ENPT2 correction term for the deviation between iCI and CASCI. This is the iCISCF(2) method.
+
+:guilabel:`CVS` Parameter Type: Boolean
+------------------------------------------------
+Specifies using the GUGA method to calculate core electron excitations.
+
+:guilabel:`Actfrz` Parameter Type: Integer
+---------------------------------------------------
+Freezes molecular orbitals (MOs) that are actually core orbitals within the active space, can be used for calculating core electron excitations.
+
+Input format rules: 
+Line 1: Declares the number of active MOs to be frozen (positive integer).
+Line 2: Lists the indices of the frozen MOs (must conform to program input conventions).
+
+.. code-block:: bdf
+
+ $mcscf
+ ...
+ actfrz
+ 3
+ 10 11 12  ! these three MOs are core orbitals 
+ $end
+
+:guilabel:`SOCCAS` Parameter Type: Boolean
+------------------------------------------------
+Specifies using TUGA to calculate SOiCISCF.
+
+:guilabel:`SOCene` Parameter Type: Boolean
+------------------------------------------------
+Specifies using GUGA to calculate SOC between electronic states involved in MCSCF.
+
+:guilabel:`XvrSet` Parameter Type: Integer Array
+------------------------------------------------
+Sets the extended virtual orbital (XVR) orbitals for each irreducible representation of MCSCF generated via expandmo.
+Must be used in conjunction with the ``VSD`` keyword of the expandmo module to define the XVR initialization configuration.
+
+.. attention::
+
+  MCSCF orbital ordering rule:
+  Orbitals are forcibly ordered as: Doubly occupied (Closed) → Active → Virtual (Vir) → XVR.
+
+* See example test126.inp for complete input logic
+
+:guilabel:`Virdel` Parameter Type: Boolean
+------------------------------------------------
+Specifies forcing the orbital ordering: Doubly occupied (Closed) → Active → Virtual (Vir) → XVR.
+
+* See example test126.inp for complete input logic
+
+:guilabel:`XvrUse` Parameter Type: Boolean
+------------------------------------------------
+Specifies outputting the extended virtual orbitals (XVR) generated by MCSCF calculation to the checkpoint file (chkfil) for subsequent calls by the xianci module.
+When this keyword is enabled, the program retains XVR orbitals instead of the default deletion operation, enabling cross-module data reuse.
+
+.. note::
+   If XvrUse is not enabled, the xianci module will automatically delete temporary XVR and recalculate.
+
+* See example test126.inp for complete input logic
+
+:guilabel:`Solvate` Parameter Type: Boolean
+------------------------------------------------
+Specifies MCSCF calculation considering solvation effects.
+
+.. note:: 
+   The solvent, solvation model, and parameters used are all derived from the preceding SCF calculation.
+
+:guilabel:`Sortact` Parameter Type: Integer
+------------------------------------------------
+Specifies the orbital sorting function within the active space.
+
+Input format:
+Line 1: Specifies the number of sort pairs (integer).
+Line 2: Lists the molecular orbital (MO) indices to be moved into the active space in order.
+Line 3: Lists the molecular orbital (MO) indices to be moved out of the active space in order, paired one-to-one with Line 2 for exchange.
+
+.. code-block:: bdf
+
+ $mcscf
+ ...
+ SortAct  
+ 3  
+ 10 15 20   # Indicates moving MO 10, 15, 20 into the active space  
+ 12 13 14   # Corresponding MO 12, 13, 14 will be moved out of the active space 
+ $end
+
+.. note:: 
+
+  In the above example, three groups of MO exchange operations are actually performed:
+  MO 10 ↔ MO 12, MO 15 ↔ MO 13, MO 20 ↔ MO 14
+  Index numbers are usually based on the orbital ordering in the calculation output file (it is recommended to first check the MO list in the Output or Molden file).
+
+Application scenarios:
+Manually adjusting the active orbital composition in CASSCF calculation. Adjusting the orbital space distribution for multi-reference calculations, fixing convergence problems caused by orbital numbering misalignment.
+
+:guilabel:`grad` Parameter Type: Boolean
+------------------------------------------------
+Specifies computing and storing molecular orbital integrals and orbital Hessian matrix required for analytical gradient calculation.
+When using the grad module to calculate MCSCF analytical gradients, this keyword must be added in the mcscf module.
+
+:guilabel:`iCAS` Parameter Type: Boolean
+------------------------------------------------
+Specifies using the iCAS method to perform active space validation at each macro iteration of MCSCF.
+
+* Function description: Validates the division of doubly occupied, active, and virtual spaces using MOM/SVD/Hungary algorithms, and forcibly constructs the CAS active space.
+* The MOM method is used by default; the user must explicitly set keywords ``Hungary`` or ``SVD`` to invoke alternative algorithms.
+
+:guilabel:`SVD` Parameter Type: Boolean
+------------------------------------------------
+Specifies the SVD algorithm to validate the division of doubly occupied, active, and virtual spaces.
+
+:guilabel:`Hungary` Parameter Type: Boolean
+------------------------------------------------
+Specifies the Hungary algorithm to validate the division of doubly occupied, active, and virtual spaces.
+
+:guilabel:`Actadd` Parameter Type: Boolean
+------------------------------------------------
+Function description: When this keyword is used together with iCAS or SVD for active space validation, the program will automatically expand the number of active orbitals to optimize the space division.
+
+Trigger conditions:
+1. When used with iCAS, automatically adds near-degenerate orbitals based on orbital occupation fluctuations.
+2. When used with SVD (singular value decomposition), dynamically expands the orbital space dimension through matrix rank analysis.
+
+:guilabel:`Statemo` Parameter Type: Integer
+------------------------------------------------
+Specifies state-specific molecular orbital output.
+
+* Function description: Sets the state number for which state-specific molecular orbitals are to be output.
+* Default value: StateMO = 0 means output state-averaged molecular orbitals.
+
+:guilabel:`Qcmo` Parameter Type: Boolean
+------------------------------------------------
+Specifies generating quasi-canonical active molecular orbitals from CASSCF calculation. CASSCF generates natural active orbitals by default.
+
+:guilabel:`Direct` Parameter Type: Boolean
+------------------------------------------------
+Specifies performing a direct CI at each MCSCF iteration.
+
+:guilabel:`Molden` Parameter Type: Boolean
+---------------------------------------------------
+Outputs the molecular orbitals optimized by MCSCF to the $BDFTASK.mcscf.molden file.
+
+:guilabel:`Iprtmo` Parameter Type: Integer
+------------------------------------------------
+Specifies the printing level of MOs. Same as related parameters in SCF.
+
+:guilabel:`CASCI` Parameter Type: Boolean
+------------------------------------------------
+Specifies performing CI calculation only, without optimizing molecular orbitals.
+
+:guilabel:`cionly` Parameter Type: Boolean
+------------------------------------------------
+Specifies performing CI calculation only, without optimizing molecular orbitals. Equivalent to the keyword ``CASCI``.
+
+:guilabel:`orbonly` Parameter Type: Boolean
+------------------------------------------------
+Specifies optimizing molecular orbitals only, without performing CI calculation.
+
+:guilabel:`CIread` Parameter Type: Boolean
+---------------------------------------------------
+Specifies reading in CI wave function as the initial guess wave function for CI calculation.
+
+**Localized MCSCF Related Parameters**
+
+:guilabel:`Localmc` 
+------------------------------------------------
+Specifies localizing the molecular orbitals optimized by MCSCF.
+
+:guilabel:`Nolmocls` Parameter Type: Boolean
+------------------------------------------------
+Specifies not localizing the doubly occupied orbitals generated by localized MCSCF.
+
+:guilabel:`Nolmoact` Parameter Type: Boolean
+------------------------------------------------
+Specifies not localizing the active orbitals generated by localized MCSCF.
+
+:guilabel:`Nolmovir` Parameter Type: Boolean
+------------------------------------------------
+Specifies not localizing the virtual orbitals generated by localized MCSCF.
+
+:guilabel:`Nature` 
+------------------------------------------------
+Specifies generating natural active molecular orbitals from CASSCF calculation. This is the default output active orbital.
+
+:guilabel:`Mom` 
+------------------------------------------------
+Specifies the MOM algorithm to validate the division of doubly occupied, active, and virtual spaces. This is the default method.
+
+**MCSCF Orbital Optimization Algorithm Control**
+
+:guilabel:`Quasi` Parameter Type: Boolean
+------------------------------------------------
+Specifies using quasi-Newton method for MCSCF.
+
+:guilabel:`Superci` Parameter Type: Boolean
+------------------------------------------------
+Specifies using the first-order Super-CI-PT method for MCSCF. This keyword is used as an alternative to ``Quasi``.
+* This keyword requires molecular orbital integrals (pw|uv) which are smaller than (pq|uv) required by the keyword ``Quasi``.
+* Currently Superci can be used for both RI and NoRI basis set systems. For molecular systems with symmetry, this method cannot use the Core keyword to freeze doubly occupied orbitals.
+* When using NoRI, if the Compass module uses the keyword Saorb, the XianCI module calculation can be performed after MCSCF is completed.
+* When using NoRI, if the Compass module does not include the keyword Saorb, Superci uses direct atomic orbital integrals, which can be used for systems with a large number of atomic orbitals (AO > 1500),
+* but the subsequent XianCI module calculation cannot be performed.
+* When using RI, the Compass module needs to use the keyword RI-C to set the auxiliary basis set. If a mixed auxiliary basis set is needed, the local auxiliary basis set name must be set: $BDF_WORKDIR/auxbas
+* Additionally, for auxiliary basis sets not available in the bdf-pkg-full/basis_library/RI-C directory for RI-C auxiliary basis sets in BDF,
+* the auxiliary basis set for any element can be automatically generated using bdf-pkg-full/sbin/auxbas-pyscf-bdf.py in the pyscf software and stored in the auxbas file.
+* Superci is relatively sensitive to the maximum step size of orbital rotation. The default Maxstep used is 0.05.
+* Superci requires more macro iterations. The default Macit used is 100.
+* If MCSCF has not converged, the optimized orbitals $BDF_WORKDIR/$BDFTASK.casorb can be used as initial guess for restart calculation.
+* If convergence has not been achieved using Superci, the optimized orbitals can also be used as initial guess, then changed to Quasi to improve convergence.
+
+.. attention::
+  This method has larger approximations, which may lead to trailing convergence phenomena in MCSCF orbital optimization. If this situation occurs, the threshold of keyword Conv can be increased.
+
+:guilabel:`SwitchIter` Parameter Type: Integer
+------------------------------------------------
+Specifies the macro iteration number at which DIIS acceleration begins for optimizing molecular orbitals using the Super-CI-PT method. Default value: 15
+
+:guilabel:`SwitchConv` Parameter Type: Float
+------------------------------------------------
+Specifies the gradient threshold at which DIIS acceleration begins for optimizing molecular orbitals using the Super-CI-PT method. Default value: 0.01
+
+:guilabel:`NmoCri` Parameter Type: Float
+------------------------------------------------
+Used to control the situation where active orbital natural orbital occupation numbers are close to doubly occupied orbitals (Close) and unoccupied orbitals (Virtual).
+* Default value: 2.0 0.0 means no control.
+* Recommended value: 1.999 0.001 means orbitals with occupation numbers greater than 1.999 will not be exchanged with close orbitals, and orbitals less than 0.001 will not be exchanged with virtual orbitals.
+
+:guilabel:`Werner` Parameter Type: Boolean
+------------------------------------------------
+Specifies using Werner's second-order convergent MCSCF optimization method. This is the default MCSCF optimization algorithm.
+This method requires [pq|(i+u)(j+v)] molecular orbital integrals. When the number of atomic orbitals in the system is large,
+please use the approximate methods provided by keywords ``Quasi`` or ``Superci``.
+
+:guilabel:`Mixopt` Parameter Type: Boolean
+------------------------------------------------
+Specifies mixing Werner algorithm with Quasi algorithm. If the Werner algorithm has difficulty converging, this parameter can be used.
+
+**MCSCF Iteration and Convergence Threshold Control**
+
+:guilabel:`Macit` Parameter Type: Integer
+------------------------------------------------
+Specifies the maximum number of MCSCF macro iterations.
+
+:guilabel:`Micit` Parameter Type: Integer
+------------------------------------------------
+Specifies the maximum number of MCSCF micro iterations.
+
+:guilabel:`Ciiter` Parameter Type: Integer
+------------------------------------------------
+Specifies the maximum number of CI calculation iterations.
+
+:guilabel:`Conv` Parameter Type: Float
+------------------------------------------------
+Default value: 1.D-8 1.d-4
+
+.. note::
+  The first threshold is the energy convergence value, and the second threshold is the orbital gradient convergence threshold.
+
+:guilabel:`Cmin` Parameter Type: Float
+------------------------------------------------
+Specifies the truncation threshold for UGA-CI/iCI.
+Parameter description: Controls the truncation threshold of configuration functions (CSFs) in the Unitary Group Approach Configuration Interaction (UGA-CI) and intelligent Configuration Interaction screening (iCI) methods.
+* Default value: 1.0d-4
+* Function rule: When the absolute value of the CSF weight coefficient is below this threshold, it will be automatically eliminated. Lower threshold means higher calculation accuracy but significantly increased computational time.
+* Input conflict handling: If the user explicitly sets this parameter in the input file, the system will give priority to using the user-defined value to override the default value.
+
+:guilabel:`Actmin` Parameter Type: Float
+------------------------------------------------
+Specifies the precision threshold controlling Jacobi rotation of active molecular orbitals in the iCI method.
+* Default value: 1.0d-6
+
+:guilabel:`Actopt` Parameter Type: Boolean
+------------------------------------------------
+Specifies the active space orbital optimization method selection.
+
+* Parameter option description: 
+* ACTOPT=0: Prohibits any orbital optimization within the active space. Default state: enforced (no explicit declaration needed).
+* ACTOPT=1: Enables active space orbital optimization, using Werner method or quasi-Newton method.
+* ACTOPT=2: Enables active space orbital optimization, using Jacobi rotation.
+  Advantage: Better numerical stability under high precision requirements. Warning: May lead to significantly increased computation time when the active space is large.
+
+:guilabel:`Prtcri` Parameter Type: Float
+------------------------------------------------
+Specifies the threshold for printing output CSFs.
+* Default value: 0.05
+
+:guilabel:`SOCcri` Parameter Type: Float
+------------------------------------------------
+Specifies the threshold for printing SOC calculated by keyword ``SOCene``.
+
+:guilabel:`Prtiter` Parameter Type: Boolean
+------------------------------------------------
+Outputs the molecular orbitals obtained at each macro iteration to the $BDFTASK.mciter.molden file.
+
+:guilabel:`Maxstep` Parameter Type: Float
+------------------------------------------------
+Default value: 0.1
+
+.. note::
+  Maximum value of the orbital rotation matrix element. i.e., the maximum step length of orbital rotation.
+
+:guilabel:`Ucutoff` Parameter Type: Float
+------------------------------------------------
+Default value: 1.D-8
+
+Specifies the threshold for approximating integral transformation in inner space orbital optimization. This parameter affects MCSCF calculation efficiency.
+
+**GUGA-CI Calculation Control Parameters in MCSCF**
+
+:guilabel:`Ncisave` Parameter Type: Integer
+------------------------------------------------
+Default value: 20000
+
+Specifies the maximum dimension of the CI matrix that can be saved.
+
+:guilabel:`Node` Parameter Type: Integer
+------------------------------------------------
+Default value: 30000
+
+Specifies the maximum number of DRT nodes.
+
+:guilabel:`Wei` Parameter Type: Integer
+------------------------------------------------
+Specifies the maximum number of arc weights.
+
+:guilabel:`Ploop` Parameter Type: Integer
+------------------------------------------------
+Specifies the maximum number of partial Loops in GUGA Loop search.
+
+:guilabel:`Nref` Parameter Type: Integer
+------------------------------------------------
+Default value: 10000
+
+Specifies the number of reference states.
+
+:guilabel:`Nvff` Parameter Type: Integer
+------------------------------------------------
+Default value: 10000000
+
+Specifies the maximum number of two-electron product integrals in the active space.
+
+**Test Cases**
+
+:guilabel:`test004.inp`
+------------------------------------------------
+
+:guilabel:`test015.inp`
+------------------------------------------------
+
+:guilabel:`test016.inp`
+------------------------------------------------
+
+:guilabel:`test019.inp`
+------------------------------------------------
+
+:guilabel:`test020.inp`
+------------------------------------------------
+
+:guilabel:`test021.inp`
+------------------------------------------------
+
+:guilabel:`test061.inp`
+------------------------------------------------
+
+:guilabel:`test069.inp`
+------------------------------------------------
+
+:guilabel:`test070.inp`
+------------------------------------------------
+
+:guilabel:`test071.inp`
+------------------------------------------------
+
+:guilabel:`test080.inp`
+------------------------------------------------
+
+:guilabel:`test086.inp`
+------------------------------------------------
+
+:guilabel:`test095.inp`
+------------------------------------------------
+
+:guilabel:`test100.inp`
+------------------------------------------------
+
+:guilabel:`test105.inp`
+------------------------------------------------
+
+:guilabel:`test114.inp`
+------------------------------------------------
+
+:guilabel:`test126.inp`
+------------------------------------------------
+
+:guilabel:`test131.inp`
+------------------------------------------------
+
+:guilabel:`test139.inp`
+------------------------------------------------
+
+:guilabel:`test148.inp`
+------------------------------------------------
+
+:guilabel:`test150.inp`
+------------------------------------------------

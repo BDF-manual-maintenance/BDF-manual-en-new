@@ -1,5 +1,5 @@
 iOI-SCF calculation and FLMO method for large systems
-========================================
+=====================================================
 
 For large systems (e.g., systems with more than 300 atoms), traditional SCF calculation methods are often no longer suitable because, in addition to the longer time required to build the Fock matrix at each step, the following factors are included:
 
@@ -17,7 +17,7 @@ One solution to the above problem is to divide the system into several fragments
 FLMO has been used to obtain localized orbitals of molecules, iOI-SCF, FLMO-MP2, O(1)-NMR, etc., and can also calculate the singlet state of open shells, which is used to study problems such as single-molecule magnets.
 
 Computation of Fragmented Localized Molecular Orbital FLMO (Manual Sharding)
---------------------------------------------
+----------------------------------------------------------------------------
 
 In order to give users an intuitive understanding of FLMO, we give an example of FLMO calculation. Here, we need to calculate the localized orbitals of the 1,3,5,7-octatetraene:math:'\ce{C8H10}' molecule by FLMO method.
 Let's start by counting 4 molecular sheets, each of which is composed of a central atom, a buffer atom (marked with a "B" after the atomic coordinates, note that there must be at least one space between the "B" and the atomic coordinates), and a linked H atom (marked by adding an "L" after the atomic coordinates, note that there must be at least one space between the "L" and the atomic coordinates). Because the molecular structure is relatively simple, the molecular sheet here is obtained by manual fragmentation, that is, the central atom of each molecular sheet is a C=C double bond and all the hydrogen atoms connected to it, and the buffer atom is the C=C double bond directly connected to the C=C double bond and the hydrogen atom it carries, that is, the molecular sheet 1 and molecular sheet 4 are 1,3-butadiene, and the molecular sheet 2 and molecular sheet 3 are 1,3,5-hexamethylene. After the calculation and convergence of the molecular slice SCF, the molecular slice localization orbit was obtained by the Boys localization method. After all the molecular slice calculations were completed, the localized orbitals of the four molecular slices were used to synthesize the pFLMO (primitive fragment localized molecular orbital) of the whole molecule. The pFLMO was used to make an initial guess, and the entire :math:'\ce{C8H10}' molecule was calculated, and the localized FLMO was obtained. An example of the input is as follows:
@@ -352,7 +352,7 @@ It can be seen that the Mos of the final FLMO does not change much compared with
 THE ABOVE MANUAL FRAGMENTATION METHOD IS CUMBERSOME FOR MOLECULES WITH MORE COMPLEX STRUCTURES, BECAUSE IT IS NOT ONLY NECESSARY TO MANUALLY GIVE THE DEFINITION OF EACH MOLECULAR SHEET, BUT ALSO NEED TO GIVE THE CORRESPONDENCE BETWEEN THE ATOMIC NUMBER OF EACH MOLECULAR SHEET AND THE TOTAL SYSTEM IN THE '&DATABASE'' DOMAIN. In contrast, a more convenient approach is to use the following automatic sharding method.
 
 Calculation of Open Shell Singlet State Using FLMO (Automatic Sharding)
---------------------------------------------
+-----------------------------------------------------------------------
 
 In the study of single-molecule magnets and some catalytic systems, the so-called antiferromagnetic coupling state is often encountered, in which two electrons with opposite spins occupy different atomic centers in the form of an open shell (open shell singlet state), but multiple single electrons may also be involved. BDF can be combined with the FLMO method to calculate the open-shell singlet state. For example, the following example uses the FLMO method to calculate the spin-breaking ground state of a system containing Cu(II) and nitrogen-oxygen stable radicals:
 

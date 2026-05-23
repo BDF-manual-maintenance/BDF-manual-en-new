@@ -647,7 +647,7 @@ Dynamics Result Analysis
 .. figure:: /app/QMMM_example/BPH/BPHimage/temp.png
 
 Randomly Select Single Frame Structure and Extract Partial Water Conformation
------------------------------------
+------------------------------------------------------------------------------
 
 1. Use cpptraj to obtain single frame conformation (randomly selected for demonstration)
 
@@ -833,7 +833,7 @@ sets excited state gradient to S1 state gradient.
 ----------------------------------------------------------------------------
 
 QM/MM Boundary Selection Example Tutorial
-=======================================
+==========================================
 
 This tutorial demonstrates how QM/MM boundary selection affects geometry optimization. Incorrect boundary selection may lead to unexpected conformational changes.
 

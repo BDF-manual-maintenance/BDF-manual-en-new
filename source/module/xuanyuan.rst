@@ -1,11 +1,11 @@
 .. _xuanyuan:
 
 One- and Two-Electron Integral Calculation - XUANYUAN Module
-================================================
+============================================================
 The XUANYUAN module primarily calculates one- and two-electron integrals and other necessary integrals, storing them to files.
 
 :guilabel:`Direct` Parameter Type: Boolean
---------------------------------------
+------------------------------------------
 Specifies using integral-direct SCF calculations. This is now the default option and does not require user setting.
 
 Integral-direct SCF does not store two-electron integrals. It pre-screens integrals using the Schwartz inequality based on their contribution to the Fock matrix. For systems with more than ~300 basis functions, it efficiently utilizes integral recomputation to avoid I/O operations and supports OpenMP multi-core parallelization. Most BDF modules requiring Fock-like matrices (J and K), such as SCF and TDDFT, implement integral-direct calculations.
@@ -16,7 +16,7 @@ Integral-direct SCF does not store two-electron integrals. It pre-screens integr
     To disable integral-direct SCF, use the :ref:`Saorb<compass.saorb>` keyword in the compass module.
 
 :guilabel:`Maxmem` Parameter Type: String
---------------------------------------
+------------------------------------------
 Specifies the cache size for non-integral-direct SCF two-electron integral calculations. Larger caches reduce integral sorting frequency. Format: number + `MW` or `GW`. 1 Word = 2 Bytes, so 512MW = 1024 MB.
 
 .. code-block:: bdf
@@ -30,7 +30,7 @@ Specifies the cache size for non-integral-direct SCF two-electron integral calcu
 .. _xuanyuan_rsomega:
 
 :guilabel:`RSOMEGA` / :guilabel:`RS` Parameter Type: Floating-point
-------------------------------------------------------
+----------------------------------------------------------------------
 Specifies the :math:`\omega` parameter (sometimes denoted :math:`\mu` in literature) for range-separated functionals (e.g., CAM-B3LYP).
 ``RS`` is a synonym for ``RSOMEGA``. Required if using a range-separated DFT functional. Recommended values:
 

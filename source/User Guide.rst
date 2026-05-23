@@ -36,4 +36,6 @@ This chapter introduces the basic use of BDF's various functions, and provides b
 
 .. include:: guide/Analysis.rst
 
+.. include:: guide/EDA.rst
+
 

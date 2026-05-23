@@ -21,7 +21,7 @@ Increases the memory allocated for storing AO (Atomic Orbital) integrals by: int
 [Note: Original documentation didn't specify functionality for this parameter]
 
 :guilabel:`Cutcpm` Parameter Type: Floating-point
-------------------------------------------------
+-------------------------------------------------
  * Default: 1.D-6
 
 Specifies the convergence threshold for solving the CPMCHF equations.

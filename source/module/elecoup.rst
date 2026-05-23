@@ -29,7 +29,7 @@ Specifies whether a ground-state approximation (GSA) should be applied.
 **Keywords for Calculating Charge Transfer Integrals**
 
 :guilabel:`Electrans` Parameter Type: Integer Array
-------------------------------------------------
+---------------------------------------------------
 This is a multi-line parameter used to specify pairs of Donor and Acceptor molecular orbitals for which charge transfer integrals should be calculated. Format:
 
 First line: Input an integer `n`, specifying the number of orbital pairs for which transfer integrals should be calculated.

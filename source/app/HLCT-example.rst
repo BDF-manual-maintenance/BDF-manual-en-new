@@ -17,7 +17,7 @@ Due to the higher energy levels, the photostability of blue light HLCT molecules
 .. centered:: Figure 1. (a) Schematic diagram of the electroluminescence mechanism of the HLCT molecule. (b) Molecular structure of 2DPA-Py.
 
 Ground state :math:'rm S_{0}'
-----------------------------
+-----------------------------
 
 Before we can make accurate calculations on the molecule, we need to obtain a reliable ground state structure ( :math:'rm S_{0}' ), that is, structural optimization and vibration analysis of the ground state. Firstly, Gaussian was used to optimize the structure of the ground state of the molecule: math:'rm S_{0}', using the functional B3LYP, the basis group 6-31g**, and considering the dispersion correction. The B3LYP functional was chosen because of its high computational efficiency, low dependence on the accuracy of the integration lattice, and DFT-D3(BJ) dispersion correction to describe possible non-covalent bonding interactions. In addition, because the calculation results are less sensitive to the base set for structural optimization and vibration analysis, the selection of a small base group can save time. The gjf input file is as follows:
 .. code-block:: bdf
@@ -155,7 +155,7 @@ When the molecule is at the smallest point of the potential energy plane, there 
      5   7    -0.00   0.01  -0.01    -0.01  -0.01  -0.00    -0.01   0.02  -0.05
 
 absorption spectrum
------------
+-------------------
 
 The ground state of most organic molecules is a closed shell, usually a singlet state, which is generally denoted by :math:'rm S_{0}'. According to the first law of photochemistry (Stark-Einstein), a molecule needs to absorb a photon to make a single electron jump from an occupied orbital to an unoccupied orbital, and the energy of that photon must be consistent with the energy difference between the ground state and the excited state.
 
@@ -349,7 +349,7 @@ Convert the chk file to the fchk file. Render NTO tracks with Multiwfn VMD.
 As can be seen from the diagram, the :math:'rm T_{1}' and :math:'rm T_{3}' states are typical local excitation (LE), while the :math:'rm S_{1}' and :math:'rm T_{2}' states have both charge transfer and local excitation components, which belong to the HLCT state.
 
 Excited state :math:'rm S_{1}' optimization
--------------------------------
+----------------------------------------------
 
 Fluorescence is a cold light phenomenon that generally refers to the radiation process that occurs between spin singlet states. According to the Kasha rule, it is the emission from the lowest excited state to the ground state, which is generally from the :math:'rm S_{1}' state to the :math:'rm S_{0}' state. In order to simulate the fluorescence process, it is also necessary to optimize the structure and frequency of the excited state :math:'rm S_{1}', and obtain the ''log'' file and ''fchk'' file to prepare for the subsequent MOMAP calculation. The functional and base groups are M062x and Def2SVP, respectively, and the ''gjf'' file is as follows:
 
@@ -566,7 +566,7 @@ Similarly, optimizing :math:'rm T_{3}' yields the energy of the :math:'rm T_{3}'
      Copying the excited state density for this state as the 1-particle RhoCI density.
 
 Spin orbit coupling
-----------------
+--------------------
 
 Spin-orbit coupling (SOC) reflects the interaction between the spin of an electron and the rotation of an electron around the nucleus. When calculating the transitions between the singlet and triplet states, if the spin-orbit coupling is not considered (i.e., the coupling is strictly 0), then their transitions are forbidden. However, when the rotary-orbit coupling is introduced into the Hamiltonian, the coupling between the two states is not strictly 0, and the transition between the singlet and triplet states is possible. We tend to be concerned with the spin-orbit coupling between the :math:'rm S_{i}' state and the :math:'rm T_{j}' state in a particular structure. where :math:'rm <S_{i}|SOC|T_{j}>' denotes the spin-orbit coupling matrix element, which is measured by its modulus to measure the size of the spin-orbit coupling between the :math:'rm S_{i}' and :math:'rm T_{j}' electronic states. This physical quantity can also be used to calculate the intersystem crossing (ISC) rate and the reverse intersystem crossing (RISC) rate.
 
@@ -748,7 +748,7 @@ After the job is completed, the following keywords are found in the ''out' outpu
 Here :math:'rm SOCmat=<1 1 1 |H_{SO}| 2 1 2>' represents the matrix element :math:'rm <S_{1}| H_{SO} |T_{2}>' , ReHso and ImHso represent the real and imaginary parts, respectively, in au or :math:'rm cm^{-1}'. After summing the modulus squares of the SOC matrix elements of the three mj components, and then opening the square to obtain the coupling matrix element of the :math:'rm S_{1}' state and the :math:'rm T_{2}' state of the subsequent MOMAP, that is, 1.15035 :math:'rm cm^{-1}'; :math:'rm S_{1}' state and :math:'rm T_{3}' state spin-orbit coupling matrix element 1.52729 :math:'rm cm^{-1}'.
 
 Reforming energy
----------
+-----------------
 
 The reforming energy refers to the change in the energy of the system due to the relaxation of the geometric structure when the molecule gains and loses electrons. It is not only a key physical quantity that affects the electron transfer rate (based on the Marcus theory), but also an important factor affecting the spectral spectrum and radiation rate. Specifically, the energy difference between the initial and final states of a molecule is the reforming energy of the ground state and the excited state, respectively: math:'lambda_{S0}=E_{3}-E_{1}' , :math:'lambda_{S1}=E_{2}-E_{4}'.
 
@@ -807,7 +807,7 @@ In the photophysical process of molecules, the Duschinsky rotation effect caused
 .. figure:: /HLCT-example/fig3.6-6.png
 
 Fluorescence spectroscopy
------------
+---------------------------
 
 The calculation of the fluorescence radiation rate with MOMAP requires the results of the previous step "evc.cart.dat'" and the new input files "momap.inp" and "momap.inp" which are as follows:
 
@@ -849,7 +849,7 @@ Open the spec.tvcf.spec.dat file in Device Studio to obtain the absorption and e
 .. figure:: /HLCT-example/fig3.7-1.png
 
 The rate of inter-system channeling
----------------
+------------------------------------
 
 Intersystem channeling is an important radiation-free process in photochemistry. It refers to the fact that after the molecule is excited, due to the intersection between the potential energy surfaces of states with different spin multiplicities, the spin multiplicity changes in a non-radiative way when the system undergoes such a structure. In general organic systems, RISC refers to the transition from a single to a triplet state, and reverse RISC refers to the transition from a triplet to a singlet state. The inter-system crossing rate, e.g. :math:'rm S_0 → t_2', is also related to their energy level difference :math:'Delta E_{ST}'. Here :math:'Delta E_{ST}' can be obtained by subtracting the excited state energy of :math:'rm S_{1}' from the excited state energy of :math:'rm T_{2}'. Calculate :math:'rm S_1 - T_2' state :math:'Delta E_{ST}' =0.05518 au, :math:'rm S_1 - T_3' state :math:'Delta E_{ST}' =0.05528 au.
 
@@ -903,6 +903,6 @@ Similarly, the inter-system crossing rate between the :math:'rm S_1' state and t
 Through calculation, we find that the anti-system crossing rate between the :math:'rm T_2' state and the :math:'rm S_1' state is very small, which does not meet the requirements of HLCT molecules. The anti-system crossing rate from the :math:'rm T_3' state to the :math:'rm S_1' state is large, indicating that the triplet exciton may undergo anti-system crossing in the :math:'rm T_3' state and transform into the :math:'rm S_1' state.
 
 conclusion
---------
+-----------
 
 In this paper, based on the DFT and TDDFT theories, the excited photophysical processes of 2TPA-Py molecules are calculated. The results show that the :math:'rm S_1' state of 2TPA-Py molecule has the characteristics of HLCT, and its maximum emission wavelength is sky blue at 497 nm. The inter-anti-transparency rate of :math:'rm T_3 → S_1' of this molecule is as high as :math:'4.39 times 106 s^{-1}', which basically satisfies the requirement of utilizing triplet excitons through anti-inter-transgression. It can be seen that the molecular design strategy of donor-π-donor is expected to be an effective means to construct high-stability blue light HLCT molecules.

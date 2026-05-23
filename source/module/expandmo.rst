@@ -1,5 +1,5 @@
 Orbital Expansion with Different Basis Sets - EXPANDMO Module
-================================================
+=============================================================
 The EXPANDMO module is used to expand molecular orbitals (MOs) calculated with a small basis set into MOs for a larger basis set. The expanded MOs can serve as initial guesses for SCF calculations or be used in dual-basis calculations. Additionally, EXPANDMO can utilize the atomic valence active space to automatically construct the active space and initial guess orbitals for MCSCF calculations.
 
 :guilabel:`Overlap` Parameter Type: Boolean

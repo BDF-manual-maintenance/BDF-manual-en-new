@@ -1,5 +1,5 @@
 # Exchange-Correlation Functionals Supported in BDF
-===============================================
+===================================================
 BDF's Density Functional Theory (DFT) supports **Restricted (RKS)**, **Unrestricted (UKS)**, and **Restricted Open-Shell (ROKS)** Kohn-Sham calculations. The input format is similar to RHF, UHF, and ROHF, with the key requirement being the specification of the exchange-correlation functional. BDF supports LDA, GGA, Meta-GGA, Hybrid, RS Hybrid, and Hybrid Meta-GGA functionals.
 
 .. table:: Functionals Supported in BDF

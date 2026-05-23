@@ -30,3 +30,19 @@ For more information about the invocation of BDF modules, see BDF Modules and Ca
 .. include:: module/nmr.rst
 
 .. include:: module/irc.rst
+
+.. only:: Full-Manual
+
+BDF多组态波函数方法模块手册
+   
+.. include:: wftheory/mcscf.rst
+
+.. include:: wftheory/traint.rst
+
+.. include:: wftheory/xianci.rst
+
+.. include:: wftheory/drt.rst
+
+.. include:: wftheory/mrci.rst
+
+.. include:: wftheory/vgmfci.rst

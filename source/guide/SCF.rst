@@ -1,5 +1,5 @@
 Self-consistent field methods: Hartree-Fock and Kohn-Sham
-===========================================
+=========================================================
 
 Self-consistent fields of BDF include the Hartree-Fock and Kohn-Sham methods.
 
@@ -275,7 +275,7 @@ ROKS calculation of :math:'\ce{H2O+}' ions, with the following input,
 
 
 Kohn-Sham calculations based on RS hybrid functionals
--------------------------------------------------
+-----------------------------------------------------
 
 CAM-B3LYP and other RS hybrid functionals, which divide the Coulomb interaction into long and short range,
 
@@ -319,7 +319,7 @@ For example, for the 1,3-Butadiene molecule, the RKS advanced mode input of CAM-
 
 
 Customize the exact HF-exchange term in hybrid functionals, double hybrid functionals
------------------------------------------------------------
+-------------------------------------------------------------------------------------
 
 For some calculations, the user may need to manually adjust the exact HF-exchange of an XC functional to achieve satisfactory accuracy. In this case, you can add the keyword "facex" to the "$scf" module, for example, if you want to change the exact HF-exchange of the B3LYP functional from the default 20% to 15%, you can write it
 
@@ -391,7 +391,7 @@ The total energy ''E_tot' contains the dispersion correction energy, ''E_disp = 
 
 
 Improve the accuracy of the integration grid of Kohn-Sham calculations
--------------------------------------------------
+----------------------------------------------------------------------
 
 Although BDF defines default integration grid points for different functionals according to the accuracy requirements (e.g., Meta-GGA functionals have high requirements for integration grid, BDF uses fine grid points by default),
 Users may also want to adjust the grid. The integral grid points of the Kohn-Sham functional can be defined in the input of the SCF module by the Grid keyword.

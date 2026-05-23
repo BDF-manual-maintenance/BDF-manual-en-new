@@ -2,7 +2,7 @@
 .. _TADF-example:
 
 Theoretical Insight into the Thermally Activated Delayed Fluorescence (TADF) Mechanism of DPO-TXO2
-=====================================================
+===================================================================================================
 
 Thermally Activated Delayed Fluorescence (TADF) materials represent the third generation of pure organic delayed fluorescence materials, developed after fluorescent materials and noble metal phosphorescent materials. Their hallmark features include a small singlet-triplet energy gap (ΔES-T) and positive temperature dependence.
 
@@ -24,7 +24,7 @@ Structural Optimization and Frequency Calculation
 -------------------------------------------------
 
 Generating Input Files for Structural Optimization and Frequency Analysis
-########################################################
+############################################################################
 
 Import the prepared molecular structure DPO-TXO2.xyz into Device Studio to obtain the interface shown in Figure 1.1-1. Select Simulator → BDF → BDF, then configure parameters in the pop-up window.
 
@@ -598,7 +598,7 @@ Analyzing Excited State Results
 ########################################################
 
 Excitation Energy Analysis
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Open the downloaded .out file to locate excitation energies, oscillator strengths, and transition dipole moments. isf=0 indicates singlet excited state information; isf=1 indicates triplet excited state information.
 
 .. code-block:: bdf
@@ -715,7 +715,7 @@ DPO-TXO2's S1 excitation requires two sets of NTO orbitals for adequate descript
 NTO analysis reveals the dominant transition is Hole1→particle1 (73.26%), followed by Hole2→particle2 (26.59%). Electrons transition from phenoxazine donor groups on both sides to the central acceptor group in the S1 excited state.
 
 Absorption Spectrum Analysis
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To theoretically predict absorption spectra, excite states are broadened using Gaussian functions. After TDDFT calculation, execute the plotspec.py script from the BDF installation path via terminal. For Hongzhiyun Cloud users, terminal access methods are covered in the user guide (not discussed here).
 

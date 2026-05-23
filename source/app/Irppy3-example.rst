@@ -1,14 +1,14 @@
 .. _Irppy3-example:
 
 Theoretical Investigation of Phosphorescence Emission Mechanism in Ir(ppy)₃
-==============================================
+=============================================================================
 
 Since phosphorescent materials were applied to OLEDs, research on organic light-emitting devices based on phosphorescence mechanisms has developed rapidly, including representative red, green, and blue monochromatic phosphorescent devices and full-phosphorescent white OLEDs. Due to spin-forbidden transitions, phosphorescence quantum yields are generally much lower than fluorescence. Therefore, methods such as the heavy atom effect are typically employed to enhance phosphorescence quantum yield. When heavy atoms are introduced, spin-orbit coupling strengthens, making the forbidden triplet-to-singlet transitions allowed. This significantly reduces the time molecules remain in the triplet state and greatly improves the internal quantum efficiency of devices. Commonly used heavy metal atoms include Ir, Pt, Re, Os, Cu, etc.
 
 Phosphorescent materials should generally possess good photothermal stability, large molecular absorption cross-sections, high intersystem crossing ability, high phosphorescence quantum yields at room temperature, and short triplet lifetimes. Since green phosphorescent materials are easiest to obtain among organic materials, research began with phosphorescent green OLEDs. Among them, Ir(ppy)₃ is the most representative material and has been widely used in phosphorescent devices. The phosphorescence emission rate is an important parameter in luminescence mechanism research. This article will use Ir(ppy)₃ as an example to calculate its phosphorescence emission rate using BDF and MOMAP software. First, structural optimization, frequency calculation, and spin-orbit coupling calculation need to be performed using BDF quantum software. Then, based on BDF's structural optimization and frequency calculation result files, and spin-orbit coupling calculation result files, MOMAP software will be used to calculate the phosphorescence radiative rate.
 
 Ground State Optimization
-------------
+---------------------------
 
 First, use BDF quantum software to perform structural optimization and frequency calculation for Ir(ppy)₃'s ground state S₀ and first triplet excited state T₁.
 
@@ -113,7 +113,7 @@ In the Frequency dialog box, check the frequencies; if no imaginary frequencies 
 .. figure:: /Irppy3-example/fig4.1-6.png
 
 Excited State Optimization
------------
+--------------------------
 
 Select the ``bdf.out`` file, right-click open with containing folder to open the folder. In the ``bdf.out`` file, search for ``converged in``. The structure output under ``Molecular Cartesian Coordinates (X,Y,Z) in Angstrom :`` immediately following is the optimized S₀ structure of Ir(ppy)₃.
 
@@ -223,7 +223,7 @@ In the Frequency dialog box, check the frequencies; if no imaginary frequencies 
 .. figure:: /Irppy3-example/fig4.2-5.png
 
 Spin-Orbit Coupling
--------------
+-------------------
 
 Select the ``bdf.out`` file, right-click open with containing folder to open the ``bdf.out`` file. In the file, search for ``converged in``. The structure output under ``Molecular Cartesian Coordinates (X,Y,Z) in Angstrom :`` immediately following is the optimized T₁ excited state structure. Save it as ``Irppy3_t1_soc.xyz`` file:
 
@@ -421,7 +421,7 @@ These six parameters will be used in MOMAP software for phosphorescence emission
 At this point, all necessary files and parameters for MOMAP's phosphorescence radiative rate calculation for :math:`\rm Ir(ppy)_3` are complete, including BDF's structural optimization frequency result files, spin-orbit coupling calculation result files, and parameters.
 
 Phosphorescence Radiative Rate
--------------
+------------------------------
 
 Next, we begin calculating the phosphorescence radiative rate of :math:`\rm Ir(ppy)_3` using MOMAP.
 

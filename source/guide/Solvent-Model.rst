@@ -69,7 +69,7 @@ Solvent types can be specified using names or aliases from :ref:`BDF Supported S
     78.3553   #Input dielectric constant
 
 ### Solvent Model Setting
---------------
+-------------------------
 Continuous medium models treat the solvent as a polarizable continuous medium with a specific dielectric constant.  
 BDF currently supports **ddCOSMO**, **COSMO**, **CPCM**, **IEFPCM**, **SS(V)PE**, and **SMD** models. Keywords: ``ddcosmo``, ``cosmo``, ``cpcm``, ``iefpcm``, ``ssvpe``, ``smd``.  
 Input example:
@@ -110,7 +110,7 @@ For **SMD**, manually specify parameters:
    Using the SMD model disables calculation of :ref:`non-electrostatic component of solvation free energy<SolventNonelec>`, replacing it with SMx series :math:`\Delta G_{CDS}`.
 
 ### Cavity Customization
---------------
+------------------------
 Cavity shape significantly impacts solvation energy. Common cavity types: vdW (van der Waals surface), SES (solvent-excluded surface), SAS (solvent-accessible surface).  
 
 BDF defaults to **vdW cavity** using 1.1× UFF radii.  
@@ -589,7 +589,7 @@ The "Corrected vertical emission energy" represents the emission energy correcti
 When using the cLR calculation, you need to find the output of the first TDDFT in the file, and the cLR output in the resp module, and add it to the difference between the E_tot two scfs to get the final vertical emission energy.
 
 A combination of explicit and implicit solvents was used to calculate the aroused solvation effect
-----------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 
 The excited solvation effect can be calculated using a combination of explicit and implicit solvents. In the case of aqueous solutions, it is possible to diffuse to the HOMO and LUMO orbitals of the solute molecules
 The first hydrate layer, so the water molecules of the first hydrate can be included in the TDDFT calculation area when performing the excited state calculation, while the rest is treated with implicit solvents.

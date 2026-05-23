@@ -336,7 +336,7 @@ Pseudopotential basis sets are used in conjunction with pseudopotentials, with b
 This approach significantly reduces computation time while effectively incorporating scalar relativistic effects. Basis sets like the Lan series, Stuttgart series, and cc-pVnZ-PP series belong to this category. For convenience, pseudopotential basis sets for lighter elements (before the 5th period) are essentially non-relativistic all-electron basis sets, such as the Def2 series.
 
 ## Scalar vs. Spin-Orbit Coupling Pseudopotentials
-------------------------------------------------
+--------------------------------------------------
 Pseudopotential basis sets are categorized into **scalar pseudopotential basis sets** and **spin-orbit coupling pseudopotential (SOECP) basis sets** based on whether they include spin-orbit coupling terms.
 
 ### Standard Pseudopotential Basis Sets in BDF
@@ -400,7 +400,7 @@ For lanthanides and actinides, "f-in-core" (FIC) basis sets put f electrons into
     +-----------------------------+------------------------+----------------------------------------+
 
 ## Aliases and Abbreviations for Standard Basis Sets
-------------------------------------------------
+----------------------------------------------------
 Some basis sets support aliases:
 - Pople 6- series: Suffixes P/PP can be replaced with * (e.g., `6-311++G**` = `6-311++GPP`)
 - Def2 series: Hyphens can be omitted (e.g., `def2-SVP` = `def2SVP`)
@@ -419,6 +419,7 @@ BDF supports non-built-in basis sets via custom text files placed in the working
 ```text
 # Custom basis for He and Al
 ****
+
 He      2    1
 S      4    2
         3.836000E+01
@@ -435,6 +436,7 @@ P      2    2
        1.0000000E+00  0.000000E+00
        0.0000000E+00  1.000000E+00
 ****
+
 Al     13    2
 (Section for Al - similar format)
 In addition to the above standard names, some basis sets in the basis sets library can also use their aliases and abbreviations. The rules are as follows:
@@ -442,6 +444,7 @@ In addition to the above standard names, some basis sets in the basis sets libra
 * In the Pople basis sets of the 6-series, the suffixes P and PP representing the polarization function can be indicated by an asterisk. For example, 6-311 G** is equivalent to 6-311 GPP.
 * The hyphen "-" for the def2-series basis sets can be omitted. For example, def2-SVP can be written as def2SVP.
 * In the correlation consistency basis sets, "cc-pV", "cc-pCV", and "cc-pwCV" can be abbreviated as V, CV, WCV, respectively.
+
 The prefix "aug-" for the diffusion function can be abbreviated as A (case-insensitive).
 For example, vdz stands for cc-pVDZ, awcvtz-dk stands for aug-cc-pwCVTZ-DK, and so on. It should be noted that this abbreviation of the basis sets name should be only used in BDF input. Do not use them in formal publications and reports to avoid confusion among readers.
 

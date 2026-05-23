@@ -59,11 +59,13 @@ Sets RMS gradient convergence threshold (units: Hartree/Bohr). Default: 2.D-4 (D
 :guilabel:`TolEne` Parameter Type: Float
 ---------------------------------------------------
 * Default: 1.D-6
+
 Sets energy change convergence threshold between steps (units: Hartree). Only for DL-Find.
 
 :guilabel:`TolStep` Parameter Type: Float
 ------------------------------------------------
 * Default: 1.2D-3
+
 Sets RMS step convergence threshold (units: Bohr). Only for BDF. Max step threshold = 1.5 × TolStep.
 
 :guilabel:`IOpt` Parameter Type: Integer
@@ -97,11 +99,13 @@ If ≠0, initial Hessian is force-field-based.
 :guilabel:`ICoord` Parameter Type: Integer
 ---------------------------------------------------
 * Options: 0, 1
+
 Sets coordinate system: 0 = Cartesian (DL-Find default), 1 = redundant internal (BDF default; only option for BDF).
 
 :guilabel:`ILine` Parameter Type: Integer
 ------------------------------------------------
 * Options: 0, 1
+
 Enables line searches during optimization (0 = disable, 1 = enable). Default: 0 (DL-Find), 1 (BDF).
 
 :guilabel:`Frozen` Parameter Type: Integer Sequence
@@ -125,7 +129,7 @@ BDF optimizer only supports 0 or -1.
      Freezes relative Cartesian coordinates; absolute coordinates may change due to molecular reorientation.
 
 :guilabel:`Constrain` Parameter Type: Integer Sequence
----------------------------------------------------
+------------------------------------------------------
 Performs constrained optimization (Cartesian, bond lengths, angles, dihedrals). BDF optimizer only. First line = number of constraints (N). Lines 2–N+1:  
 - 1 integer: freeze atom's Cartesian coordinates  
 - 2 integers: freeze bond between atoms  
@@ -158,6 +162,7 @@ Optionally set values before freezing:
 :guilabel:`Hess` Parameter Type: String
 ------------------------------------------------
 * Options: only, init, final, init+final
+
 Computes Hessian:  
 - ``only``: Compute Hessian only (no optimization). Performs frequency/thermochemistry analysis.  
 - ``init``: Compute initial Hessian for optimization (useful for transition states).  
@@ -174,6 +179,7 @@ Forces numerical Hessian even if analytical Hessian is available (supports HF/DF
 :guilabel:`ReCalcHess` Parameter Type: Integer
 ---------------------------------------------------
 * Options: Non-negative integer
+
 Recalculates numerical Hessian every N steps during optimization. Default: never (unless Update=0).
 
 :guilabel:`NumHessStep` Parameter Type: Float
@@ -181,6 +187,7 @@ Recalculates numerical Hessian every N steps during optimization. Default: never
 * Default: 0.005
 * Options: Positive real
 * Range: 0.001–0.02
+
 Displacement step for numerical Hessian (units: Bohr). Requires Hessian calculation via other keywords.
 
 :guilabel:`ReadHess` Parameter Type: Bool
@@ -202,24 +209,28 @@ Success not guaranteed; verify results manually.
 ---------------------------------------------------
 * Default: 1
 * Options: Positive integer
+
 Electronic degeneracy for thermochemistry (Gibbs free energy). Degeneracy = spatial degeneracy × spin degeneracy. Default=1; crucial for open-shell systems.
 
 :guilabel:`NTemp` Parameter Type: Integer
 ---------------------------------------------------
 * Default: 1
 * Options: Positive integer
+
 Number of temperature values (defined by ``Temp``). Must precede ``Temp``.
 
 :guilabel:`Temp` Parameter Type: Float
 ---------------------------------------------------
 * Default: 298.15
 * Options: Positive real
+
 Temperature for thermochemistry (units: K).
 
 :guilabel:`NPress` Parameter Type: Integer
 ---------------------------------------------------
 * Default: 1
 * Options: Positive integer
+
 Number of pressure values (defined by ``Press``). Must precede ``Press``.  
 - ``NTemp`` > 1, ``NPress`` = 1: Vary temperature at fixed pressure.  
 - ``NTemp`` = 1, ``NPress`` > 1: Vary pressure at fixed temperature.  
@@ -229,12 +240,14 @@ Number of pressure values (defined by ``Press``). Must precede ``Press``.
 ---------------------------------------------------
 * Default: 1.0
 * Options: Positive real
+
 Pressure for thermochemistry (units: atm).
 
 :guilabel:`Scale` Parameter Type: Float
 ---------------------------------------------------
 * Default: 1.0
 * Options: Positive real
+
 Frequency scaling factor.
 
 :guilabel:`Dimer` Parameter Type: Bool
@@ -242,7 +255,7 @@ Frequency scaling factor.
 Uses DL-FIND's Dimer method :cite:`dimer1999,dimer2005,dimer2008,dlfind2009` for transition state optimization (gradients only; no Hessian). Modify defaults via ``Dimer-Block``.
 
 :guilabel:`Dimer-Block` Parameter Type: Multiple Keywords
----------------------------------------------------
+---------------------------------------------------------
 Modifies Dimer parameters (end with ``End Dimer``):  
 - ``NoInterpolation``: Recomputes gradients after rotation (slower but fewer steps).  
 - ``Delta`` (default: 0.01): Image separation (Bohr; Cartesian only).  
@@ -268,10 +281,11 @@ Modifies CI-NEB parameters (end with ``End NEB``):
 ---------------------------------------------------
 * Default: 1
 * Options: 1 to ``NImage``+1 (CI-NEB)
+
 Number of coordinates in ``Geometry2``. Must precede ``Geometry2``.
 
 :guilabel:`Geometry2` Parameter Type: String Array
----------------------------------------------
+--------------------------------------------------
 Specifying the geometry of the second endpoint for the CI-NEB method is currently only supported in Cartesian coordinates (to be improved in the future) in angstroms. If the input coordinates are atomic units, you can add Bohr, i.e. Geometry2 Bohr.
 This keyword ends with ''End Geometry2''.
 Since the atomic order of the second endpoint must be the same as the first endpoint, the atomic name can be omitted here and only the Cartesian coordinate data can be entered.

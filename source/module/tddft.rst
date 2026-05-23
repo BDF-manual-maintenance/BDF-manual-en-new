@@ -1,5 +1,5 @@
 Time-Dependent Density Functional Theory - TDDFT Module
-================================================
+=======================================================
 The TDDFT module calculates molecular excited states by solving the Casida equation based on linear response theory. It supports TDDFT (including TDHF), TDA (including CIS), and can handle closed-shell or open-shell ground states. For open-shell ground states, it supports both traditional U-TDDFT and the spin-matched SA-TDDFT (also known as X-TDDFT), the latter being a distinctive feature of BDF. Additionally, BDF supports spin-flip (SF-)TDDFT methods, including spin-up-flip and spin-down-flip TDDFT, for calculating excited states with spin multiplicities different from the ground state.
 
 **Common Keywords**
@@ -12,6 +12,7 @@ The TDDFT module calculates molecular excited states by solving the Casida equat
 Specifies the ground-state method for TDDFT:
 * 1: R-TDDFT (RHF/RKS reference state)
 * 2: U-TDDFT (UHF/UKS reference state)
+
 Spin-matched X-TDDFT requires a ROKS/ROHF reference and uses U-TDDFT with `imethod=2`, `itest=1`, `icorrect=1` (see below). This parameter usually doesn't need manual specification, as the program chooses a reasonable default. Note: U-TDDFT and X-TDDFT calculations are only supported in Abelian point groups.
 
 :guilabel:`Isf` Parameter Type: Integer
@@ -23,6 +24,7 @@ Controls spin-flip TDDFT:
 * 0: No spin-flip (spin-conserving, calculates states with same Ms as ground state)
 * 1: Spin flip up (calculates states with Ms = ground state Ms + 1)
 * -1: Spin flip down (calculates states with Ms = ground state Ms - 1)
+
 Special case: When `imethod=1` and `isf=1`, the program calculates the Ms=0 component of the triplet state, not an Ms=1 state. This is still a spin-conserving R-TDDFT calculation, not spin-flip. Note: When `isf != 0` and `imethod=2`, `itda` must be set to 1.
 
 :guilabel:`Itda` Parameter Type: Integer
@@ -49,14 +51,14 @@ Specifies the TDDFT exchange-correlation kernel:
 For `isf=0` calculations, `ialda` has no effect. For `isf != 0` single-point calculations with non-RHF/RKS reference states, setting `ialda=2` is recommended for better numerical stability than the default 0. For `isf != 0` TDDFT geometry optimization, numerical frequencies, or NAC-TDDFT calculations, `ialda` *must* be set to 4. **Important:** This introduces an approximation, making results incomparable (and less accurate) to those obtained with `ialda != 4`. Thus, TDDFT geometry optimization/frequency results with `isf != 0` cannot be directly compared to TDDFT single-point energy results.
 
 :guilabel:`Itest` & :guilabel:`icorrect` Parameter Type: Integer
-------------------------------------------------------------
+----------------------------------------------------------------
  * Default: 0
  * Options: 0, 1
 
 When *both* `Itest` and `icorrect` are set to 1, `imethod=2`, and the reference state is ROKS/ROHF, the program performs X-TDDFT calculation.
 
 :guilabel:`iact` & :guilabel:`elw` & :guilabel:`eup` Parameter Type: Integer, Float, Float
----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 `Iact=1` specifies calculating excited states within an energy window defined by lower (`elw`) and upper (`eup`) bounds. Units: eV.
 
 **Diagonalization Method Keywords**
@@ -119,7 +121,7 @@ Specifies using Grimme's sTDA (if `itda=1`) or sTDDFT (if `itda=0`) method. sTDD
 Specifies DFT numerical integration grid type.
 
 :guilabel:`Gridtol` Parameter Type: Floating-point
-------------------------------------------------
+--------------------------------------------------
  * Default: 1.0E-4 (1.0E-6 for meta-GGA)
  
 Specifies the cutoff threshold for DFT adaptive grid generation. Lower values increase grid points (higher precision, higher cost).
@@ -159,7 +161,7 @@ Specifies calculation of Electronic Circular Dichroism (ECD) spectra. Outputs tr
 **Convergence Control Keywords**
 
 :guilabel:`Crit_e` Parameter Type: Floating-point
-------------------------------------------------
+-------------------------------------------------
 * Default: 1e-7
 
 TDDFT energy convergence threshold (Hartree).
@@ -179,6 +181,7 @@ TDDFT wavefunction convergence threshold.
 
 * `iroot > 0`: Calculate `iroot` states per irreducible representation.
 * `iroot < 0`: Calculate `|iroot|` states total across all irreps (program determines per-irrep count).
+
 **Note:** For degenerate irreps, different components of the same state count as one state (e.g., `iroot=3` for a 2D irrep yields 3 distinct energy states). Synonym: `iexit`.
 
 :guilabel:`Nroot` Parameter Type: Integer Array
@@ -186,7 +189,7 @@ TDDFT wavefunction convergence threshold.
 Specifies the number of states per irrep. Example: `5 1 3` calculates 5 states in irrep 1, 1 in irrep 2, 3 in irrep 3. If both `iroot` and `nroot` are specified, `nroot` is ignored.
 
 :guilabel:`Iwindow` Parameter Type: Floating-point Array
----------------------------------------------------
+--------------------------------------------------------
 Specifies an energy/wavelength range to calculate excited states within. Avoids wasteful calculation of states outside the region of interest.
 
 Format: Next line contains two floats (range) + optional unit (`au`/`eV`/`nm`/`cm-1`). Default unit: eV. Best used with iVI (`idiag=3`) to ensure all states within the range are found without wasting resources on states outside. Example: Calculate all states between 1-5 eV:
@@ -345,7 +348,7 @@ Specifies printing transition dipole moments (and oscillator strengths/radiative
 **Excited State Property Analysis**
 
 :guilabel:`Ntoanalyze` Parameter Type: Integer Array
----------------------------------------------------
+----------------------------------------------------
 Natural Transition Orbital (NTO) analysis for specified TDDFT states. Supports Abelian point groups only.
 
 .. code-block:: bdf

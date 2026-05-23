@@ -63,7 +63,7 @@ Auxiliary basis sets for the Density-Fitting (DF) approximation acceleration alg
      $End
 
 :guilabel:`Geometry` Parameter Type: String Array
----------------------------------------------
+-------------------------------------------------
 Specifies the molecular structure for the calculation. Can be in Cartesian coordinate mode or internal coordinate mode. Molecular coordinate definitions start on the line following the ``Geometry`` parameter and end on the line before ``End Geometry``.
 
 **Cartesian Coordinates** mode
@@ -167,7 +167,7 @@ Nor can it be written like this, because the atom order doesn't match the `.optg
 ``restart`` is primarily used for resuming interrupted geometry optimizations. Using the `1.inp` example, if `1.inp` is an input file for a geometry optimization that didn't finish normally (e.g., due to non-convergence, an error, or user termination), the structure from the last optimization step is saved in `1.optgeom`. Adding the `restart` keyword to the `$compass` module in `1.inp` and rerunning `1.inp` allows resuming the geometry optimization from the last structure, without manually copying the contents of `1.optgeom` into `1.inp`.
 
 :guilabel:`Group` Parameter Type: String
---------------------------------------
+----------------------------------------
 Specifies the molecular symmetry point group. BDF automatically determines molecular symmetry. HF/DFT/TDDFT support high-order molecular point groups. However, some electron correlation methods like MCSCF and MRCI only support D2h and its subgroups. This parameter can be used to force BDF to use an Abelian group for such calculations.
 
  .. code-block:: bdf

@@ -23,7 +23,7 @@ To accurately calculate ED and its relative changes, two factors must be conside
 * Relativistic effects must be considered. This is obvious for heavy elements, but even for some light elements it's essential. Non-relativistic *p* electrons have no distribution near the nucleus (see Table S6 in reference :cite:`ecd2020`), leading to qualitatively wrong ED for *p*-block elements. In BDF, scalar relativistic effects can be included using the sf-X2C Hamiltonian or its local variants, specified via ``heff=21`` (standard sf-X2C), ``22`` (sf-X2C-AXR), or ``23`` (sf-X2C-AU) in the ``xuanyuan`` module.
 
 Effective Contact Density of Iron ( :math:`\ce{^{57}Fe}` ) Compounds
-------------------------------------------------
+----------------------------------------------------------------------
 
 The probability of γ-ray absorption and emission is proportional to :math:`\exp(-E_\gamma^2)`. When nuclear excitation energy E_γ exceeds 200 keV, Mössbauer spectroscopy becomes difficult to observe, limiting its application to only a few isotopes. :math:`\ce{^{57}Fe}` is one such suitable isotope, though theoretical calculations generally don't distinguish between isotopes.
 
@@ -87,21 +87,21 @@ After calculation, ED results appear after SCF population analysis:
 Following this example, complete ED calculations for other iron compound molecules (input file download: :download:`ed-fe.zip </files/ed-fe.zip>`). ED results and experimental δᴵˢ values :cite:`neese2009` are listed below:
 
 .. table:: δᴵˢ and Effective Contact Density for Selected Iron Compounds
-    :widths: auto
+   :widths: auto
 
-    +------------------------------+------+----------------------------+--------------------------+
-    | Molecule                     | 2S+1 | δᴵˢ (mm/s)                 | ED (bohr⁻³)             |
-    +==============================+======+============================+==========================+
-    | :math:`\ce{FeCl4^{2-}}`      | 5    | +0.90                      | 14551.76                |
-    | :math:`\ce{Fe(CN)6^{4-}}`    | 1    | -0.02                      | 14555.78                |
-    | :math:`\ce{FeF6^{4-}}`       | 5    | +1.34                      | 14552.68                |
-    | :math:`\ce{FeCl4^-}`         | 6    | +0.19                      | 14553.98                |
-    | :math:`\ce{Fe(CN)6^{3-}}`    | 2    | -0.13                      | 14556.08                |
-    | :math:`\ce{FeF6^{3-}}`       | 6    | +0.48                      | 14553.01                |
-    | :math:`\ce{Fe(H2O)6^{3+}}`   | 6    | +0.51                      | 14554.12                |
-    | :math:`\ce{FeO4^{2-}}`       | 3    | -0.87                      | 14558.17                |
-    | :math:`\ce{Fe(CO)5}`         | 1    | -0.18                      | 14556.37                |
-    +------------------------------+------+----------------------------+--------------------------+
+   +------------------------------+------+----------------------------+--------------------------+
+   | Molecule                     | 2S+1 | δᴵˢ (mm/s)                 | ED (bohr⁻³)             |
+   +==============================+======+============================+==========================+
+   | :math:`\ce{FeCl4^{2-}}`      | 5    | +0.90                      | 14551.76                |
+   | :math:`\ce{Fe(CN)6^{4-}}`    | 1    | -0.02                      | 14555.78                |
+   | :math:`\ce{FeF6^{4-}}`       | 5    | +1.34                      | 14552.68                |
+   | :math:`\ce{FeCl4^-}`         | 6    | +0.19                      | 14553.98                |
+   | :math:`\ce{Fe(CN)6^{3-}}`    | 2    | -0.13                      | 14556.08                |
+   | :math:`\ce{FeF6^{3-}}`       | 6    | +0.48                      | 14553.01                |
+   | :math:`\ce{Fe(H2O)6^{3+}}`   | 6    | +0.51                      | 14554.12                |
+   | :math:`\ce{FeO4^{2-}}`       | 3    | -0.87                      | 14558.17                |
+   | :math:`\ce{Fe(CO)5}`         | 1    | -0.18                      | 14556.37                |
+   +------------------------------+------+----------------------------+--------------------------+
 
 Fitting this data yields the calibration equation:
 
@@ -116,7 +116,7 @@ The significant fitting error may stem from:
 Using this calibration equation, we can predict δᴵˢ for iron systems. For example, staggered ferrocene :cite:`holland2017` yields ED = 14554.25 a.u. through DFT, giving δᴵˢ = 0.37 mm/s, close to the experimental value of 0.53 mm/s :cite:`holland2017`.
 
 Notes for Calculating Effective Contact Density in Heavy-Element Compounds
-------------------------------------------------
+---------------------------------------------------------------------------
 
 For elements beyond 4d, default Gaussian exponents are insufficient to describe electron distribution near the nucleus. Additional steeper exponents are needed. For example, select the steepest 4-6 *s*-type Gaussian exponents α from standard cc-pVnZ or ANO basis sets (also consider *p*-type for *p*-block heavy elements). These approximately satisfy:
 
@@ -126,7 +126,7 @@ For elements beyond 4d, default Gaussian exponents are insufficient to describe 
 Linear fitting yields parameters A and B. Extrapolation (using intervals of -0.5 or -1 for i) provides steeper Gaussian exponents. Adding 2-5 steeper *s* functions and 1-3 steeper *p* functions is usually sufficient, but avoid exponents > 10¹¹ to prevent numerical instability.
 
 EFG Calculation for Iron ( :math:`\ce{^{57}Fe}` ) Compounds
-------------------------------------------------
+------------------------------------------------------------
 
 EFG calculations have similar relativistic Hamiltonian requirements as ED calculations but different basis set requirements:
 

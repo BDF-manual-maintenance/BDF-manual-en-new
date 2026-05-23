@@ -1,7 +1,7 @@
 .. _mssm:
 
 Studying Spin-Forbidden Multi-State Reactions with the MSSM Model
-================================================
+=================================================================
 
 In most chemical reaction processes, the system starts from reactants, passes through one or more transition states and intermediates, and finally reaches products—all occurring on the ground-state potential energy surface. However, in some cases, reactants, transition states, intermediates, or products may reside on potential energy surfaces of different spin states. Such reactions are termed **spin-forbidden reactions** or **multi-state reactions**, hereafter abbreviated as **multi-state reactions**. These reactions occur due to spin-orbit coupling and pose theoretical challenges.
 
@@ -37,7 +37,7 @@ More applications can be found in the Takayanagi group's series of papers. They 
 
 
 BDF Calculation Input
-----------------
+---------------------
 
 Input for optimizing the spin-mixed ground state reactant is shown below. For command explanations, see comments in the :ref:`ZnS spin-mixed state example<MultiStateMix>`.
 

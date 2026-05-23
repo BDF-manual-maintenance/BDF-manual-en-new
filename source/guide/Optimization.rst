@@ -1,7 +1,7 @@
 .. _GeomOptimization:
 
 Structural optimization and frequency calculation
-================================================
+=================================================
 
 The purpose of structural optimization is to find the minimum point of the potential energy surface of the system. Which minimum point can be found depends on the initial structure provided in the input file, and the closer you are to which minimum point, the easier it is to converge to which minimum point.
 
@@ -20,7 +20,7 @@ Common algorithms for structural optimization are as follows:
 The structural optimization of BDF is realized by the BDFOPT module, which supports the optimization of the minimum point structure and transition state structure based on the Newton method and the quasi-Newton method, and supports the optimization of restrictive structure. The following is an example of the input file format of the BDFOPT module and the interpretation of the output file.
 
 Ground-state structure optimization: Structural optimization of monochloromethane ( :math:'\ce{CH3Cl}' at B3LYP/def2-SV(P) levels
----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: bdf
 
@@ -237,7 +237,7 @@ As can be seen from the output information, the program allows the optimizer to 
 In this case, the user should check whether the current coordinates in the .optgeom file are reasonable, if so, you can use the DL-Find optimizer to optimize in Cartesian coordinates, see Geometry Optimization Non-Convergent Solution <geomoptnotconverged> for details.
 
 Frequency calculation::math:'\ce{CH3Cl}' Calculation of resonant frequency and thermochemical quantity in equilibrium structure
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
 
 Once the structure is optimized and converged, the frequency analysis can be performed. Prepare the following input files:
 
@@ -489,7 +489,7 @@ where final indicates that the numerical Hessian calculation is carried out only
     Although the structure optimization step in the opt+freq calculation supports the calculation in the non-C(1) point group, the numerical frequency calculation step must still be calculated in the C(1) group. Therefore, if the molecule calculated by the user has point group symmetry, and you want to specify the number of orbitals occupied by each irreducible representation or specify the optimization of the excited states under a specific irreducible representation, you must first optimize the structure, and then manually specify which orbitals/excited states under the C(1) group correspond to according to the above steps, and then perform numerical frequency calculation under the C(1) group, instead of directly doing opt+freq calculation.
 
 Transition State Structure Optimization: Transition State Optimization and Frequency Calculation for HCN/HNC Heteromeric Reactions
----------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 
 Prepare the following input files:
 
@@ -634,7 +634,7 @@ where the keyword ''readhess'' means to read the cess file with the same name as
 (5) Run the input file.
 
 The Dimer method was used to optimize the transition state structure
----------------------------------------------------------------
+--------------------------------------------------------------------
 
 In order to obtain the virtual frequency vibration mode of the transition state, one or even more Hessian matrix calculations need to be performed, which is the most time-consuming step in the standard process of optimizing the transition state. However, there are also some transition state optimization methods that only require gradients and do not need to calculate Hessian matrices, which greatly improves the computational efficiency and the application range of quantum chemistry methods.
 The following are the dimer methods and the CI-NEB methods.
@@ -720,7 +720,7 @@ The total energy of the transition state obtained is -93.22419648 Hartree, which
 If you change the default parameters of the Dimer method, you can change the keyword ''dimer'' to ''Dimer-Block'' ... ''End Dimer'' input block. The keywords are described in the description of the BDFOPT module.
 
 Intrinsic Reaction Coordinates (IRC) calculations
--------------------------
+-------------------------------------------------
 
 IRC (Intrinsic Reaction Coordinate) is an important concept in quantum chemistry to study chemical reactions, it is the lowest energy path connecting two adjacent minima points of the potential energy surface under the mass weight coordinates, and describes the most ideal structural change trajectory in the chemical process without considering the thermal motion factor, which is very important for discussing the microscopic chemical process, and is also the most decisive method to verify the correctness of the transition state.
 
@@ -888,7 +888,7 @@ In addition, "3c2o5h.trj" is to output the trajectory of each step in the form o
 
 
 The CI-NEB method was used to calculate the lowest energy path and optimize the transition state
----------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 
 With the original Pulled Rubber Band (Nudged Elastic Band; NEB) method, the CI-NEB method adds the image point climbing (Climbing Image; CI) processing steps, so that not only can we get a more accurate minimum energy (reaction) pathway, but also a transition state structure :cite:'neb2000'.
 
@@ -1640,7 +1640,7 @@ Finally, the structure optimizer is restarted for the third time, and the Hessia
     (3) The structure obtained by restrictive optimization (regardless of whether it is restricted to Cartesian coordinates or internal coordinates) may (but not necessarily) have imaginary frequencies that cannot be eliminated. In this case, if the number of virtual frequencies is greater than expected, it does not necessarily mean that the current structure is unavailable. By observing the vibration patterns of the virtual frequencies, the user should determine for himself whether the virtual frequencies are caused by the constraints imposed during optimization, and then determine whether these virtual frequencies should be eliminated.
 
 Optimization of conical crossings (CI) and lowest energy crossings (MECP).
--------------------------------------------------------
+--------------------------------------------------------------------------
 .. _CI_MECP:
 
 To optimize CI and MECP, you need to call the DL-FIND external library :cite:'dlfind2009', for which you need to add the following keywords to the input of the BDFOPT module

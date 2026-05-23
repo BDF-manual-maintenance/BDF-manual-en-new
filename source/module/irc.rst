@@ -22,7 +22,7 @@ Sets the direction of the reaction:
 * 0: Simulate both directions
 
 :guilabel:`ircalpha` Parameter Type: Floating-point
-------------------------------------------------
+---------------------------------------------------
  * Default: 0.1
  * Options: Non-negative floating-point numbers
 

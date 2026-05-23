@@ -1,14 +1,14 @@
 .. _azulene-example:
 
 Quantum Theoretical Study of the Anti-Kasha Rule Fluorescence Mechanism in Azulene
-=====================================================
+==================================================================================
 
 According to Kasha's rule, molecular fluorescence or phosphorescence originates from the lowest singlet or triplet state due to rapid non-radiative transitions between higher excited states. Azulene is a classic example that violates Kasha's rule. The fluorescence of azulene originates from the S₂ state, which can be attributed to the large energy gap between S₂→S₁ that reduces the S₂→S₁ internal conversion rate. Additionally, the relatively small energy gap between S₁ and S₀ results in a high internal conversion rate, thereby reducing the fluorescence quantum efficiency of S₁→S₀, making S₁→S₀ fluorescence difficult to observe. Here, using the BDF and MOMAP software, we calculate the radiative rate and internal conversion rate of azulene's S₁→S₀ transition to explain the experimental observation that the extremely low quantum efficiency of azulene's first excited state makes its fluorescence difficult to detect.
 
 The MOMAP calculation for azulene's S₁→S₀ radiative rate and internal conversion rate requires the structural optimization frequency results file, non-adiabatic coupling results file, and parameters from the BDF quantum software. First, we complete the BDF calculation part.
 
 BDF Calculation Part
-----------------
+--------------------
 
 Prepare the xyz file of azulene's molecular structure:
 
@@ -133,7 +133,7 @@ Select the ``bdf.inp`` file, right-click and choose Run to submit the job. After
 At this point, the BDF quantum software calculation part required for MOMAP's calculation of azulene's S₁→S₀ radiative rate and internal conversion rate—including structural optimization frequency result files, non-adiabatic coupling result files, and parameter parts—are all completed.
 
 MOMAP Calculation Part
------------------
+----------------------
 
 After completing the structural optimization, frequency calculation, and non-adiabatic coupling calculation of azulene using BDF quantum software and calculating the parameters needed in the MOMAP input file, we will use MOMAP software to calculate the radiative rate and internal conversion rate of azulene's S₁→S₀ transition. By comparing the radiative rate and internal conversion rate, we explain why azulene's S₁→S₀ fluorescence is difficult to observe.
 
