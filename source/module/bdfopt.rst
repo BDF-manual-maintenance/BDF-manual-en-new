@@ -21,26 +21,31 @@ For energy minimization or transition state searches in redundant internal coord
 * Default: 0
 * Options: 0, 1, 2
 
-Used for multi-state optimization (e.g., conical intersections (CI), intersystem crossings (ISC)). Currently only supported by DL-Find:
+Used for multi-state optimization, e.g., conical intersections (CI), intersystem crossings (ISC),
+which may also be specified by the following keyword ``Multistate`` .
+Currently CI is supported only by DL-Find.
+
 * ``Imulti = 0``: No multi-state optimization (default)
 * ``Imulti = 1``: Optimizes CI/ISC using penalty functions (no non-adiabatic/spin-orbit coupling gradients required)
 * ``Imulti = 2``: Optimizes CI/ISC using gradient projection (requires non-adiabatic coupling for CI; set ``Noncoupl`` to skip spin-orbit coupling gradients for ISC)
 
 :guilabel:`Noncoupl` Parameter Type: Bool
 -----------------------------------------------
-Skips spin-orbit coupling gradient calculations for ISC optimization.
+Skips spin-orbit coupling gradient calculations for the optimization of ISC (i.e. MECP).
 
 :guilabel:`Multistate` Parameter Type: String
 ------------------------------------------------
 * Default: NONE
 * Options: NONE, 2SOC, 3SOC, ..., 9SOC, MECP, CI
 
-Specifies multi-state calculation type. Supported by both DL-Find and BDF optimizers:
+Specifies multi-state calculation type.
+Except for CI only using the DL-Find optimizer, it is supported by both DL-Find and BDF optimizers.
+
 * ``NONE``: Standard single-state optimization/frequency calculation (``1SOC`` is a synonym)
 * ``2SOC`` [ ``chi`` ]: Two-state spin-mixing model using MSSM (Multi-State Spin Mixing) :cite:`Truhlar2018`. Simulates spin-orbit coupling between two spin states to obtain spin-mixed ground states. Supports structure optimization and vibrational frequencies.
 * ``3SOC`` [ ``chi`` ]: MSSM model for three spin states. Similarly, ``4SOC`` [ ``chi`` ] to ``9SOC`` [ ``chi`` ] support up to nine spin-mixed states.
-* ``MECP``: Optimizes minimum energy crossing points between two states (not yet supported)
-* ``CI``: Optimizes conical intersections between two states (not yet supported)
+* ``MECP``: Optimizes minimum energy crossing points between two states.
+* ``CI``: Optimizes conical intersections between two states.
 
 ``chi`` is an optional empirical spin-orbit coupling constant (units: :math:`\rm cm^{-1}`; default: 400):
 * **3d elements**: ``chi`` = 50–400 (results are insensitive; up to 1800 for unsaturated bonding) :cite:`Takayanagi2018,Truhlar2018`

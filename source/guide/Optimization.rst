@@ -1643,14 +1643,10 @@ Optimization of conical crossings (CI) and lowest energy crossings (MECP).
 --------------------------------------------------------------------------
 .. _CI_MECP:
 
-To optimize CI and MECP, you need to call the DL-FIND external library :cite:'dlfind2009', for which you need to add the following keywords to the input of the BDFOPT module
-
-.. code-block:: bdf
-
-    solver
-     0
-
-Correspondingly, the ''solver 1'' in each of the above studies means that the BDF's built-in structural optimization code is used instead of DL-FIND for optimization. In principle, DL-FIND can also be used to optimize minimum points and transition states, but the efficiency is generally not as good as that of BDF's own code, so DL-FIND should only be called for tasks that are not supported by BDF's built-in code, such as CI and MECP optimization.
+To optimize CI, you need to call the DL-FIND external library :cite:`dlfind2009` , for which you need to set
+the ``solver`` keyword to 0 to the input of the BDFOPT module, or leave it unspecified.
+Correspondingly, the ``solver`` = 1 means that the BDF's built-in optimizer is used instead of DL-FIND for optimization.
+In principle, DL-FIND can also be used to optimize minimum points and transition states, but the efficiency is generally not as good as that of BDF's own code, so DL-FIND should only be called for tasks that are not supported by BDF's built-in code, such as the CI optimization.
 
 The following is an example input for CI optimization, which calculates the conical intersection of the T1 and T2 states of ethylene:
 
@@ -1666,12 +1662,12 @@ The following is an example input for CI optimization, which calculates the coni
     Basis
        6-31G
     Geometry
-     C                  0.00107880   -0.00318153    1.43425054
-     C                  0.00066030    0.00195132   -1.43437339
-     H 0.05960990 -0.89114967 0.84012371
-     H -0.05830329 0.95445870 0.96064844
-     H 0.05950228 0.89180839 -0.84311032
-     H -0.06267534 -0.95390169 -0.95768311
+     C             0.00105315     -0.00093169      1.39922525
+     C             0.00050809     -0.00028384     -1.39806728
+     H             0.06224101     -0.93329897      0.85576072
+     H            -0.06090876      0.99435816      0.98003673
+     H             0.06239763      0.93551513     -0.85894555
+     H            -0.06541848     -0.99537328     -0.97815399
     END geometry
     nosymm
     $END
@@ -1764,7 +1760,7 @@ The following is an example input for CI optimization, which calculates the coni
      1 1 1 1 1 2
     $end
 
-Note that this task not only needs to calculate the gradient of T1 and T2 states, but also needs to calculate the non-adiabatic coupling vector between T1 and T2 states (completed by the last RESP module), and the relevant keywords can be found in :d oc:'tddft', which will not be repeated here. In the input of the BDFOPT module, ''imulti 2''' stands for Optimized CI. Similar to normal structure optimization tasks, CI optimization outputs the gradient and step length convergence for each step, as well as the energy convergence. For example, the output of the last optimization step of the above study is:
+Note that this task not only needs to calculate the gradient of T1 and T2 states, but also needs to calculate the non-adiabatic coupling vector between T1 and T2 states (completed by the last RESP module), and the relevant keywords can be found in :ref:`tddft-module` , which will not be repeated here. In the input of the BDFOPT module, ``imulti 2`` stands for Optimized CI. Similar to normal structure optimization tasks, CI optimization outputs the gradient and step length convergence for each step, as well as the energy convergence. For example, the output of the last optimization step of the above study is:
 
 .. code-block::
 
@@ -1777,9 +1773,9 @@ Note that this task not only needs to calculate the gradient of T1 and T2 states
     Converged!
      converged
 
-Similar to the above-mentioned optimization tasks, the convergent CI structure is stored in the .optgeom file with Bohr coordinates. Note that the value of the energy row is always displayed as 0, which does not mean that the energy of the system remains unchanged during CI optimization, but because the convergence of energy will not be used to determine whether the convergence is used in the optimization CI. For the same reason, the keyword "tolene" is not useful for CI optimization (and MECP optimization below).
+Similar to the above-mentioned optimization tasks, the convergent CI structure is stored in the .optgeom file with Bohr coordinates. Note that the value of the energy row is always displayed as 0, which does not mean that the energy of the system remains unchanged during CI optimization, but because the convergence of energy will not be used to determine whether the convergence is used in the optimization CI. For the same reason, the keyword ``tolene`` is not useful for CI optimization (and MECP optimization below).
 
-Here's an example input file for optimizing MECP:
+Here's an example input file for the MECP optimization using DL-FIND:
 
 .. code-block:: bdf
 
@@ -1795,10 +1791,10 @@ Here's an example input file for optimizing MECP:
     Geometry
     C            -0.00000141      0.00000353      0.72393424
     C             0.00000417     -0.00000109     -0.72393515
-    H 0.73780975 -0.54421247 1.29907106
-    H -0.73778145 0.54421417 1.29907329
-    H 0.73777374 0.54421576 -1.29907129
-    H -0.73779427 -0.54423609 -1.29906321
+    H             0.73780975     -0.54421247      1.29907106
+    H            -0.73778145      0.54421417      1.29907329
+    H             0.73777374      0.54421576     -1.29907129
+    H            -0.73779427     -0.54423609     -1.29906321
     END geometry
     nosymm
     $END
@@ -1856,7 +1852,7 @@ Here's an example input file for optimizing MECP:
      1
     $end
 
-The keywords ''imulti 2'' and ''noncouple'' are specified for MECP optimization. Note that the MECP optimization task only needs to compute the gradient of the two states (in this case, the S0 state and the T1 state), and does not need to calculate the non-adiabatic coupling vector. The output of the MECP optimization task is similar to that of the CI optimization task, and will not be repeated here.
+The keywords ``imulti 2`` and ``noncouple`` are specified for MECP optimization. Note that the MECP optimization task only needs to compute the gradient of the two states (in this case, the S0 state and the T1 state), and does not need to calculate the non-adiabatic coupling vector. The output of the MECP optimization task is similar to that of the CI optimization task, and will not be repeated here.
 
 Geometry Optimization FAQs
 -------------------------------------------------------

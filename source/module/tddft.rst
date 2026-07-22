@@ -1,3 +1,6 @@
+
+.. _tddft-module:
+
 Time-Dependent Density Functional Theory - TDDFT Module
 =======================================================
 The TDDFT module calculates molecular excited states by solving the Casida equation based on linear response theory. It supports TDDFT (including TDHF), TDA (including CIS), and can handle closed-shell or open-shell ground states. For open-shell ground states, it supports both traditional U-TDDFT and the spin-matched SA-TDDFT (also known as X-TDDFT), the latter being a distinctive feature of BDF. Additionally, BDF supports spin-flip (SF-)TDDFT methods, including spin-up-flip and spin-down-flip TDDFT, for calculating excited states with spin multiplicities different from the ground state.
