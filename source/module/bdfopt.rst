@@ -23,7 +23,6 @@ For energy minimization or transition state searches in redundant internal coord
 
 Used for multi-state optimization, e.g., conical intersections (CI), intersystem crossings (ISC),
 which may also be specified by the following keyword ``Multistate`` .
-Currently CI is supported only by DL-Find.
 
 * ``Imulti = 0``: No multi-state optimization (default)
 * ``Imulti = 1``: Optimizes CI/ISC using penalty functions (no non-adiabatic/spin-orbit coupling gradients required)
@@ -36,7 +35,7 @@ Skips spin-orbit coupling gradient calculations for the optimization of ISC (i.e
 :guilabel:`Multistate` Parameter Type: String
 ------------------------------------------------
 * Default: NONE
-* Options: NONE, 2SOC, 3SOC, ..., 9SOC, MECP, CI
+* Options: NONE, 2SOC, 3SOC, ..., 9SOC, MECP, CI-NAC, CI-pen
 
 Specifies multi-state calculation type.
 Except for CI only using the DL-Find optimizer, it is supported by both DL-Find and BDF optimizers.
@@ -45,7 +44,10 @@ Except for CI only using the DL-Find optimizer, it is supported by both DL-Find 
 * ``2SOC`` [ ``chi`` ]: Two-state spin-mixing model using MSSM (Multi-State Spin Mixing) :cite:`Truhlar2018`. Simulates spin-orbit coupling between two spin states to obtain spin-mixed ground states. Supports structure optimization and vibrational frequencies.
 * ``3SOC`` [ ``chi`` ]: MSSM model for three spin states. Similarly, ``4SOC`` [ ``chi`` ] to ``9SOC`` [ ``chi`` ] support up to nine spin-mixed states.
 * ``MECP``: Optimizes minimum energy crossing points between two states.
-* ``CI``: Optimizes conical intersections between two states.
+* ``CI-NAC``: Optimizes conical intersection (CI) between two states using the projected gradient algorithm,
+  which requires additional calculation of the nonadiabatic coupling (NAC) gradient vector.
+* ``CI-pen``: Optimizes CI between two states using the penalty function algorithm,
+  where the NAC gradient vector is not needed.
 
 ``chi`` is an optional empirical spin-orbit coupling constant (units: :math:`\rm cm^{-1}`; default: 400):
 * **3d elements**: ``chi`` = 50–400 (results are insensitive; up to 1800 for unsaturated bonding) :cite:`Takayanagi2018,Truhlar2018`

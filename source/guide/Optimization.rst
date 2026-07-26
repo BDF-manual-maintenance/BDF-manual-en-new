@@ -1643,10 +1643,21 @@ Optimization of conical crossings (CI) and lowest energy crossings (MECP).
 --------------------------------------------------------------------------
 .. _CI_MECP:
 
-To optimize CI, you need to call the DL-FIND external library :cite:`dlfind2009` , for which you need to set
-the ``solver`` keyword to 0 to the input of the BDFOPT module, or leave it unspecified.
-Correspondingly, the ``solver`` = 1 means that the BDF's built-in optimizer is used instead of DL-FIND for optimization.
-In principle, DL-FIND can also be used to optimize minimum points and transition states, but the efficiency is generally not as good as that of BDF's own code, so DL-FIND should only be called for tasks that are not supported by BDF's built-in code, such as the CI optimization.
+There are two keywords for optimizing CI and MECP:
+
+#. Using the keyword ``multistate`` for multi-state calculation, with the option
+   ``MECP``, ``CI-NAC``, or ``CI-pen`` specified on the next line.
+   Here, ``CI-pen`` refers to the penalty function algorithm for CI,
+   which does not require additional calculation of the nonadiabatic coupling (NAC) gradient vector.
+#. Using the obsolete keyword ``imulti``, setting it to 1 (corresponding to ``CI-pen``) or
+   2 (corresponding to ``CI-NAC``). For the optimization of MECP, the keyword ``noncouple`` must be
+   appended after ``imulti`` = 2. Although the penalty function algorithm may also be used to optimize MECP,
+   its performance is poor.
+
+Optimization of CI and MECP can be performed using either the external library DL-FIND :cite:`dlfind2009`
+or BDF's built-in optimizer (which requires setting ``solver`` to 1).
+Due to the different effective gradient formulas adopted in the two optimizers,
+there will be some differences in the final results.
 
 The following is an example input for CI optimization, which calculates the conical intersection of the T1 and T2 states of ethylene:
 
@@ -1673,13 +1684,13 @@ The following is an example input for CI optimization, which calculates the coni
     $END
 
     $bdfopt
-    imulti # Optimize CI
+    imulti    # Optimize CI
      2
-    maxcycle           # Maximum number of optimization steps
+    maxcycle  # Maximum number of optimization steps
      50
-    Tolgrad # Convergence criterion for root mean square gradient
+    Tolgrad   # Convergence criterion for root mean square gradient
      1.d-4
-    Tolstep # Convergence criterion for root mean square step size
+    Tolstep   # Convergence criterion for root mean square step size
      5.d-3
     $end
 
@@ -1800,15 +1811,15 @@ Here's an example input file for the MECP optimization using DL-FIND:
     $END
 
     $bdfopt
-    Multi
+    imulti
      2
+    noncouple
     maxcycle
      50
     tolgrad
      1.d-4
     tolstep
      5.d-3
-    noncouple
     $end
 
     $xuanyuan
