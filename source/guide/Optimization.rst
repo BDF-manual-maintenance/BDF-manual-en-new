@@ -1656,6 +1656,9 @@ There are two keywords for optimizing CI and MECP:
 
 Optimization of CI and MECP can be performed using either the external library DL-FIND :cite:`dlfind2009`
 or BDF's built-in optimizer (which requires setting ``solver`` to 1).
+The effective gradients used for the former are described in Ref. :cite:`MECIopt2007` , while the latter adopts
+the definitions of effective gradients from Refs. :cite:`MECP1998` ( ``MECP`` ), :cite:`MECI2008` ( ``CI-NAC`` ),
+and :cite:`MECI-pen2008` ( ``CI-pen`` ).
 Due to the different effective gradient formulas adopted in the two optimizers,
 there will be some differences in the final results.
 
