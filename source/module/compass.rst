@@ -19,7 +19,10 @@ Specifies the name of the basis set used for the calculation. BDF basis sets are
 
 :guilabel:`Basis-block` Parameter Type: String
 ----------------------------------------------
-Allows specifying different basis sets for different elements. The first line is the default basis set. Subsequent lines assign other basis sets to specific elements or atoms using the format **element=basisname** or **element1,element2, ...,elementn=basisname**. Must end with ``End Basis``.
+Allows specifying different basis sets for different elements.
+The first line is the default basis set, but it is not mandatory.
+Subsequent lines assign other basis sets to specific elements or atoms using the format
+**element=basisname** or **element1,element2, ...,elementn=basisname**. Must end with ``End Basis``.
 
 .. code-block:: bdf
 

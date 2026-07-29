@@ -896,7 +896,8 @@ Easy input does not support custom or mixed basis sets, you must use mixed input
 ``method/functional/basis set``, and add the **COMPASS** module input, using the ``basis-block`` ... ``end basis`` keyword to specify the basis set.
 
 If you specify a basis set with different names for different elements, you need to put it in the  ``basis-block`` ... ``end basis`` block of the **COMPASS module,
-The first line is the default basis set, and the following lines specify other basis sets for different elements, in the format
+The first line is the default basis set which is optional,
+and the following lines specify other basis sets for different elements, in the format
 *element=basissetname* or *element1, element2, ..., elementn=basissetnam*.
 
 For example, in mixed input mode, the following is an example of using different basis sets for different atoms:
@@ -1027,8 +1028,9 @@ in the data area between ``inline`` ... ``end line`` . For example:
 
 In the definition of the LiF molecular system above, Li and F use the all-electron 3-21G basis set and
 the Pitzer-cc-pVDZ-PP pseudopotential basis set, respectively, but they are not read from the standard basis set library;
-instead, the basis set data is provided directly in the input file. The default basis set STO-3G is also defined in the example,
-which is only to meet the formatting requirements of ``basis-block`` ... ``end basis`` and is not used in the actual calculations.
+instead, the basis set data is provided directly in the input file.
+The default basis set STO-3G is also defined in the example
+but is not used in the actual calculations; therefore, it can be deleted.
 
 
 **Specify different basis sets for different atoms of the same element**
