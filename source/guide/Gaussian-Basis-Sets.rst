@@ -18,14 +18,19 @@ Common quantum chemistry basis functions:
 BDF initially used STOs but now primarily uses GTOs.
 
 For angular momentum *L* > *p* (e.g., *d*, *f*), GTOs have two representations:
+
 1. **Cartesian functions**:
+
    .. math::
       N x^{lx} y^{ly} z^{lz} {\rm exp}(-\alpha r^2),  \qquad L=lx+ly+lz
-   With :math:`(L+1)(L+2)/2` components (e.g., *d*: xx, yy, zz, xy, xz, yz).
+
+   with :math:`(L+1)(L+2)/2` components (e.g., *d*: xx, yy, zz, xy, xz, yz).
 2. **Spherical harmonics (pure functions)**:
+
    .. math::
       N Y^L_m r^L {\rm exp}(-\alpha r^2)
-   With :math:`2L+1` components (e.g., *d*: -2, -1, 0, +1, +2).
+
+   with :math:`2L+1` components (e.g., *d*: -2, -1, 0, +1, +2).
 
 Cartesian functions are easy to be used in integral calculations but are redundant. Spherical harmonics correspond directly to anglular momentum quantum numbers, so integrals are usually computed in Cartesian form then transformed to Spherical form:cite:`schlegel1995`.
 
@@ -442,12 +447,12 @@ This approach significantly reduces computation time while effectively incorpora
 Stuttgart series, and cc-pVnZ-PP series belong to this category. For convenience, pseudopotential basis sets for lighter elements
 are essentially non-relativistic all-electron basis sets, such as the Def2 series before the 5th period.
 
-## Scalar vs. Spin-Orbit Coupling Pseudopotentials
---------------------------------------------------
-Pseudopotential basis sets are categorized into **scalar pseudopotential basis sets** and **spin-orbit coupling pseudopotential (SOECP) basis sets** based on whether they include spin-orbit coupling terms.
+.. _soecp-bas:
 
-Pseudopotential basis sets are categorized into **scalar pseudopotential basis sets** and **spin-orbit coupling pseudopotential (SOECP) basis sets**
-based on whether they include spin-orbit coupling terms.
+Scalar vs. Spin-Orbit Coupling Pseudopotentials
+--------------------------------------------------
+
+Pseudopotential basis sets are categorized into **scalar pseudopotential basis sets** and **spin-orbit coupling pseudopotential (SOECP) basis sets** based on whether they include spin-orbit coupling terms.
 
 .. table:: Standard Pseudopotential Basis Sets in BDF
     :widths: auto
@@ -656,55 +661,14 @@ with scalar relativistic effects accounted for through the Wood-Boring approxima
     | | MWB-FICm3-AVQZ            |                        |                                        |
     +-----------------------------+------------------------+----------------------------------------+
 
-## Aliases and Abbreviations for Standard Basis Sets
+Aliases and Abbreviations for Standard Basis Sets
 ----------------------------------------------------
-Some basis sets support aliases:
-- Pople 6- series: Suffixes P/PP can be replaced with * (e.g., `6-311++G**` = `6-311++GPP`)
-- Def2 series: Hyphens can be omitted (e.g., `def2-SVP` = `def2SVP`)
-- Correlation-consistent: 
-  - `cc-pVnZ` → `vnz` (e.g., `vdz` = `cc-pVDZ`)
-  - `aug-cc-pVnZ` → `avnz` (e.g., `avtz` = `aug-cc-pVTZ`)
-  - `aug-cc-pwCVnZ-DK` → `awcvtz-dk`
-  
-.. warning:: Use these abbreviations **only in BDF input files**, not in formal publications.
 
-## Custom Basis Set Files
-------------------------------------------------
-BDF supports non-built-in basis sets via custom text files placed in the working directory. The filename (all uppercase) serves as the basis set name.
-
-### Example: `MYBAS-1`
-```text
-# Custom basis for He and Al
-****
-
-He      2    1
-S      4    2
-        3.836000E+01
-        5.770000E+00
-        1.240000E+00
-        2.976000E-01
-       2.380900E-02   0.000000E+00
-       1.548910E-01   0.000000E+00
-       4.699870E-01   0.000000E+00
-       5.130270E-01   1.000000E+00
-P      2    2
-        1.275000E+00
-        4.000000E-01
-       1.0000000E+00  0.000000E+00
-       0.0000000E+00  1.000000E+00
-****
-
-Al     13    2
-(Section for Al - similar format)
 In addition to the above standard names, some basis sets in the basis sets library can also use their aliases and abbreviations. The rules are as follows:
 
 * In the Pople basis sets of the 6-series, the suffixes P and PP representing the polarization function can be indicated by an asterisk. For example, 6-311 G** is equivalent to 6-311 GPP.
 * The hyphen "-" for the def2-series basis sets can be omitted. For example, def2-SVP can be written as def2SVP.
-* In the correlation consistency basis sets, "cc-pV", "cc-pCV", and "cc-pwCV" can be abbreviated as V, CV, WCV, respectively.
-
-The prefix "aug-" for the diffusion function can be abbreviated as A (case-insensitive).
-For example, vdz stands for cc-pVDZ, awcvtz-dk stands for aug-cc-pwCVTZ-DK, and so on. It should be noted that this abbreviation of the basis sets name should be only used in BDF input. Do not use them in formal publications and reports to avoid confusion among readers.
-=======
+* In the correlation consistency basis sets, "cc-pV", "cc-pCV", and "cc-pwCV" can be abbreviated as V, CV, WCV, respectively. The prefix "aug-" for the diffusion function can be abbreviated as A (case-insensitive). For example, vdz stands for cc-pVDZ, awcvtz-dk stands for aug-cc-pwCVTZ-DK, and so on. It should be noted that this abbreviation of the basis sets name should be only used in BDF input. Do not use them in formal publications and reports to avoid confusion among readers.
 
 .. _SelfdefinedBasis:
 
@@ -895,7 +859,7 @@ where ``lanl2dz`` calls the built-in LanL2DZ basis set (registered in the  ``bas
 Easy input does not support custom or mixed basis sets, you must use mixed input mode, that is, set the basis set to  ``genbas``  in the
 ``method/functional/basis set``, and add the **COMPASS** module input, using the ``basis-block`` ... ``end basis`` keyword to specify the basis set.
 
-If you specify a basis set with different names for different elements, you need to put it in the  ``basis-block`` ... ``end basis`` block of the **COMPASS module,
+If you specify a basis set with different names for different elements, you need to put it in the  ``basis-block`` ... ``end basis`` block of the **COMPASS** module,
 The first line is the default basis set which is optional,
 and the following lines specify other basis sets for different elements, in the format
 *element=basissetname* or *element1, element2, ..., elementn=basissetnam*.
@@ -947,7 +911,8 @@ If it's an advanced input, look like this:
 **Provide basis set data in the input file explicitly** 
 
 If you are using a custom non-standard basis set, in addition to editing a basis set file (see the previous section),
-you can also write the basis set data for each element or atom type (i.e., the part between the two lines of **** in the basis set file)
+you can also write the basis set data for each element or atom type (i.e., the part between the two lines of
+\*\*\*\* in the basis set file)
 in the data area between ``inline`` ... ``end line`` . For example:
 
 .. code-block:: bdf

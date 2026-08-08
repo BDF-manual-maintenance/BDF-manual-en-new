@@ -88,7 +88,8 @@ Specifies optimization target. For DL-Find, aligns with DL-Find's IOpt (common: 
 * Options: Non-zero real
 * Range: 0.005–0.5 or -0.5–-0.005
 
-Sets trust radius. Positive values: initial trust radius = r (dynamically adjusted). Negative values: initial trust radius = |r| (never exceeds |r|).
+Sets trust radius. Positive values: initial trust radius = r (dynamically adjusted).
+Negative values: initial trust radius = \|r\| (never exceeds \|r\|).
 
 :guilabel:`Update` Parameter Type: Integer
 ------------------------------------------------
@@ -287,7 +288,7 @@ Modifies CI-NEB parameters (end with ``End NEB``):
 :guilabel:`NFrame` Parameter Type: Integer
 ---------------------------------------------------
 * Default: 1
-* Options: 1 to ``NImage``+1 (CI-NEB)
+* Options: 1 to ``NImage`` +1 (CI-NEB)
 
 Number of coordinates in ``Geometry2``. Must precede ``Geometry2``.
 

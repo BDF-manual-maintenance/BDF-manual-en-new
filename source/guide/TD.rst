@@ -38,7 +38,7 @@ Calculate the excitation energy of the :math:'\ce{H2O}' molecule using TDDFT as 
   R1=1.0       # OH bond length in angstrom
   end geometry
 
-Here, the keyword ''TDDFT/B3lyp/cc-pvdz'' specifies that the TDDFT calculation is performed with the functional '''B3lyp'' and the basis set ''cc-pVDZ''.
+Here, the keyword ``TDDFT/B3lyp/cc-pvdz`` specifies that the TDDFT calculation is performed with the functional ``B3lyp`` and the basis set ``cc-pVDZ``.
 The corresponding adavanced input is:
 
 .. code-block:: bdf
@@ -182,8 +182,8 @@ The output of the Kohn-Sham computation has already been described, and here we 
 
 Over here
 
-* ''R-TD-DFT'' indicates that TDDFT is being computed based on the restriced ground state wave function;
-* ''isf= 0'' means that the calculation does not flip the spin;
+* ``R-TD-DFT`` indicates that TDDFT is being computed based on the restriced ground state wave function;
+* ``isf= 0`` means that the calculation does not flip the spin;
 
 ``ialda= 0`` indicates that the Full non-collinear Kernel is used, which is the default Kernel for non-spin-flipped TDDFT.
 
@@ -339,20 +339,20 @@ As you can see from the first line of the output above, the computation converge
 
 where the information in line 1,
 
-* ``No.     1 w= 9.3784 eV'' means that the first excited state excitation energy is ''9.3784 eV'';
-* ''-76.0358398606 a.u.'' gives the total energy of the first excited state;
-* ''f= 0.0767'' gives the oscillator strength of the transition between the first excited state and the ground state;
-* ''D<Pab>= 0.0000'' is the difference between the <S^2> of the excited state and the <S^2> of the ground state (for the spin-conserved transition, this value reflects the degree of spin pollution in the excited state; For spin flipping transitions, the difference between this value and the theoretical value ''S(S+1)(excited state)-S(S+1)(ground state)'' reflects the degree of spin pollution in the excited state);
-* ''Ova= 0.5201'' is the absolute overlap integral (the value range is [0,1], the closer the value is to 0, the more obvious the charge transfer characteristic of the corresponding excited state, otherwise, the more obvious the local excitation feature).
+* ``No.     1 w= 9.3784 eV`` means that the first excited state excitation energy is ``9.3784 eV``;
+* ``-76.0358398606 a.u.`` gives the total energy of the first excited state;
+* ``f= 0.0767`` gives the oscillator strength of the transition between the first excited state and the ground state;
+* ``D<Pab>= 0.0000`` is the difference between the <S^2> of the excited state and the <S^2> of the ground state (for the spin-conserved transition, this value reflects the degree of spin pollution in the excited state; For spin flipping transitions, the difference between this value and the theoretical value ``S(S+1)(excited state)-S(S+1)(ground state)`` reflects the degree of spin pollution in the excited state);
+* ``Ova= 0.5201`` is the absolute overlap integral (the value range is [0,1], the closer the value is to 0, the more obvious the charge transfer characteristic of the corresponding excited state, otherwise, the more obvious the local excitation feature).
 
 Lines 2 and 3 give the information about main excited configurations
 
-* ''CV(0):'' where CV(0) indicates that the excitation is a Core to Virtual orbital excitation, and 0 indicates a Singlet excitation;
-* ''A1(3)-> A1(4)'' gives the occupy-virtual orbital pair of the electron transition, and the electron is exciteed from the 3rd orbital of A1 to the 4th orbital of A1, combined with the output orbital information above, it can be seen that this is the excitation from HOMO-2 to LUMO;
-* ''c_i: 0.9883'' indicates that the linear combination coefficient of the transition in the whole excited state is 0.9883;
-* ''Per: 97.7%'' indicates that the excitation configuration accounts for 97.7%;
-* ''IPA: 10.736 eV'' represents that the energy difference between the two orbitals involved in this transition is 10.736 eV;
-* ''Oai: 0.5163'' means that if the excited state is contributed by only this one transition, then the absolute overlap integral of the excited state is 0.5001, from which it is easy to know which transitions are locally excited and which are charge-transfer excitations.
+* ``CV(0):`` where CV(0) indicates that the excitation is a Core to Virtual orbital excitation, and 0 indicates a Singlet excitation;
+* ``A1(3)-> A1(4)`` gives the occupy-virtual orbital pair of the electron transition, and the electron is exciteed from the 3rd orbital of A1 to the 4th orbital of A1, combined with the output orbital information above, it can be seen that this is the excitation from HOMO-2 to LUMO;
+* ``c_i: 0.9883`` indicates that the linear combination coefficient of the transition in the whole excited state is 0.9883;
+* ``Per: 97.7%`` indicates that the excitation configuration accounts for 97.7%;
+* ``IPA: 10.736 eV`` represents that the energy difference between the two orbitals involved in this transition is 10.736 eV;
+* ``Oai: 0.5163`` means that if the excited state is contributed by only this one transition, then the absolute overlap integral of the excited state is 0.5001, from which it is easy to know which transitions are locally excited and which are charge-transfer excitations.
 
 
 After all irreducible representations are solved, all excited states will be summarized according to the energy level, and the corresponding oscillator strength and other information will be printed.
@@ -397,9 +397,9 @@ Open-shell systems can be calculated using U-TDDFT, e.g., for :math:'\ce{H2O+}' 
 
 Here, the key words
 
-* ''iroot=4'' specifies that 4 roots are calculated for each irreducible representation;
-* ''charge=1'' specifies that the charge of the system is +1;
-* ''group=C(1)'' specifies that the C1 point group is forced to be used for calculation.
+* ``iroot=4`` specifies that 4 roots are calculated for each irreducible representation;
+* ``charge=1`` specifies that the charge of the system is +1;
+* ``group=C(1)`` specifies that the C1 point group is forced to be used for calculation.
 
 The corresponding advanced input is,
 
@@ -438,8 +438,8 @@ The corresponding advanced input is,
 
 A few details to note for this input are:
 
-* In the ''compass'' module, the keyword ''group'' is used to force the calculation to use the ''C(1)'' point group;
-* ''scf'' module sets ''UKS'' to calculate, ''charge'' is ''1'', ''spinmulti'' (spin multiplicity, 2S+1)=2;   
+* In the ``compass`` module, the keyword ``group`` is used to force the calculation to use the ``C(1)`` point group;
+* ``scf`` module sets ``UKS`` to calculate, ``charge`` is ``1``, ``spinmulti`` (spin multiplicity, 2S+1)=2;   
 * The iroot of the tddft module is set to calculate 4 roots for each irreducible representation, and the first four excited states of the cation given are calculated due to the C1 symmetry.
 
 As can be seen from the following output, the U-TDDFT calculation is performed:
@@ -469,7 +469,7 @@ The four excited states of the summary output are ,
     3   A    4   A   12.0991 eV        102.47 nm   0.0028   1.9312  65.8% CV(bb):   A(   4 )->   A(   6 )  14.637 0.493    9.9032
     4   A    5   A   13.3618 eV         92.79 nm   0.0174   0.0004  97.6% CV(aa):   A(   4 )->   A(   6 )  15.624 0.419   11.1659
 
-The D<S^2>'' value of the third excited state is larger, indicating that there is a spin pollution problem.
+The ``D<S^2>`` value of the third excited state is larger, indicating that there is a spin pollution problem.
 
 
 Open shell system: X-TDDFT (also known as SA-TDDFT)
@@ -570,7 +570,7 @@ The excited state output is,
    39 B3g 5 B3g 22.1001 eV 56.10 nm 0.0000 0.0031 99.2% OV(0): Ag( 3)-> B3g( 2 ) 23.220 0.204 21.3099
    40 B1g 5 B1g 23.4663 eV 52.84 nm 0.0000 0.0027 99.8% OV(0): Ag( 3)-> B1g( 1 ) 25.135 0.283 22.6761
 
-Here, the 4th, 6th, and 7th excited states are all CV(1) states. Note that the 'D<S^2>'' values calculated by X-TDDFT are calculated according to the formula of U-TDDFT, which can approximate the degree of spin contaimination of the resulting states if these states are calculated by U-TDDFT, but does not represent the actual degree of spin contaimination of these states, because X-TDDFT can ensure that all excited states are strictly free of spin contaimination. Therefore, if the value of D<S^2>'' of a state calculated by X-TDDFT is large, it does not indicate that the results of this state are unreliable, but on the contrary, it means that X-TDDFT is much better than that of U-TDDFT for this state.
+Here, the 4th, 6th, and 7th excited states are all CV(1) states. Note that the ``D<S^2>`` values calculated by X-TDDFT are calculated according to the formula of U-TDDFT, which can approximate the degree of spin contaimination of the resulting states if these states are calculated by U-TDDFT, but does not represent the actual degree of spin contaimination of these states, because X-TDDFT can ensure that all excited states are strictly free of spin contaimination. Therefore, if the value of ``D<S^2>`` of a state calculated by X-TDDFT is large, it does not indicate that the results of this state are unreliable, but on the contrary, it means that X-TDDFT is much better than that of U-TDDFT for this state.
 
 The triplet excited state was calculated by using the closed-shell singlet state as the reference state
 -------------------------------------------------------------------------------------------------------
@@ -655,7 +655,7 @@ At the end of the TDDFT calculation, the output information is as follows:
        3       0.0000       0.0000       0.0000       0.0000       0.0000
        4       0.0000       0.0000       0.0000       0.0000       0.0000
 
-Among them, ''Spin change: isf= 1'' indicates that the state with spin multiplicity greater than the ground state by 2 (i.e., triplet state) is calculated, because the ground state is a singlet state, and the transition from the ground state to the excited state is spin-forbidden, so the oscillator strength and transition dipole moment are both 0.
+Among them, ``Spin change: isf= 1`` indicates that the state with spin multiplicity greater than the ground state by 2 (i.e., triplet state) is calculated, because the ground state is a singlet state, and the transition from the ground state to the excited state is spin-forbidden, so the oscillator strength and transition dipole moment are both 0.
 
 By default, TDDFT only calculates the excited state that has the same spin multiplicity with the reference state, for example, the ground state of the molecule is a singlet state, and the TDDFT value calculates the singlet excited state, if you want to calculate both a singlet and a triplet state, the input is:
 
@@ -700,12 +700,12 @@ The output of the triplet state is:
     7 A2 2 A2 21.8438 eV 56.76 nm 0.0000 2.0000 99.5% CV(1): B2( 1 )-> B1( 3 ) 24.716 0.418 14.4255
     ...
 
-Since the singlet to triplet transition is dipole forbidden, the oscillator strength ''f=0.0000'''.
+Since the singlet to triplet transition is dipole forbidden, the oscillator strength ``f=0.0000``.
 
 Spin-flip TDDFT calculations
 ----------------------------------------------------------
 
-BDF can not only calculate triplet states from singlet states, but also from **2S+1** states with higher spin multiplicity (S = 1/2, 1, 3/2, ... ) to start and flip the spin upwards to calculate the **2S+3** state; The **TDDFT/TDA** of the spin upturn gives the transition state of the alpha electron to the unoccupied beta orbital with the double occupancy orbital, labeled as ''CV(1)'' excitation. Unlike the case where the ground state is a closed-shell singlet, the BDF calculates the **2S+3** state :math:'M_S = S+1' components, so when the ground state is not a closed-shell singlet, the calculation can be called a spin-flipped TDDFT calculation. The input file format for the TDDFT calculation with spin-up flipping is exactly the same as when the ground state is a closed-shell singlet state and the triplet excited state is calculated, for example, the following input file uses the doublet state as the reference state to calculate the quadruple excited state:
+BDF can not only calculate triplet states from singlet states, but also from **2S+1** states with higher spin multiplicity (S = 1/2, 1, 3/2, ... ) to start and flip the spin upwards to calculate the **2S+3** state; The **TDDFT/TDA** of the spin upturn gives the transition state of the alpha electron to the unoccupied beta orbital with the double occupancy orbital, labeled as ``CV(1)`` excitation. Unlike the case where the ground state is a closed-shell singlet, the BDF calculates the **2S+3** state :math:'M_S = S+1' components, so when the ground state is not a closed-shell singlet, the calculation can be called a spin-flipped TDDFT calculation. The input file format for the TDDFT calculation with spin-up flipping is exactly the same as when the ground state is a closed-shell singlet state and the triplet excited state is calculated, for example, the following input file uses the doublet state as the reference state to calculate the quadruple excited state:
 
 .. code-block:: bdf
 
@@ -723,7 +723,7 @@ BDF can not only calculate triplet states from singlet states, but also from **2
    1
   $end
 
-In addition, BDF can also start from the triplet state and flip the spin downwards to calculate the singlet state, in which case ''isf'' needs to be set to ''-1''. Of course, it is also possible to flip down from a state with a higher spin multiplicity to calculate a state with less spin multiplicity of 2. It should be noted that the **TDDFT/TDA** of spin downflip can only correctly describe the electronic state of the transition from the alpha orbital occupied by the open shell to the beta orbital occupied by the open shell, and is labeled as the **OO(ab)** transition, and the states of other transition types have spin contaimination problems.
+In addition, BDF can also start from the triplet state and flip the spin downwards to calculate the singlet state, in which case ``isf`` needs to be set to ``-1``. Of course, it is also possible to flip down from a state with a higher spin multiplicity to calculate a state with less spin multiplicity of 2. It should be noted that the **TDDFT/TDA** of spin downflip can only correctly describe the electronic state of the transition from the alpha orbital occupied by the open shell to the beta orbital occupied by the open shell, and is labeled as the **OO(ab)** transition, and the states of other transition types have spin contaimination problems.
 
 Starting from the triplet state, invert the spin downwards to calculate the singlet state, and the input is:
 
@@ -953,7 +953,7 @@ That is, the 100 spin-conserved excited states with the lowest energy are calcul
 The approximated methods for calculating the absorption spectra of large systems: sTDA, sTDDFT
 ----------------------------------------------------------------------------------------------
 
-Traditional TDDFT methods often encounter severe CPU and memory bottlenecks when calculating the absorption spectra of large systems (e.g., hundreds of atoms), resulting in the computation not being completed within a given computation time and memory constraints. This is not only because of the more computational resources required to compute each excited state, but also because the larger the system, the greater the number of excited states in a certain wavelength range (e.g., visible region). Therefore, if the absorption spectrum is to be calculated in a given wavelength range, the time and memory consumption required for TDDFT computation not only increases rapidly with the size of the system, but also increases with the ratio of the time and memory required to the SCF step as the system size increases. That is, when the system is large enough, even if only the TDDFT step is approximated, but not the SCF step, a great speedup can be obtained and a lot of memory can be saved. As mentioned above, the iVI method can reduce the memory required for TDDFT calculation to a certain extent without introducing any errors. The MPEC+COSX method <MPECCOSX> reduces the calculation time of TDDFT to about 1/10~1/3 (depending on the size of the basis set and the size of the system) at the cost of introducing a very small (generally less than 0.01 eV) error. However, if the requirements for the accuracy of the results are lower, for example, even an error of the order of 0.2 eV is acceptable, the sTDA and sTDDFT sTDA_RSH methods developed by Grimme's group can be used to accelerate the TDDFT calculation, which can be tens to hundreds of times faster than ordinary TDDFT. In BDF, the ''grimmestd'' keyword can be used to specify the use of the sTDA or sTDDFT method.
+Traditional TDDFT methods often encounter severe CPU and memory bottlenecks when calculating the absorption spectra of large systems (e.g., hundreds of atoms), resulting in the computation not being completed within a given computation time and memory constraints. This is not only because of the more computational resources required to compute each excited state, but also because the larger the system, the greater the number of excited states in a certain wavelength range (e.g., visible region). Therefore, if the absorption spectrum is to be calculated in a given wavelength range, the time and memory consumption required for TDDFT computation not only increases rapidly with the size of the system, but also increases with the ratio of the time and memory required to the SCF step as the system size increases. That is, when the system is large enough, even if only the TDDFT step is approximated, but not the SCF step, a great speedup can be obtained and a lot of memory can be saved. As mentioned above, the iVI method can reduce the memory required for TDDFT calculation to a certain extent without introducing any errors. The MPEC+COSX method <MPECCOSX> reduces the calculation time of TDDFT to about 1/10~1/3 (depending on the size of the basis set and the size of the system) at the cost of introducing a very small (generally less than 0.01 eV) error. However, if the requirements for the accuracy of the results are lower, for example, even an error of the order of 0.2 eV is acceptable, the sTDA and sTDDFT sTDA_RSH methods developed by Grimme's group can be used to accelerate the TDDFT calculation, which can be tens to hundreds of times faster than ordinary TDDFT. In BDF, the ``grimmestd`` keyword can be used to specify the use of the sTDA or sTDDFT method.
 
 For example, the following example uses sTDDFT to calculate the absorption spectrum of chlorophyll a (137 atoms):
 
@@ -1145,7 +1145,7 @@ The calculation of the SCF part takes 527 s (16 threads of OpenMP parallel, the 
        17   A   18   A    4.0803 eV        303.86 nm   0.0461   0.0000  57.5%  CV(0):   A( 241 )->   A( 245 )   4.702 0.492    1.8983
        18   A   19   A    4.1011 eV        302.32 nm   0.0046   0.0000  49.1%  CV(0):   A( 233 )->   A( 242 )   4.697 0.418    1.9192
 
-In contrast, the traditional TDDFT calculation (the same as the input file above, except for the removal of the ''grimmestd'' keyword) takes 3264 s, and the result is:
+In contrast, the traditional TDDFT calculation (the same as the input file above, except for the removal of the ``grimmestd`` keyword) takes 3264 s, and the result is:
 
 .. code-block:: bdf
 
@@ -1203,6 +1203,7 @@ Restart the TDDFT task that was unexpectedly interrupted
 If the TDDFT calculation is terminated unexpectedly, the user may want to reschedule the calculation, that is, when the TDDFT calculation is redone, some intermediate results generated by the previously interrupted TDDFT task are used to reduce or avoid redundant calculation. For details on how to calculate the breakpoint restart of TDDFT, see the corresponding introduction in the FAQ chapter <tddftrestart>.
 
 .. _plotspec:
+
 Mapping of Gaussian broadened absorption spectra
 -------------------------------------------------------
 
@@ -1482,7 +1483,7 @@ The following is an example of optimizing the structure of the first excited sta
      # one root is calculated in the $TDDFT block
   $end
 
-Note that in the above example, the meaning of the keyword ''iroot'' in the ''$resp'' module is different from the keyword '''iroot'' in the ''$tddft'' module. The former refers to the calculation of the gradient of the first few excited states, while the latter refers to the number of excited states that are calculated in total for each irreducible representation.
+Note that in the above example, the meaning of the keyword ``iroot`` in the ``$resp`` module is different from the keyword ``iroot`` in the ``$tddft`` module. The former refers to the calculation of the gradient of the first few excited states, while the latter refers to the number of excited states that are calculated in total for each irreducible representation.
 
 After the molecular structure is optimized and converged, the converged structure is output in the main output file:
 
@@ -1626,14 +1627,14 @@ The second time the triplet state was calculated by SF-TDDFT, and wave functions
 
 .. warning:: 
 
-  * Calculations must be performed in the order of isf=0, isf=1. When the SOC treatment does not consider the ground state (i.e., ''ifgs=0''), the more excited states ''iroot''' are calculated, the more accurate the result is; When considering the ground state (i.e., ''ifgs=1'''), too much ''iroot'' will reduce the accuracy, which is manifested in the underestimation of the ground state energy.
+  * Calculations must be performed in the order of isf=0, isf=1. When the SOC treatment does not consider the ground state (i.e., ``ifgs=0``), the more excited states ``iroot`` are calculated, the more accurate the result is; When considering the ground state (i.e., ``ifgs=1``), too much ``iroot`` will reduce the accuracy, which is manifested in the underestimation of the ground state energy.
 
 The keyword ``imatsoc`` controls which SOC matrix elements :math:`<A|hso|B>` to be printed,
 
-  * ''8'' means that you want to print SOC between 8 sets of spinor states, and 8 lines of integer arrays are entered in the following order;
-  * The input format for each line is fileA symA stateA fileB symB stateB, which represents the matrix elements <fileA,symA,stateA|hsoc|fileB,symB,stateB>, where
-  * fileA symA stateA represents the irreducible root of stateA in file fileA; For example, ''1 1 1'' represents the 1st root of the 1st irreducible representation calculated by the 1st TDDFT; 
-  * ''0 0 0'' denotes the ground state 
+  * ``8`` means that you want to print SOC between 8 sets of spinor states, and 8 lines of integer arrays are entered in the following order;
+  * The input format for each line is ``fileA symA stateA fileB symB stateB``, which represents the matrix elements <fileA,symA,stateA|hsoc|fileB,symB,stateB>, where
+  * ``fileA symA stateA`` represents the ``stateA``-th root of the ``symA``-th  irreducible in file ``fileA``; For example, ``1 1 1`` represents the 1st root of the 1st irreducible representation calculated by the 1st TDDFT; 
+  * ``0 0 0`` denotes the ground state 
 
 .. note::
 
@@ -1665,9 +1666,9 @@ The printout of the coupling matrix element is as follows,
    0.0  0.0      0.0000000000      0.0000000000     -0.0000000000     -0.0000000000
    0.0  1.0     -0.0003065905    -67.2888361761     -0.0000000000     -0.0000000000
 
-Here, ''< 0 0 0 | Hso|  2 2 1 >'' represents the matrix element ''<S0| Hso| T1>'' , giving the actual part ReHso and the imaginary part ImHso, respectively.
+Here, ``< 0 0 0 | Hso|  2 2 1 >`` represents the matrix element ``<S0| Hso| T1>`` , giving the actual part ReHso and the imaginary part ImHso, respectively.
 Since S0 has only one component, mi is 0. T1 (spin S=1) has 3 components (Ms=-1,0,1), and these 3 components are numbered by mj.
-where the component of ''Ms=0'' is coupled with the ground state, and the imaginary part of the matrix element is ''0.0007155424 au''. 
+where the component of ``Ms=0`` is coupled with the ground state, and the imaginary part of the matrix element is ``0.0007155424 au``. 
 
 .. warning::
   When comparing the results of different programs, it is important to note that the so-called spherical tensor is given here, not the cartesian tensor, i.e. T1 is T_{-1}, T_{0}, T_{1}, not Tx, Ty, Tz, and there is a unitary transformation between the two.
@@ -1738,23 +1739,23 @@ The SOC is calculated as follows,
      
 The output here has two parts, the first part gives the energy and composition of each SOC-SI state with respect to the S0 state, for example
 
-  * ``No.    10 w= 5.5116 eV'' means that the energy of the 10th ''SOC-SI''' state is ''5.5116 eV'', note that here is the energy relative to the S0 state;
+  * ``No.    10 w= 5.5116 eV`` means that the energy of the 10th ``SOC-SI`` state is ``5.5116 eV``, note that here is the energy relative to the S0 state;
   
 The following three lines are the components of this state,
 
-  * ``Spin: | S+,1>    1-th Spatial:  B2; '' means that this is the first triplet state with symmetry of B2 (with respect to the S-state spin +1, and therefore S+);
-  * ''OmegaSF= 5.5115eV'' is the energy relative to the first spinor state;
-  * ''Cr= -0.5011 Ci= -0.0063'' is the real and imaginary part of the wave function of this component in the spinor state, and the percentage is ''25.1%''.
+  * ``Spin: |S+,1>    1-th Spatial:  B2;`` means that this is the first triplet state with symmetry of B2 (with respect to the S-state spin +1, and therefore S+);
+  * ``OmegaSF= 5.5115eV`` is the energy relative to the first spinor state;
+  * ``Cr= -0.5011 Ci= -0.0063`` is the real and imaginary part of the wave function of this component in the spinor state, and the percentage is ``25.1%``.
 
 The second part summarizes the results of the SOC-SI states.
 
-  ExEnergies lists the excitation energy after considering the SOC. ''Esf'' is the excitation energy when the original SOC is not considered;
-  * The excited state is expressed with ''Spin: | S,M> n-th sym'' to denote spin \| Gs, 1>, the spatial symmetry is the nth state of sym. For example, \| Gs,1> represents the ground state, \| So,1> represents the excited state in which the total spin and ground state are the same, \| S+,2> represents the excited state of the total spin plus 1. M is the component of the spin projection (in total 2S+1).
+  * ExEnergies lists the excitation energy after considering the SOC. ``Esf`` is the excitation energy when the original SOC is not considered;
+  * The excited state is expressed with ``Spin: | S,M> n-th sym`` to denote spin \| Gs, 1>, the spatial symmetry is the nth state of sym. For example, \| Gs,1> represents the ground state, \| So,1> represents the excited state in which the total spin and ground state are the same, \| S+,2> represents the excited state of the total spin plus 1. M is the component of the spin projection (in total 2S+1).
 
-The keyword ''imatrso'' specifies which sets of transition dipole moments between spinor states to be calculated and printed. Here it is specified to print the ''6'' group of transition dipole moments,
+The keyword ``imatrso`` specifies which sets of transition dipole moments between spinor states to be calculated and printed. Here it is specified to print the ``6`` group of transition dipole moments,
 
-  * ''1 1'' denotes the ground state intrinsic dipole moment;
-  * ''1 2'' denotes the transition dipole moment between the first and second spinor states.
+  * ``1 1`` denotes the ground state intrinsic dipole moment;
+  * ``1 2`` denotes the transition dipole moment between the first and second spinor states.
   
 .. note::
 
@@ -1790,7 +1791,7 @@ The output of the transition dipole moment is as follows:
 
 .. hint::
   * imatsoc is set to -1 to specify that all coupling matrix elements are printed;
-  * By default, the transition dipole moment is not calculated, and the transition dipole moment between all spinor states can be printed by setting imatrso to ''-1'', and the transition dipole moment between all ground spinor states and all excited spinor states can be printed by setting imatrso to ''-2''.
+  * By default, the transition dipole moment is not calculated, and the transition dipole moment between all spinor states can be printed by setting imatrso to ``-1``, and the transition dipole moment between all ground spinor states and all excited spinor states can be printed by setting imatrso to ``-2``.
   * The reference state of the SOC calculation must be either RHF/RKS or ROHF/ROKS, UHF/UKS is not supported.
   * When the reference state of the SOC calculation is ROHF/ROKS, the TDDFT calculation of isf=0 must use X-TDA (i.e., itest=1, icorrect=1, isf=0, itda=1; full X-TDDFT is not supported), and the TDDFT calculation of isf=1 must use SF-TDA (i.e., isf=1, itda=1; full SF-TDDFT is not supported).
 
@@ -1801,7 +1802,7 @@ TDDFT-SOC spin-orbit coupling calculation using ECP base set
 In addition to the sf-X2C all-electron scalar relativistic Hamiltonian, the pseudopotential can also be used for TDDFT-SOC spin-orbit coupling calculations, in which the spin-orbit coupling pseudopotential (SOECP) is the first choice.
 To do this, you need to select the appropriate spin-orbit-coupled Pseudopotential Basis Set <soecp-bas> and set the hsoc to 10 in the Xuanyuan module (you can also write other values,
 But it will be treated as 10).
-Other inputs are similar or identical to the sf-X2C/TDDFT-SOC inputs (e.g. core electrons are excluded when specifying orbital occupancy in ''scf'').
+Other inputs are similar or identical to the sf-X2C/TDDFT-SOC inputs (e.g. core electrons are excluded when specifying orbital occupancy in ``scf``).
 
 In the example below, the closed-shell ground state of the InBr molecule is calculated under the symmetry of the :math:'C_{2v}' point group, and the lowest three excited states of the InBr molecule
 :math:'^3\Pi' (B1+B2), :math:'^1\Pi' (B1+B2), :math:'^3\Sigma^+' (A1), where the first two Λ-S states are bound states that have been extensively experimentally studied,
@@ -1872,16 +1873,16 @@ In the input, the energy of the Λ-S state is calculated and the wave function i
 
 The calculated output of SOECP/TDFT-SOC is similar to that of the sf-X2C/TDDFT-SOC. The results are summarized below and compared to those of the two-component EOM-CCSD.
 
-.. table:: Vertical excitation energy of InBr molecule: SOECP/TDDFT-SOC and two-component EOM-CCSD. Energy unit: cm:math:'^{-1}'
+.. table:: Vertical excitation energy of InBr molecule: SOECP/TDDFT-SOC and two-component EOM-CCSD. Energy unit: cm :math:`^{-1}`
     :widths: auto
     :class: longtable
 
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
-|  L-S state |    TDDFT    | Ω state |   TDDFT-SOC | Splitting Energy | Two-Component EOM-CCSD | Splitting Energy |
+    |  Λ-S state          |    TDDFT    | Ω   | TDDFT-SOC   |   Splitting |  2c-EOM-CCSD |   Splitting |
     +=====================+=============+=====+=============+=============+==============+=============+
-    | :math:'X^1\Sigma^+' |        0 | 0+ |         0 |             |         0 |             |
+    | :math:`X^1\Sigma^+` |        0    | 0+  |         0   |             |         0    |             |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
-    | :math:'^3\Pi' |    25731 | 0- |     24884 |             |     24516 |             |
+    | :math:`^3\Pi`       |    25731    | 0-  |     24884   |             |     24516    |             |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
     |                     |             | 0+  |     24959   |        75   |     24588    |        72   |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
@@ -1889,9 +1890,9 @@ The calculated output of SOECP/TDFT-SOC is similar to that of the sf-X2C/TDDFT-S
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
     |                     |             | 2   |     26666   |       948   |     26347    |       984   |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
-    | :math:'^1\Pi' |    35400 | 1 |     35404 |             |     36389 |             |
+    | :math:`^1\Pi`       |    35400    | 1   |     35404   |             |     36389    |             |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
-    | :math:'^3\Sigma^+' |    38251 | 0- |     38325 |             |              |             |
+    | :math:`^3\Sigma^+`  |    38251    | 0-  |     38325   |             |              |             |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
     |                     |             | 1   |     38423   |        98   |              |             |
     +---------------------+-------------+-----+-------------+-------------+--------------+-------------+
@@ -1909,7 +1910,7 @@ This is because the ECP base set of Br with 10 cores does not have a specially o
    IAtm     ZA    NCore         Zeff
   ----------------------------------
       1     49       28        SOECP
-      2 35 10 N.A.
+      2     35       10         N.A.
   ----------------------------------
 
 For Br in the above example, you may wish to use the scalar ECP base set cc-pVTZ-ccECP with 28 core electrons instead, and the input part of the basis set is modified as follows:
@@ -1937,16 +1938,16 @@ Track occupancy is not specified in modules after xuanyuan, so there is no need 
 This shows that in the single-electron spin-orbit integral of Br, the default nuclear charge number 35 is replaced with an optimized 1435.000 (in general, the larger the ECP core electron number NCore, the larger the effective nuclear charge Zeff),
 SOECP integrals are still calculated for the In atom. The results are as follows, and it can be seen that the SOC splitting has been significantly improved:
 
-.. table:: TDDFT-SOC vertical excitation energies of InBr molecules: In:SOECP, Br:SOECP and Br:ECP. Energy unit: cm:math:'^{-1}'
+.. table:: TDDFT-SOC vertical excitation energies of InBr molecules: In:SOECP, Br:SOECP and Br:ECP. Energy unit: cm :math:`^{-1}`
     :widths: auto
     :class: longtable
 
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
-|  L-S state |    TDDFT    | Ω state |   Br:SOECP  |     Splitting |     Br:ECP  |     Splitting |
+    |  Λ-S state          |    TDDFT    | Ω   |   Br:SOECP  |   Splitting |     Br:ECP  |   Splitting |
     +=====================+=============+=====+=============+=============+=============+=============+
-    | :math:'X^1\Sigma^+' |        0 | 0+ |         0 |             |         0 |             |
+    | :math:`X^1\Sigma^+` |        0    | 0+  |         0   |             |         0   |             |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
-    | :math:'^3\Pi' |    25731 | 0- |     24884 |             |     25019 |             |
+    | :math:`^3\Pi`       |    25731    | 0-  |     24884   |             |     25019   |             |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
     |                     |             | 0+  |     24959   |        75   |     25084   |        65   |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
@@ -1954,9 +1955,9 @@ SOECP integrals are still calculated for the In atom. The results are as follows
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
     |                     |             | 2   |     26666   |       948   |     26808   |       952   |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
-    | :math:'^1\Pi' |    35400 | 1 |     35404 |             |     35729 |             |
+    | :math:`^1\Pi`       |    35400    | 1   |     35404   |             |     35729   |             |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
-    | :math:'^3\Sigma^+' |    38251 | 0- |     38325 |             |     38788 |             |
+    | :math:`^3\Sigma^+`  |    38251    | 0-  |     38325   |             |     38788   |             |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
     |                     |             | 1   |     38423   |        98   |     38853   |        65   |
     +---------------------+-------------+-----+-------------+-------------+-------------+-------------+
@@ -2322,5 +2323,5 @@ The process of localization of the excited states is as follows,
        State4    0.000000    0.000021    0.192803    8.873501
     **************************************************************
 
-where the diagonal element is the energy of the localized excited state, and the non-diagonal element is the coupling between the two localized states, where the unit of energy is ''eV''.
+where the diagonal element is the energy of the localized excited state, and the non-diagonal element is the coupling between the two localized states, where the unit of energy is ``eV``.
 

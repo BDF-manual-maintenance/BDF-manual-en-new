@@ -1,3 +1,5 @@
+.. _relativity:
+
 Relativistic Effects
 ================================================
 
@@ -88,23 +90,27 @@ For approximating SOC in chemical reaction simulations, see :ref:`spin-mixed sta
 SOC methods are also classified as all-electron or ECP-based.
 
 * **All-Electron Methods**  
-  Although two-electron SOC integrals contribute less than one-electron terms, their impact on SOC can reach 20-30% and cannot be neglected. Two treatments exist:  
+
+  Although two-electron SOC integrals contribute less than one-electron terms, their impact on SOC can reach 20-30% and cannot be neglected. Two treatments exist:
+
   1. **Explicit two-electron SOC integrals** (with approximations to reduce cost). Compatible with sf-X2C scalar Hamiltonians or non-relativistic Hamiltonians for light elements.  
   2. **Approximating two-electron SOC from one-electron terms**, e.g., screened nuclear :cite:`snso2000,msnso2013` or effective nuclear charge :cite:`zeff1995` corrections. Faster but less accurate; may cause unpredictable errors for core electron properties.  
 
-  BDF supports only the first approach. Use **one-electron SOC integrals + mean-field two-electron SOC with one-center approximation (so1e + SOMF-1c)** by setting ``hsoc=2`` in the :ref:`xuanyuan<xuanyuan>` module.
+BDF supports only the first approach. Use **one-electron SOC integrals + mean-field two-electron SOC with one-center approximation (so1e + SOMF-1c)** by setting ``hsoc=2`` in the :ref:`xuanyuan<xuanyuan>` module.
 
 .. _so1e-zeff:  
 
-* **ECP**  
-  Two treatments:  
+* **ECP**
+
+  Two treatments:
+
   1. **Spin-orbit ECPs (SOECPs)**: Require adding SO potential functions to scalar ECPs. Use :ref:`SOECP basis sets<soecp-bas>` from the basis set library.  
   2. **Effective nuclear charges** :cite:`zeff1995,zeff1998`: Compatible with scalar ECPs or non-relativistic all-electron basis sets, but with limited element support (see table below).  
 
   Both methods incorporate two-electron SOC effects into parameters, requiring only one-electron SOC integrals.  
   BDF automatically uses both treatments based on basis sets by setting ``hsoc=10`` in the :ref:`xuanyuan<xuanyuan>` module.  
 
-  .. note::  
+.. note::  
       Effective nuclear charge has limited element/basis support:  
       - For all-electron basis sets: Only main-group elements ≤ Xe (excluding Ne, Ar, Kr).  
       - For scalar ECPs: Supported elements must match core electron counts (NCore) in the table below. Results are unreliable for unsupported elements/basis sets.  

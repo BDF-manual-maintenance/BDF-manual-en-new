@@ -1,3 +1,5 @@
+.. _scf_module:
+
 Hartree-Fock and Kohn-Sham Self-Consistent Field Calculations - SCF Module
 ==========================================================================
 The SCF module is one of BDF's core computational modules, performing Hartree-Fock and DFT calculations.
@@ -68,7 +70,7 @@ Specifies the type of initial guess. Normally, `atom` is better than `Hcore` or 
      4. Same basis set;
      5. Both calculations must be RHF/RKS/ROHF/ROKS OR both must be UHF/UKS.
      
-     Other aspects (coordinates, charge, spin multiplicity, functional, etc.) can differ. If points (1), (2), (3), (5) are satisfied but not (4), use the ``expandmo`` module to project the orbitals to the current basis set before reading as an initial guess (see :doc:`expandmo`).
+     Other aspects (coordinates, charge, spin multiplicity, functional, etc.) can differ. If points (1), (2), (3), (5) are satisfied but not (4), use the ``expandmo`` module to project the orbitals to the current basis set before reading as an initial guess (see :ref:`expandmo<expandmo>`).
 
 Example: If a calculation was run at B3LYP/def2-TZVP (input `mol-B3LYP-Energy.inp`), and you want to run an M06-2X/def2-TZVP calculation on a different structure (input `mol-M062X-Energy.inp`), you can reuse the converged SCF wavefunction:
 

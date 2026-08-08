@@ -216,9 +216,11 @@ Non-electrostatic terms are **disabled by default**. Enable with:
 
 **Common Solvent Radii**:  
 
-| Solvent              | Water | Tetrahydrofuran | Cyclohexane | Methanol | Ethanol | Tetrachloromethane |
-|----------------------|-------|-----------------|-------------|----------|---------|---------------------|
-| **Radius (Å)**       | 1.385 | 2.900           | 2.815       | 1.855    | 2.180   | 2.685              |
+  ================ ========= =================== =============== ============ =========== ====================
+    **Solvent**     Water     Tetrahydrofuran     Cyclohexane     Methanol     Ethanol     Tetrachloromethane
+    **Radius(Å)**   1.385     2.900               2.815           1.855        2.180       2.685
+  ================ ========= =================== =============== ============ =========== ====================
+
 
 Customize radii for dispersion-repulsion/cavitation:
 

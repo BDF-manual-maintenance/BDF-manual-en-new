@@ -136,4 +136,4 @@ Results appear under ``[nmr_nr_giao]`` in the output:
       31.204946      9.070920
 
 .. warning::
-The keyword ''Isotropic/anisotropic constant by atom type'' in the output is exactly the same as COMMON GAUGE for GIAO, and it should be noted whether it is after ''[nmr_nr_cg]''' or ''[nmr_nr_giao]''' when reading the result to distinguish between the result of COMMON GAUGE and the result of GIAO
+   The keyword ``Isotropic/anisotropic constant by atom type`` in the output is exactly the same as COMMON GAUGE for GIAO, and it should be noted whether it is after ``[nmr_nr_cg]`` or ``[nmr_nr_giao]`` when reading the result to distinguish between the result of COMMON GAUGE and the result of GIAO.

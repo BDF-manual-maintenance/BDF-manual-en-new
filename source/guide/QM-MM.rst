@@ -116,8 +116,10 @@ The complete QM/MM energy calculation script:
 
 Geometry Optimization  
 -------------------------------------------------  
-.. _QMMMopt:  
-QM/MM geometry optimization often faces convergence challenges. Common strategies include:  
+.. _QMMMopt:
+
+QM/MM geometry optimization often faces convergence challenges. Common strategies include:
+
 1. Freeze MM region → Optimize QM region  
 2. Freeze QM region → Optimize MM region  
 3. Repeat steps 1-2 cyclically  

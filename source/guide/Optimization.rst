@@ -1101,7 +1101,7 @@ The input files are as follows. Among them, the ground state is completed with R
        As for which state is specified as No. 1 or No. 2, it is entirely up to the user to decide and does not affect the final result.
     5. In the process of BDF structure optimization, the SCF orbital saved in the previous step is used as the initial guess of the current SCF step by default to obtain the fastest SCF convergence. Since the two SCF calculations use different SCF pre-guess orbitals,
        They need to be backed up as $BDFTASK.scforb.1 and $BDFTASK.scforb.2, respectively. However, when overwriting $BDFTASK.scforb with them for the first time, since the SCF calculation has not yet been performed,
-        If these two files do not exist, the replication error will occur, and the BDF will stop the calculation when it finds out. In order to block out the error copying message, you need to add ``2>/dev/null`` to the end of the copy command.
+       If these two files do not exist, the replication error will occur, and the BDF will stop the calculation when it finds out. In order to block out the error copying message, you need to add ``2>/dev/null`` to the end of the copy command.
     6. The lowest triple excited state can also be calculated by spin flipping using TDDFT, which requires adding some additional keywords to the $tddft' and $resp' (see the TDDFT section <TDDFTopt>').
        However, TDDFT does not describe the charge transfer state well (this is the case with ZnS) and is not used here.
 

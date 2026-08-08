@@ -212,6 +212,34 @@ Specifies the molecular symmetry point group. BDF automatically determines molec
        D(2h)
      $END
 
+For Abelian point groups, in addition to the point group symbol,
+one can also specify 1 to 3 symmetry generators using the ``gen(g1,g2,g3)`` format.
+The allowed combinations of generators are listed in the table below.
+
+.. table:: Symmetry generators of Abelian point groups
+    :widths: auto
+    :class: longtable
+
+    +-------------+-------------------------------------+
+    | Point group | Generators                          |
+    +=============+=====================================+
+    | C(1)        | e, or a space in parentheses        |
+    +-------------+-------------------------------------+
+    | C(s)        | x; or y; or z                       |
+    +-------------+-------------------------------------+
+    | C(2)        | xy; or xy; or yz                    |
+    +-------------+-------------------------------------+
+    | C(i)        | xyz, which can also be written as i |
+    +-------------+-------------------------------------+
+    | C(2v)       | x,y; or x,z; or y,z                 |
+    +-------------+-------------------------------------+
+    | C(2h)       | xy,z; or xz,y; or yz,x              |
+    +-------------+-------------------------------------+
+    | D(2)        | xz,yz; or xy,yz; or xy,xz           |
+    +-------------+-------------------------------------+
+    | D(2h)       | x,y,z                               |
+    +-------------+-------------------------------------+
+
 :guilabel:`Nosymm` Parameter Type: Boolean
 ----------------------------------------------
  * Default: false

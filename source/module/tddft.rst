@@ -77,6 +77,7 @@ Specifies the TDDFT diagonalization method:
 * 3: iVI diagonalization (does not support non-Abelian point groups)
 
 Recommendations:
+
 * Use `idiag=3` (iVI) for:
     - High-energy excitations (e.g., X-ray absorption/emission - see `iwindow`)
     - Calculating *all* states within a specific energy/wavelength range with guaranteed completeness (see `iwindow`).

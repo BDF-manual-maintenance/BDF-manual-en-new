@@ -249,11 +249,15 @@ Let's start by counting 4 molecular sheets, each of which is composed of a centr
    10 11 12 13 14 15 16 17 18 
   &END
 
-In the input, we give a comment. The calculation of each molecular slice consists of four modules: ''compass'', ''xuanyuan'', ''scf'' and ''localmo''. The four steps of preprocessing, integration calculation, SCF calculation and molecular orbital localization are performed respectively, and the shell command is inserted after the localmo module
-''cp $BDF_WORKDIR/$BDFTASK.flmo $BDF_TMPDIR/fragment*''
-Copy the file **$BDFTASK.flmo** where the localized track is stored to the directory where the **$BDF_TMPDIR is located. After the 4 molecular fragments are calculated, it is the calculation of the whole molecule, and the input is from
+In the input, we give a comment. The calculation of each molecular slice consists of four modules:
+``compass``, ``xuanyuan``, ``scf`` and ``localmo``. The four steps of preprocessing, integration calculation,
+SCF calculation and molecular orbital localization are performed respectively,
+and the shell command is inserted after the localmo module
+``cp $BDF_WORKDIR/$BDFTASK.flmo $BDF_TMPDIR/fragment*`` .
+Copy the file **$BDFTASK.flmo** where the localized track is stored to the directory where the **$BDF_TMPDIR** is located.
+After the 4 molecular fragments are calculated, it is the calculation of the whole molecule, and the input is from
 ``# Whole Molecule calculation``
-Begin. In ''compass'', there is the keyword '''Nfragment 4''', which indicates that 4 molecular pieces are to be read, and the molecular fragment information is defined in the '&DATABASE'' field.
+Begin. In ``compass``, there is the keyword ``Nfragment 4``, which indicates that 4 molecular pieces are to be read, and the molecular fragment information is defined in the ``&DATABASE`` field.
 
 For the SCF calculation of the whole molecule, the localized orbitals of the four molecular slices will be read into the pFLMO to construct the pFLMO, and the orbital elongation coefficient Mos (molecular orbital spread) (the larger the Mos of a localized orbital is, the more delocalized the localized orbital is, and vice versa, the more localized the localized orbital), as follows:
 

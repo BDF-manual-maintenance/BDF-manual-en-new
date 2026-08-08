@@ -50,6 +50,6 @@ Specify units in the second line:
     External charge, Point charge   
     6    Bohr                      # Unit: Bohr  
     C1     -0.732879    0.000000    5.000000    0.114039 
-# omitted #
+    # omitted #
 
 .. End of this section
