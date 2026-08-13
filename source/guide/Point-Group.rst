@@ -3,7 +3,12 @@
 Symmetry and Molecular Point Groups
 ================================================
 
-BDF supports consideration of molecular point group symmetry in calculations. With the exception of certain computational tasks (such as open-shell TDDFT, TDDFT/SOC, etc.) which only support :math:`\rm D_{2h}` and its subgroups (i.e., :math:`\rm C_1, C_i, C_s, C_2, D_2, C_{2h}, C_{2v}, D_{2h}`, collectively known as Abelian groups), most computational tasks support any real-representation point groups (all Abelian groups, and :math:`\rm C_{nv}, D_{n}, D_{nh}, D_{nd}, T_d, O, O_h, I, I_h`; while special point groups :math:`\rm C_{\infty v}, D_{\infty h}` are nominally supported, they are treated as :math:`\rm C_{20v}` and :math:`\rm D_{20h}` respectively, with single atoms treated as :math:`\rm O_{h}` group). Complex-representation point groups (:math:`\rm C_n, C_{nh} (n \ge 3); S_{2n} (n \ge 2); T, T_h`) are not supported. The program can automatically determine the molecular point group based on molecular coordinates input in the COMPASS module, and will automatically switch to an appropriate subgroup if the molecule belongs to a complex-representation point group. Once the point group is determined, the program generates group operation operators, character tables, irreducible representations, etc., for subsequent calculations. Using the ammonia molecule as an example:
+BDF supports consideration of molecular point group symmetry in calculations. With the exception of certain computational tasks (such as open-shell TDDFT, TDDFT/SOC, wave function theory, etc.)
+which only support :math:`\rm D_{2h}` and its subgroups (i.e., :math:`\rm C_1, C_i, C_s, C_2, D_2, C_{2h}, C_{2v}, D_{2h}`, collectively known as Abelian groups),
+most computational tasks support any real-representation point groups (all Abelian groups, and :math:`\rm C_{nv}, D_{n}, D_{nh}, D_{nd}, T_d, O, O_h, I, I_h`;
+while special point groups :math:`\rm C_{\infty v}, D_{\infty h}` are nominally supported, they are treated as :math:`\rm C_{20v}` and :math:`\rm D_{20h}` respectively,
+with single atoms treated as :math:`\rm O_{h}` group). Complex-representation point groups (:math:`\rm C_n, C_{nh} (n \ge 3); S_{2n} (n \ge 2); T, T_h`) are not supported.
+The program can automatically determine the molecular point group based on molecular coordinates input in the COMPASS module, and will automatically switch to an appropriate subgroup if the molecule belongs to a complex-representation point group. Once the point group is determined, the program generates group operation operators, character tables, irreducible representations, etc., for subsequent calculations. Using the ammonia molecule as an example:
 
 .. code-block:: bdf
 

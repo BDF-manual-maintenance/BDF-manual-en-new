@@ -240,6 +240,11 @@ The allowed combinations of generators are listed in the table below.
     | D(2h)       | x,y,z                               |
     +-------------+-------------------------------------+
 
+.. attention:: 
+
+    Specifying symmetric generators also implies specifying the keywords ``saorb`` and ``norotate`` .
+
+
 :guilabel:`Nosymm` Parameter Type: Boolean
 ----------------------------------------------
  * Default: false
