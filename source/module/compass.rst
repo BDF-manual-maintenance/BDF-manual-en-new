@@ -215,6 +215,9 @@ Specifies the molecular symmetry point group. BDF automatically determines molec
 For Abelian point groups, in addition to the point group symbol,
 one can also specify 1 to 3 symmetry generators using the ``gen(g1,g2,g3)`` format.
 The allowed combinations of generators are listed in the table below.
+This input for specifying point group is mainly used to compare calculation results and transfer molecular orbitals
+among multi-configurational calculations in different quantum chemistry programs,
+but is not recommended for use under normal circumstances.
 
 .. table:: Symmetry generators of Abelian point groups
     :widths: auto
