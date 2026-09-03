@@ -587,8 +587,8 @@ Pseudopotential basis sets are categorized into **scalar pseudopotential basis s
     | Stuttgart              | | Stuttgart-RLC             | | 3- 20, 30- 38, 49- 56, 80- 86        | large core             |
     |                        |                             | | 89-103                               |                        |
     +                        +-----------------------------+----------------------------------------+------------------------+
-    |                        | | Stuttgart-RSC-1997        | | 19-30, 37-48, 55-56, 58-70           | small core             |
-    |                        |                             | | 72-80, 89-103, 105                   |                        |
+    |                        | | Stuttgart-RSC-1997        | 19-30, 37-48, 55-80, 89-103, 105       | | SOECP(39-48,57-80,   |
+    |                        |                             |                                        | | 89-103), small core  |
     +                        +-----------------------------+----------------------------------------+------------------------+
     |                        | | Stuttgart-RSC-ANO         | 57- 71, 89-103                         | SOECP, small core      |
     |                        | | Stuttgart-RSC-SEG         |                                        |                        |
