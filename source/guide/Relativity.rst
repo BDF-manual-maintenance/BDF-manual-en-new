@@ -112,32 +112,32 @@ BDF supports only the first approach. Use **one-electron SOC integrals + mean-fi
 
 .. note::  
       Effective nuclear charge has limited element/basis support:  
-      - For all-electron basis sets: Only main-group elements ≤ Xe (excluding Ne, Ar, Kr).  
+      - For all-electron basis sets: Only main-group elements before Xe (excluding Kr).  
       - For scalar ECPs: Supported elements must match core electron counts (NCore) in the table below. Results are unreliable for unsupported elements/basis sets.  
 
 .. table:: Effective Nuclear Charge Parameters and Required Core Electron Counts (NCore)  
     :widths: auto  
 
     +-----------------------------+----------------------------------------+-------+
-    | 原子                        | ZA                                     | NCore |
+    | Atom                        | ZA                                     | NCore |
     +=============================+========================================+=======+
-    | Li-F                        | 3- 9                                   | 2     |
+    | Li-Ne                       | 3-10                                   | 2     |
     +-----------------------------+----------------------------------------+-------+
-    | Na-Cl, Sc-Ga                | 11-17, 21-31                           | 10    |
+    | Na-Ar, Sc-Ga                | 11-18, 21-31                           | 10    |
     +-----------------------------+----------------------------------------+-------+
     | K -Ca                       | 19-20                                  | 18    |
     +-----------------------------+----------------------------------------+-------+
-    | Ge-Br, Y -In                | 32-35, 39-49                           | 28    |
+    | Ge-Kr, Y -In                | 32-36, 39-49                           | 28    |
     +-----------------------------+----------------------------------------+-------+
     | Rb-Sr                       | 37-38                                  | 36    |
     +-----------------------------+----------------------------------------+-------+
-    | Sn-I, La                    | 50-53, 57                              | 46    |
+    | Sn-Xe, La                   | 50-54, 57                              | 46    |
     +-----------------------------+----------------------------------------+-------+
     | Cs-Ba                       | 55-56                                  | 54    |
     +-----------------------------+----------------------------------------+-------+
     | Hf-Tl                       | 72-81                                  | 60    |
     +-----------------------------+----------------------------------------+-------+
-    | Pb-At                       | 82-85                                  | 78    |
+    | Pb-Rn                       | 82-86                                  | 78    |
     +-----------------------------+----------------------------------------+-------+
 
 For details (parameters, references), see source file `soint_util/zefflib.F90`.
